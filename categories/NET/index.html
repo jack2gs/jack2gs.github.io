@@ -96,7 +96,7 @@
 <meta name="description" content="Jack Gao&apos;s Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jack Gao&#39;s Blog">
-<meta property="og:url" content="jack2gs.github.io/index.html">
+<meta property="og:url" content="jack2gs.github.io/categories/NET/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
 <meta property="og:description" content="Jack Gao&apos;s Blog">
 <meta name="twitter:card" content="summary">
@@ -129,14 +129,14 @@
 
 
 
-  <link rel="canonical" href="jack2gs.github.io/"/>
+  <link rel="canonical" href="jack2gs.github.io/categories/NET/"/>
 
 
 
 
 
 
-  <title>Jack Gao's Blog</title>
+  <title>Category: .NET | Jack Gao's Blog</title>
   
 
 
@@ -161,9 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -266,353 +264,38 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/02/get-hash-code-and-equal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack Gao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jack Gao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/02/get-hash-code-and-equal/" itemprop="url">GetHashCode and Equals</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-02T16:08:00+08:00">
-                2017-07-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-02T22:59:10+08:00">
-                2017-07-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NET/" itemprop="url" rel="index">
-                    <span itemprop="name">.NET</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 背景与问题</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速查找。但是，相信大部分人对其工作原理不慎了解。文简单介绍下Object.GetHashCode和Object.Equals方法在哈希查找中的作用。
-</p>
-</div>
-</div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 哈希查找</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-哈希查找是Dictionary和HashTable的基础。建议首先看下哈希查找的工作原理。哈希查找算法分为两部分：1.数据存储算法；2.数据读取算法。这里以.NET的实现为例简要分析下算法流程。
-</p>
-</div>
-
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 数据存储算法</h3>
-<div class="outline-text-3" id="text-2-1">
-
-<div id="fig:hash_search_store" class="figure">
-<p><img src="../images/hash-search/hash-search-store.png" alt="hash-search-store.png">
-</p>
-<p><span class="figure-number">Figure 1:</span> 数据存储算法</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 数据读取算法</h3>
-<div class="outline-text-3" id="text-2-2">
-
-<div id="fig:hash_search_search" class="figure">
-<p><img src="../images/hash-search/hash-search-search.png" alt="hash-search-search.png">
-</p>
-<p><span class="figure-number">Figure 2:</span> 数据读取算法</p>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> 验证</h2>
-</div>
-
-          
-        
-      
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h1>.NET<small>Category</small>
+      </h1>
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
 
     
       
 
-  
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/06/17/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack Gao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jack Gao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2017/07/02/get-hash-code-and-equal/" itemprop="url">
+              
+                <span itemprop="name">GetHashCode and Equals</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/17/hello-world/" itemprop="url">Hello world!</a></h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-17T16:08:00+08:00">
-                2017-06-17
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-07-02T16:08:00+08:00"
+              content="2017-07-02" >
+          07-02
+        </time>
+      </div>
 
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-02T21:51:50+08:00">
-                2017-07-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HelloWorld/" itemprop="url" rel="index">
-                    <span itemprop="name">HelloWorld</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-<div class="org-src-container">
-
-<pre class="src src-java"><span style="color: #859900;">public</span> <span style="color: #859900;">class</span> <span style="color: #268bd2;">HelloWorld</span> {
-    <span style="color: #859900;">public</span> <span style="color: #859900;">static</span> <span style="color: #268bd2;">void</span> <span style="color: #b58900;">main</span>(<span style="color: #268bd2;">String</span>[] <span style="color: #6c71c4;">args</span>) {
-        System.out.println(<span style="color: #2aa198;">"Hello, World"</span>);
-    }
-}
-</pre>
-</div>
-
-<pre class="example">
-Hello, World
-</pre>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+    </header>
   </article>
 
 
@@ -620,6 +303,7 @@ Hello, World
   </section>
 
   
+
 
 
           </div>
