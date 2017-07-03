@@ -93,20 +93,20 @@
 
 
 
-<meta name="description" content="1 背景与问题   Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速查找。但是，相信大部分人对其工作原理不慎了解。文简单介绍下Object.GetHashCode和Object.Equals方法在哈希查找中的作用。      2 哈希查找   哈希查找是Dictionary和HashTable的基础。建议首先看下哈希查找的工作原理。哈希查找算法分为两部分：1.">
+<meta name="description" content="1 背景   Dictionary和HashTable是.NET中经常使用的数据结构。但是，之前对其原理不是太清楚，本文简单介绍下其工作原理：=Object.GetHashCode=和=Object.Equals=的作用。      2 哈希查找   哈希查找是Dictionary和HashTable的基础。建议首先看下哈希查找的工作原理。哈希查找算法分为两部分：1.数据存储算法；2.数据">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GetHashCode and Equals">
-<meta property="og:url" content="jack2gs.github.io/2017/07/02/get-hash-code-and-equal/index.html">
+<meta property="og:url" content="jack2gs.github.io/2017/07/03/get-hash-code-and-equals/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="1 背景与问题   Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速查找。但是，相信大部分人对其工作原理不慎了解。文简单介绍下Object.GetHashCode和Object.Equals方法在哈希查找中的作用。      2 哈希查找   哈希查找是Dictionary和HashTable的基础。建议首先看下哈希查找的工作原理。哈希查找算法分为两部分：1.">
-<meta property="og:image" content="jack2gs.github.io/2017/07/02/images/hash-search/hash-search-store.png">
-<meta property="og:image" content="jack2gs.github.io/2017/07/02/images/hash-search/hash-search-search.png">
-<meta property="og:updated_time" content="2017-07-02T14:59:10.000Z">
+<meta property="og:description" content="1 背景   Dictionary和HashTable是.NET中经常使用的数据结构。但是，之前对其原理不是太清楚，本文简单介绍下其工作原理：=Object.GetHashCode=和=Object.Equals=的作用。      2 哈希查找   哈希查找是Dictionary和HashTable的基础。建议首先看下哈希查找的工作原理。哈希查找算法分为两部分：1.数据存储算法；2.数据">
+<meta property="og:image" content="jack2gs.github.io/2017/07/03/get-hash-code-and-equals/hash-search-store.png">
+<meta property="og:image" content="jack2gs.github.io/2017/07/03/get-hash-code-and-equals/hash-search-search.png">
+<meta property="og:updated_time" content="2017-07-03T12:02:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GetHashCode and Equals">
-<meta name="twitter:description" content="1 背景与问题   Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速查找。但是，相信大部分人对其工作原理不慎了解。文简单介绍下Object.GetHashCode和Object.Equals方法在哈希查找中的作用。      2 哈希查找   哈希查找是Dictionary和HashTable的基础。建议首先看下哈希查找的工作原理。哈希查找算法分为两部分：1.">
-<meta name="twitter:image" content="jack2gs.github.io/2017/07/02/images/hash-search/hash-search-store.png">
+<meta name="twitter:description" content="1 背景   Dictionary和HashTable是.NET中经常使用的数据结构。但是，之前对其原理不是太清楚，本文简单介绍下其工作原理：=Object.GetHashCode=和=Object.Equals=的作用。      2 哈希查找   哈希查找是Dictionary和HashTable的基础。建议首先看下哈希查找的工作原理。哈希查找算法分为两部分：1.数据存储算法；2.数据">
+<meta name="twitter:image" content="jack2gs.github.io/2017/07/03/get-hash-code-and-equals/hash-search-store.png">
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="jack2gs.github.io/2017/07/02/get-hash-code-and-equal/"/>
+  <link rel="canonical" href="jack2gs.github.io/2017/07/03/get-hash-code-and-equals/"/>
 
 
 
@@ -280,7 +280,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/02/get-hash-code-and-equal/">
+    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/03/get-hash-code-and-equals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jack Gao">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-02T16:08:00+08:00">
-                2017-07-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-03T08:25:00+08:00">
+                2017-07-03
               </time>
             
 
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-02T22:59:10+08:00">
-                2017-07-02
+              <time title="Post modified" itemprop="dateModified" datetime="2017-07-03T20:02:40+08:00">
+                2017-07-03
               </time>
             
           </span>
@@ -383,11 +383,14 @@
       
 
       
-        <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 背景与问题</h2>
+        
+<a id="more"></a>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 背景</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速查找。但是，相信大部分人对其工作原理不慎了解。文简单介绍下Object.GetHashCode和Object.Equals方法在哈希查找中的作用。
+Dictionary和HashTable是.NET中经常使用的数据结构。但是，之前对其原理不是太清楚，本文简单介绍下其工作原理：=Object.GetHashCode=和=Object.Equals=的作用。
 </p>
 </div>
 </div>
@@ -405,10 +408,14 @@ Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速
 <div class="outline-text-3" id="text-2-1">
 
 <div id="fig:hash_search_store" class="figure">
-<p><img src="../images/hash-search/hash-search-store.png" alt="hash-search-store.png">
+<p><img src="hash-search-store.png" alt="hash-search-store.png">
 </p>
 <p><span class="figure-number">Figure 1:</span> 数据存储算法</p>
 </div>
+
+<p>
+从图中可以看出，只有在发生冲突的时候Object.Equals方法才会被调用。
+</p>
 </div>
 </div>
 
@@ -417,16 +424,20 @@ Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速
 <div class="outline-text-3" id="text-2-2">
 
 <div id="fig:hash_search_search" class="figure">
-<p><img src="../images/hash-search/hash-search-search.png" alt="hash-search-search.png">
+<p><img src="hash-search-search.png" alt="hash-search-search.png">
 </p>
 <p><span class="figure-number">Figure 2:</span> 数据读取算法</p>
 </div>
-</div>
-</div>
-</div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> 验证</h2>
+<p>
+从图中可以看出，在读取数据时，无论发生冲突与否Object.Equals方法都会被调用。
+</p>
+
+<p>
+另外，MSDN中有提到，当两个对象相同时其Hash值肯定相同，而两个对象的Hash值相同时两个对象未必相同。所以，为了保证数据存取的正确性，如果需要重载，这两个方法最好一起重载。
+</p>
+</div>
+</div>
 </div>
 
       
@@ -607,7 +618,7 @@ Dictionary或者HashTable是.NET中经常使用的数据集合，以便于快速
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-1"><span class="nav-number">1.</span> <span class="nav-text">1 背景与问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-2"><span class="nav-number">2.</span> <span class="nav-text">2 哈希查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-2-1"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 数据存储算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-2-2"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 数据读取算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-3"><span class="nav-number">3.</span> <span class="nav-text">3 验证</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-1"><span class="nav-number">1.</span> <span class="nav-text">1 背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sec-2"><span class="nav-number">2.</span> <span class="nav-text">2 哈希查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-2-1"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 数据存储算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sec-2-2"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 数据读取算法</span></a></li></ol></li></ol></div>
             
 
           </div>
