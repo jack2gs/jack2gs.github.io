@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="C#," />
+  <meta name="keywords" content="CSharp," />
 
 
 
@@ -94,13 +94,13 @@
 
 
 <meta name="description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
-<meta name="keywords" content="C#">
+<meta name="keywords" content="CSharp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解IDisposable.Dispose()和Object.Finalize()">
 <meta property="og:url" content="jack2gs.github.io/2017/07/10/a-formalized-disposal-pattern/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
 <meta property="og:description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
-<meta property="og:updated_time" content="2017-07-12T12:43:50.000Z">
+<meta property="og:updated_time" content="2017-07-12T12:49:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解IDisposable.Dispose()和Object.Finalize()">
 <meta name="twitter:description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
@@ -322,7 +322,7 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-12T20:43:50+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2017-07-12T20:49:52+08:00">
                 2017-07-12
               </time>
             
@@ -386,8 +386,8 @@
 </p>
 <a id="more"></a>
 
-<div id="outline-container-orgdf9093c" class="outline-2">
-<h2 id="orgdf9093c"><span class="section-number-2">1</span> &#x5F15;&#x8A00;</h2>
+<div id="outline-container-org55d9dc8" class="outline-2">
+<h2 id="org55d9dc8"><span class="section-number-2">1</span> &#x5F15;&#x8A00;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 .NET&#x4E2D;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x79CD;&#x8D44;&#x6E90;&#xFF1A;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x7531;.NET&#x8FD0;&#x884C;&#x65F6;&#x7BA1;&#x7406;&#xFF0C;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x7531;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7BA1;&#x7406;&#x3002;
@@ -410,8 +410,8 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org64f1334" class="outline-2">
-<h2 id="org64f1334"><span class="section-number-2">2</span> Object.Finalize()&#x7B80;&#x4ECB;</h2>
+<div id="outline-container-org985e5d2" class="outline-2">
+<h2 id="org985e5d2"><span class="section-number-2">2</span> Object.Finalize()&#x7B80;&#x4ECB;</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <code>Object.Finalize</code> &#x7528;&#x4E8E;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C; <b>&#x56DE;&#x6536;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;</b> &#xFF0C;&#x8FD9;&#x70B9;&#x5F88;&#x91CD;&#x8981;&#x3002; &#x4ED6;&#x8DDF;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x6709;&#x7740;&#x7D27;&#x5BC6;&#x7684;&#x8054;&#x7CFB;&#x3002;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x63D0;&#x4E0B;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF0C;&#x4E0B;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x518D;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x88AB;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x68C0;&#x67E5;&#x8BE5;&#x5BF9;&#x8C61;&#x6709;&#x6CA1;&#x6709;&#x81EA;&#x5B9A;&#x4E49; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x5DF2;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x5B83;&#x4F1A;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x6807;&#x8BB0;&#x4E3A; <b>Finalizable</b> &#x5E76;&#x4E14;&#x5C06;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x5B58;&#x5165;&#x5230; <code>finalization queue</code> &#x3002;&#x5F53;&#x8BE5;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x88AB;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x5982;&#x679C; <code>finalization queue</code> &#x4E2D;&#x6709;&#x6307;&#x9488;&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x4ECE;&#x5806;&#x4E0A;&#x62F7;&#x8D1D;&#x81F3;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6258;&#x7BA1;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#xFF0C; <code>finalization reachable table</code> &#x3002; <b>&#x91CD;&#x8981;</b> &#x5728;&#x4E0B;&#x4E00;&#x6B21;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x8C03;&#x7528;&#x6240;&#x6709;&#x5728; <code>finalization reachable table</code> &#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x7684; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x3002;&#x6240;&#x4EE5;&#xFF0C;Finalizeable&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x5B8C;&#x5168;&#x56DE;&#x6536;&#x9700;&#x8981; <b>&#x81F3;&#x5C11;&#x4E24;&#x4E2A;</b> &#x5783;&#x573E;&#x56DE;&#x6536;&#x5468;&#x671F;&#x3002;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x51FA;&#x81EA; <b>Pro C#5.0 and the .NET Framework</b> : 
@@ -480,8 +480,8 @@ collections to truly finalize an object.
 </div>
 </div>
 
-<div id="outline-container-org3fa8e0f" class="outline-2">
-<h2 id="org3fa8e0f"><span class="section-number-2">3</span> IDisosable.Dispose&#x7B80;&#x4ECB;</h2>
+<div id="outline-container-orge2278f5" class="outline-2">
+<h2 id="orge2278f5"><span class="section-number-2">3</span> IDisosable.Dispose&#x7B80;&#x4ECB;</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 &#x63A5;&#x53E3; <code>IDisposable</code> &#x662F;&#x5BF9; <code>Object.Finalize()</code> &#x65B9;&#x6CD5;&#x7684;&#x8865;&#x5145;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x63A5;&#x53E3;&#x53EF;&#x4EE5;&#x53CA;&#x65F6;&#x5730;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF0C;&#x63D0;&#x9AD8;&#x8D44;&#x6E90;&#x4F7F;&#x7528;&#x6548;&#x7387;&#x3002;&#x5176;&#x539F;&#x7406;&#x4E5F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x4E0D;&#x518D;&#x7531;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x8D1F;&#x8D23;&#xFF0C;&#x800C;&#x662F;&#x7531;&#x8C03;&#x7528;&#x65B9;&#x624B;&#x52A8;&#x89E6;&#x53D1;&#x3002;&#x5F53;&#x7136;&#x89E6;&#x53D1;&#x5F97;&#x8D8A;&#x53CA;&#x65F6;&#xFF0C;&#x8D44;&#x6E90;&#x56DE;&#x6536;&#x5F97;&#x8D8A;&#x53CA;&#x65F6;&#x3002;&#x5047;&#x8BBE;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7C7B; <code>MyResourceWrapper</code> &#x5B9E;&#x73B0;&#x4E86;&#x8BE5;&#x63A5;&#x53E3;&#xFF1A;
@@ -510,8 +510,8 @@ collections to truly finalize an object.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc17e5d" class="outline-2">
-<h2 id="orgbc17e5d"><span class="section-number-2">4</span> &#x6700;&#x4F73;&#x5B9E;&#x8DF5;</h2>
+<div id="outline-container-org38f4e58" class="outline-2">
+<h2 id="org38f4e58"><span class="section-number-2">4</span> &#x6700;&#x4F73;&#x5B9E;&#x8DF5;</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 &#x81EA;&#x5B9A;&#x4E49; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x89E3;&#x653E;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#xFF0C;&#x5C06;&#x8D44;&#x6E90;&#x56DE;&#x6536;&#x7684;&#x5DE5;&#x4F5C;&#x5B8C;&#x5168;&#x4EA4;&#x7ED9;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x4F46;&#x662F;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x7387;&#x6BD4;&#x8F83;&#x4F4E;&#x3002; &#x5B9E;&#x73B0; <code>IDisposable</code> &#x63A5;&#x53E3;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x8D44;&#x6E90;&#x7684;&#x5229;&#x7528;&#x7387;&#xFF0C;
@@ -536,8 +536,8 @@ collections to truly finalize an object.
 </div>
 </div>
 
-<div id="outline-container-orga5c5388" class="outline-2">
-<h2 id="orga5c5388"><span class="section-number-2">5</span> &#x603B;&#x7ED3;</h2>
+<div id="outline-container-org6f6978b" class="outline-2">
+<h2 id="org6f6978b"><span class="section-number-2">5</span> &#x603B;&#x7ED3;</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 &#x5C31;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x6765;&#x8BB2;&#xFF0C;&#x4E8C;&#x8005;&#x5747;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x76EE;&#x7684;&#x3002;&#x4F46;&#x662F;&#x4E8C;&#x8005;&#x8FD8;&#x662F;&#x6709;&#x4E9B;&#x4E0D;&#x540C;&#x7684;:
@@ -608,7 +608,7 @@ collections to truly finalize an object.
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C#</a>
+            <a href="/tags/CSharp/" rel="tag"># CSharp</a>
           
         </div>
       
@@ -630,10 +630,6 @@ collections to truly finalize an object.
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/12/a-formalized-disposal-pattern/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -705,7 +701,7 @@ collections to truly finalize an object.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -727,7 +723,7 @@ collections to truly finalize an object.
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -762,7 +758,7 @@ collections to truly finalize an object.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgdf9093c"><span class="nav-number">1.</span> <span class="nav-text">1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org64f1334"><span class="nav-number">2.</span> <span class="nav-text">2 Object.Finalize()简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org3fa8e0f"><span class="nav-number">3.</span> <span class="nav-text">3 IDisosable.Dispose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgbc17e5d"><span class="nav-number">4.</span> <span class="nav-text">4 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orga5c5388"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org55d9dc8"><span class="nav-number">1.</span> <span class="nav-text">1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org985e5d2"><span class="nav-number">2.</span> <span class="nav-text">2 Object.Finalize()简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orge2278f5"><span class="nav-number">3.</span> <span class="nav-text">3 IDisosable.Dispose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org38f4e58"><span class="nav-number">4.</span> <span class="nav-text">4 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org6f6978b"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
             
 
           </div>
