@@ -93,15 +93,16 @@
 
 
 
-<meta name="description" content="Jack Gao&apos;s Blog">
-<meta property="og:type" content="website">
+<meta name="description" content="理解IDisposable.Dispose()和Object.Finalize()        /* @licstart  The following is the entire license notice for the JavaScript code in this tag.  Copyright (C) 2012-2017 Free Software Foundation,">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Jack Gao&#39;s Blog">
-<meta property="og:url" content="jack2gs.github.io/index.html">
+<meta property="og:url" content="jack2gs.github.io/2017/07/12/a-formalized-disposal-pattern/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="Jack Gao&apos;s Blog">
+<meta property="og:description" content="理解IDisposable.Dispose()和Object.Finalize()        /* @licstart  The following is the entire license notice for the JavaScript code in this tag.  Copyright (C) 2012-2017 Free Software Foundation,">
+<meta property="og:updated_time" content="2017-07-12T12:04:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jack Gao&#39;s Blog">
-<meta name="twitter:description" content="Jack Gao&apos;s Blog">
+<meta name="twitter:description" content="理解IDisposable.Dispose()和Object.Finalize()        /* @licstart  The following is the entire license notice for the JavaScript code in this tag.  Copyright (C) 2012-2017 Free Software Foundation,">
 
 
 
@@ -129,14 +130,14 @@
 
 
 
-  <link rel="canonical" href="jack2gs.github.io/"/>
+  <link rel="canonical" href="jack2gs.github.io/2017/07/12/a-formalized-disposal-pattern/"/>
 
 
 
 
 
 
-  <title>Jack Gao's Blog</title>
+  <title> | Jack Gao's Blog</title>
   
 
 
@@ -161,9 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -266,9 +265,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -294,9 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/12/a-formalized-disposal-pattern/" itemprop="url">Untitled</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -340,6 +337,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -355,8 +357,7 @@
       
 
       
-        
-          <?xml version="1.0" encoding="utf-8"?>
+        <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -611,489 +612,217 @@ for the JavaScript code in this tag.
 <p>
 说到内存管理，C\C++的开发人员肯定遇到过各种各样令人头疼的内存管理问题，以及复杂的指针问题。而相比较而言，Java和C#的开发人员就幸福多了，这两种语言都提供了垃圾回收机制，这极大地减轻了开发人员的内存管理工作。垃圾回收由运行时负责，大部分时间开发人员都不需要开关注此类问题。但是，大部分时间并不是所有时间，例如C#当涉及到非托管的资源时，就需要开发人员自己处理。而 <code>IDisposable.Dispose()</code> 和 <code>Object.Finalize()</code> 就是其中重要的两个方法。本文主要介绍下二者的使用方法、区别与联系和最佳实践。
 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/12/a-formalized-disposal-pattern/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
+<a id="more"></a>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/10/a-formalized-disposal-pattern/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack Gao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jack Gao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/10/a-formalized-disposal-pattern/" itemprop="url">理解IDisposable.Dispose()和Object.Finalize()</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-10T21:29:24+08:00">
-                2017-07-10
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-12T20:43:50+08:00">
-                2017-07-12
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NET/" itemprop="url" rel="index">
-                    <span itemprop="name">.NET</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <div id="content">
-<p>
-&#x8BF4;&#x5230;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#xFF0C;C\C++&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x80AF;&#x5B9A;&#x9047;&#x5230;&#x8FC7;&#x5404;&#x79CD;&#x5404;&#x6837;&#x4EE4;&#x4EBA;&#x5934;&#x75BC;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x95EE;&#x9898;&#xFF0C;&#x4EE5;&#x53CA;&#x590D;&#x6742;&#x7684;&#x6307;&#x9488;&#x95EE;&#x9898;&#x3002;&#x800C;&#x76F8;&#x6BD4;&#x8F83;&#x800C;&#x8A00;&#xFF0C;Java&#x548C;C#&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x5C31;&#x5E78;&#x798F;&#x591A;&#x4E86;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x8BED;&#x8A00;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x6781;&#x5927;&#x5730;&#x51CF;&#x8F7B;&#x4E86;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#x3002;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7531;&#x8FD0;&#x884C;&#x65F6;&#x8D1F;&#x8D23;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x5F00;&#x5173;&#x6CE8;&#x6B64;&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;C#&#x5F53;&#x6D89;&#x53CA;&#x5230;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x81EA;&#x5DF1;&#x5904;&#x7406;&#x3002;&#x800C; <code>IDisposable.Dispose()</code> &#x548C; <code>Object.Finalize()</code> &#x5C31;&#x662F;&#x5176;&#x4E2D;&#x91CD;&#x8981;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x4E0B;&#x4E8C;&#x8005;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3001;&#x533A;&#x522B;&#x4E0E;&#x8054;&#x7CFB;&#x548C;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;
-</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/10/a-formalized-disposal-pattern/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack Gao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jack Gao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/09/get-hash-code-and-equals/" itemprop="url">GetHashCode and Equals</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T21:58:53+08:00">
-                2017-07-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-09T21:59:42+08:00">
-                2017-07-09
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NET/" itemprop="url" rel="index">
-                    <span itemprop="name">.NET</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <div id="content">
-
-<div id="outline-container-orgde77fb9" class="outline-2">
-<h2 id="orgde77fb9"><span class="section-number-2">1</span> &#x80CC;&#x666F;</h2>
+<div id="outline-container-orgf6ff82d" class="outline-2">
+<h2 id="orgf6ff82d"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E4B;&#x524D;&#x5BF9;&#x5176;&#x539F;&#x7406;&#x4E0D;&#x662F;&#x592A;&#x6E05;&#x695A;&#xFF0C;&#x672C;&#x6587;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x5176;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A; <code>Object.GetHashCode</code> &#x548C; <code>Object.Equals</code> &#x7684;&#x4F5C;&#x7528;&#x3002;
+.NET中主要有两种资源：托管的资源和非托管的资源。顾名思义，托管的资源由.NET运行时管理，非托管的资源由开发人员管理。
 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/09/get-hash-code-and-equals/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/09/hexo-org-example/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack Gao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jack Gao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/09/hexo-org-example/" itemprop="url">Hello hexo-renderer-org</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T15:16:19+08:00">
-                2017-07-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-10T08:11:48+08:00">
-                2017-07-10
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/demo/" itemprop="url" rel="index">
-                    <span itemprop="name">demo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <div id="content">
 <p>
-Hello hexo-render-org
+托管资源指的是.NET可以自动进行回收的资源，主要是指托管堆上分配的内存资源。托管资源的回收工作是不需要人工干预的，由.NET运行时在合适的时机调用垃圾回收器进行回收。
 </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/09/hexo-org-example/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+<p>
+非托管资源指的是.NET不知道如何回收的资源，最常见的一类非托管资源是包装操作系统资源的对象，例如文件，窗口，网络连接，数据库连接，画刷，图标等。这类资源，垃圾回收器在清理的时候会调用 <code>Object.Finalize()</code> 方法。默认情况下，方法是空的，对于非托管对象，需要在此方法中编写回收非托管资源的代码，以便垃圾回收器正确回收资源。
+</p>
+
+<p>
+但是有些非托管资源往往比较宝贵，而垃圾回收是由.NET运行时执行的。这样就无法保证及时地释放掉这些资源。鉴于此，.NET提供了 <code>IDisposeable</code> 接口。凡是实现了该接口的对象，使用者都可以手动调用该对象的Dispose方法释放资源，以保证相关资源及时回收，提高资源使用效率。
+</p>
+
+<p>
+二者均可以进行资源回收，只是使用场景，调用时机和调用对象不同而已。
+</p>
+</div>
+</div>
+<div id="outline-container-orgddabd14" class="outline-2">
+<h2 id="orgddabd14"><span class="section-number-2">2</span> Object.Finalize()简介</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<code>Object.Finalize</code> 用于在运行时进行垃圾回收时， <b>回收非托管的资源</b> ，这点很重要。 他跟垃圾回收器有着紧密的联系。这里只是简单提下垃圾回收机制，下一篇文章再详细介绍。当一个对象被创建时，垃圾回收器会检查该对象有没有自定义 <code>Finalize()</code> 方法。如果已自定义，它会把这个对象标记为 <b>Finalizable</b> 并且将一个指向该对象的指针存入到 <code>finalization queue</code> 。当该对象需要被回收时，如果 <code>finalization queue</code> 中有指针指向该对象，垃圾回收器会将该对象从堆上拷贝至另外一个托管的结构体中， <code>finalization reachable table</code> 。 <b>重要</b> 在下一次垃圾回收时，垃圾回收器会创建一个单独的线程，调用所有在 <code>finalization reachable table</code> 中的对象的 <code>Finalize()</code> 方法。所以，Finalizeable的对象被完全回收需要 <b>至少两个</b> 垃圾回收周期。以下内容出自 <b>Pro C#5.0 and the .NET Framework</b> : 
+</p>
+
+<blockquote>
+<p>
+When you allocate an object onto the managed heap, the runtime automatically determines
+whether your object supports a custom Finalize() method. If so, the object is marked as finalizable, and
+a pointer to this object is stored on an internal queue named the finalization queue. The finalization
+queue is a table maintained by the garbage collector that points to each and every object that must be
+finalized before it is removed from the heap.
+</p>
+
+<p>
+When the garbage collector determines it is time to free an object from memory, it examines each
+entry on the finalization queue and copies the object off the heap to yet another managed structure
+termed the finalization reachable table (often abbreviated as freachable, and pronounced “effreachable”).
+At this point, a separate thread is spawned to invoke the Finalize() method for each object
+on the freachable table at the next garbage collection. Given this, it will take, at the very least, two garbage
+collections to truly finalize an object.
+</p>
+</blockquote>
+
+<p>
+但是开发人员不允许直接重载 <code>Finalize()</code> 方法，而是只能重载析构方法。我觉得主要是出于程序鲁棒性方面的考虑。下面是重载析构方法的样例代码。
+</p>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Override System.Object.Finalize() via finalizer syntax.</span>
+<span style="color: #859900;">class</span> <span style="color: #268bd2;">MyResourceWrapper</span>
+{
+    ~MyResourceWrapper()
+    {
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Clean up unmanaged resources here.</span>
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Beep when destroyed (testing purposes only!)</span>
+        Console.Beep();
+    }
+}
+</pre>
+</div>
+
+<p>
+编译后生成的IL代码：
+</p>
+
+<pre class="example">
+.method family hidebysig virtual instance void Finalize() cil managed
+{
+  // Code size 13 (0xd)
+  .maxstack 1
+  .try
+  {
+    IL_0000: ldc.i4 0x4e20
+    IL_0005: ldc.i4 0x3e8
+    IL_000a: call
+    void [mscorlib]System.Console::Beep(int32, int32)
+    IL_000f: nop
+    IL_0010: nop
+    IL_0011: leave.s IL_001b
+   } // end .try
+   finally
+   {
+      IL_0013: ldarg.0
+      IL_0014:
+      call instance void [mscorlib]System.Object::Finalize()
+      IL_0019: nop
+      IL_001a: endfinally
+   } // end handler
+   IL_001b: nop
+   IL_001c: ret
+} // end of method MyResourceWrapper::Finalize
+</pre>
+
+<p>
+由此可以看出，编译后，析构方法的代码会被拷贝至 <code>Finalize()</code> 方法的 <b>try</b> 块中，以防止自定义析构方法抛出异常影响垃圾回收器的正常运行。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org26482bf" class="outline-2">
+<h2 id="org26482bf"><span class="section-number-2">3</span> IDisosable.Dispose简介</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+接口 <code>IDisposable</code> 是对 <code>Object.Finalize()</code> 方法的补充，使用该接口可以及时地释放资源，提高资源使用效率。其原理也比较简单，垃圾回收不再由垃圾回收器负责，而是由调用方手动触发。当然触发得越及时，资源回收得越及时。假设现在有一个资源类 <code>MyResourceWrapper</code> 实现了该接口：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Implementing IDisposable.</span>
+<span style="color: #859900;">class</span> <span style="color: #268bd2;">MyResourceWrapper</span> : <span style="color: #268bd2;">IDisposable</span>
+{
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">The object user should call this method</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">when they finish with the object.</span>
+    <span style="color: #859900;">public</span> <span style="color: #268bd2;">void</span> <span style="color: #b58900;">Dispose</span>()
+    {
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Clean up unmanaged resources...</span>
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Dispose other contained disposable objects...</span>
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Just for a test.</span>
+        Console.WriteLine(<span style="color: #2aa198;">"***** In Dispose! *****"</span>);
+    }
+}
+</pre>
+</div>
+
+<p>
+我们可以这样使用：
+</p>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #859900;">static</span> <span style="color: #268bd2;">void</span> <span style="color: #b58900;">Main</span>(<span style="color: #268bd2;">string</span>[] <span style="color: #6c71c4;">args</span>)
+{
+    Console.WriteLine(<span style="color: #2aa198;">"***** Fun with Dispose *****\n"</span>);
+    <span style="color: #268bd2;">MyResourceWrapper</span> <span style="color: #6c71c4;">rw</span> = <span style="color: #859900;">new</span> <span style="color: #268bd2;">MyResourceWrapper</span> ();
+    <span style="color: #859900;">try</span>
+    {
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Use the members of rw.</span>
+    }
+    <span style="color: #859900;">finally</span>
+    {
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Always call Dispose(), error or not.</span>
+        rw.Dispose();
+    }
+}
+</pre>
+</div>
+
+<p>
+借助于C#的语法糖，我们也可以这样使用：
+</p>
+<div class="org-src-container">
+<pre class="src src-csharp"><span style="color: #859900;">static</span> <span style="color: #268bd2;">void</span> <span style="color: #b58900;">Main</span>(<span style="color: #268bd2;">string</span>[] <span style="color: #6c71c4;">args</span>)
+{
+    Console.WriteLine(<span style="color: #2aa198;">"***** Fun with Dispose *****\n"</span>);
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Dispose() is called automatically when the</span>
+    <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">using scope exits.</span>
+    <span style="color: #859900;">using</span>(<span style="color: #268bd2;">MyResourceWrapper</span> <span style="color: #6c71c4;">rw</span> = <span style="color: #859900;">new</span> <span style="color: #268bd2;">MyResourceWrapper</span>())
+    {
+        <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75; font-style: italic;">Use rw object.</span>
+    }
+}
+</pre>
+</div>
+
+<p>
+编译器编译后生成的中间代码是一致的。
+</p>
+</div>
+</div>
+<div id="outline-container-org60d8dfc" class="outline-2">
+<h2 id="org60d8dfc"><span class="section-number-2">4</span> 最佳实践</h2>
+</div>
+<div id="outline-container-orga5ead9b" class="outline-2">
+<h2 id="orga5ead9b"><span class="section-number-2">5</span> 总结</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-07-10 Mon 21:29</p>
+<p class="author">Author: Gao Song</p>
+<p class="date">Created: 2017-07-12 Wed 20:04</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>
+
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
@@ -1101,21 +830,38 @@ Hello hexo-render-org
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/10/a-formalized-disposal-pattern/" rel="next" title="理解IDisposable.Dispose()和Object.Finalize()">
+                <i class="fa fa-chevron-left"></i> 理解IDisposable.Dispose()和Object.Finalize()
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -1123,6 +869,10 @@ Hello hexo-render-org
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -1142,8 +892,17 @@ Hello hexo-render-org
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -1205,6 +964,22 @@ Hello hexo-render-org
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">理解IDisposable.Dispose()和Object.Finalize()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgf6ff82d"><span class="nav-number">1.1.</span> <span class="nav-text">1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgddabd14"><span class="nav-number">1.2.</span> <span class="nav-text">2 Object.Finalize()简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org26482bf"><span class="nav-number">1.3.</span> <span class="nav-text">3 IDisosable.Dispose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org60d8dfc"><span class="nav-number">1.4.</span> <span class="nav-text">4 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orga5ead9b"><span class="nav-number">1.5.</span> <span class="nav-text">5 总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1338,10 +1113,10 @@ Hello hexo-render-org
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
