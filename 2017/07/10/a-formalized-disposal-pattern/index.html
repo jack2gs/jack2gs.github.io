@@ -100,7 +100,7 @@
 <meta property="og:url" content="jack2gs.github.io/2017/07/10/a-formalized-disposal-pattern/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
 <meta property="og:description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
-<meta property="og:updated_time" content="2017-07-12T12:49:52.000Z">
+<meta property="og:updated_time" content="2017-07-23T15:07:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解IDisposable.Dispose()和Object.Finalize()">
 <meta name="twitter:description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-12T20:49:52+08:00">
-                2017-07-12
+              <time title="Post modified" itemprop="dateModified" datetime="2017-07-23T23:07:54+08:00">
+                2017-07-23
               </time>
             
           </span>
@@ -386,8 +386,8 @@
 </p>
 <a id="more"></a>
 
-<div id="outline-container-org55d9dc8" class="outline-2">
-<h2 id="org55d9dc8"><span class="section-number-2">1</span> &#x5F15;&#x8A00;</h2>
+<div id="outline-container-org74a2702" class="outline-2">
+<h2 id="org74a2702"><span class="section-number-2">1</span> &#x5F15;&#x8A00;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 .NET&#x4E2D;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x79CD;&#x8D44;&#x6E90;&#xFF1A;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x7531;.NET&#x8FD0;&#x884C;&#x65F6;&#x7BA1;&#x7406;&#xFF0C;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x7531;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7BA1;&#x7406;&#x3002;
@@ -410,8 +410,8 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org985e5d2" class="outline-2">
-<h2 id="org985e5d2"><span class="section-number-2">2</span> Object.Finalize()&#x7B80;&#x4ECB;</h2>
+<div id="outline-container-org0353770" class="outline-2">
+<h2 id="org0353770"><span class="section-number-2">2</span> Object.Finalize()&#x7B80;&#x4ECB;</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <code>Object.Finalize</code> &#x7528;&#x4E8E;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C; <b>&#x56DE;&#x6536;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;</b> &#xFF0C;&#x8FD9;&#x70B9;&#x5F88;&#x91CD;&#x8981;&#x3002; &#x4ED6;&#x8DDF;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x6709;&#x7740;&#x7D27;&#x5BC6;&#x7684;&#x8054;&#x7CFB;&#x3002;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x63D0;&#x4E0B;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF0C;&#x4E0B;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x518D;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x88AB;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x68C0;&#x67E5;&#x8BE5;&#x5BF9;&#x8C61;&#x6709;&#x6CA1;&#x6709;&#x81EA;&#x5B9A;&#x4E49; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x5DF2;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x5B83;&#x4F1A;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x6807;&#x8BB0;&#x4E3A; <b>Finalizable</b> &#x5E76;&#x4E14;&#x5C06;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x5B58;&#x5165;&#x5230; <code>finalization queue</code> &#x3002;&#x5F53;&#x8BE5;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x88AB;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x5982;&#x679C; <code>finalization queue</code> &#x4E2D;&#x6709;&#x6307;&#x9488;&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x4ECE;&#x5806;&#x4E0A;&#x62F7;&#x8D1D;&#x81F3;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6258;&#x7BA1;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#xFF0C; <code>finalization reachable table</code> &#x3002; <b>&#x91CD;&#x8981;</b> &#x5728;&#x4E0B;&#x4E00;&#x6B21;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x8C03;&#x7528;&#x6240;&#x6709;&#x5728; <code>finalization reachable table</code> &#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x7684; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x3002;&#x6240;&#x4EE5;&#xFF0C;Finalizeable&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x5B8C;&#x5168;&#x56DE;&#x6536;&#x9700;&#x8981; <b>&#x81F3;&#x5C11;&#x4E24;&#x4E2A;</b> &#x5783;&#x573E;&#x56DE;&#x6536;&#x5468;&#x671F;&#x3002;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x51FA;&#x81EA; <b>Pro C#5.0 and the .NET Framework</b> : 
@@ -480,8 +480,8 @@ collections to truly finalize an object.
 </div>
 </div>
 
-<div id="outline-container-orge2278f5" class="outline-2">
-<h2 id="orge2278f5"><span class="section-number-2">3</span> IDisosable.Dispose&#x7B80;&#x4ECB;</h2>
+<div id="outline-container-org2d566a3" class="outline-2">
+<h2 id="org2d566a3"><span class="section-number-2">3</span> IDisosable.Dispose&#x7B80;&#x4ECB;</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 &#x63A5;&#x53E3; <code>IDisposable</code> &#x662F;&#x5BF9; <code>Object.Finalize()</code> &#x65B9;&#x6CD5;&#x7684;&#x8865;&#x5145;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x63A5;&#x53E3;&#x53EF;&#x4EE5;&#x53CA;&#x65F6;&#x5730;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF0C;&#x63D0;&#x9AD8;&#x8D44;&#x6E90;&#x4F7F;&#x7528;&#x6548;&#x7387;&#x3002;&#x5176;&#x539F;&#x7406;&#x4E5F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x4E0D;&#x518D;&#x7531;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x8D1F;&#x8D23;&#xFF0C;&#x800C;&#x662F;&#x7531;&#x8C03;&#x7528;&#x65B9;&#x624B;&#x52A8;&#x89E6;&#x53D1;&#x3002;&#x5F53;&#x7136;&#x89E6;&#x53D1;&#x5F97;&#x8D8A;&#x53CA;&#x65F6;&#xFF0C;&#x8D44;&#x6E90;&#x56DE;&#x6536;&#x5F97;&#x8D8A;&#x53CA;&#x65F6;&#x3002;&#x5047;&#x8BBE;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7C7B; <code>MyResourceWrapper</code> &#x5B9E;&#x73B0;&#x4E86;&#x8BE5;&#x63A5;&#x53E3;&#xFF1A;
@@ -510,14 +510,15 @@ collections to truly finalize an object.
 </p>
 </div>
 </div>
-<div id="outline-container-org38f4e58" class="outline-2">
-<h2 id="org38f4e58"><span class="section-number-2">4</span> &#x6700;&#x4F73;&#x5B9E;&#x8DF5;</h2>
+<div id="outline-container-orgac1e3d2" class="outline-2">
+<h2 id="orgac1e3d2"><span class="section-number-2">4</span> &#x6700;&#x4F73;&#x5B9E;&#x8DF5;</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 &#x81EA;&#x5B9A;&#x4E49; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x89E3;&#x653E;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#xFF0C;&#x5C06;&#x8D44;&#x6E90;&#x56DE;&#x6536;&#x7684;&#x5DE5;&#x4F5C;&#x5B8C;&#x5168;&#x4EA4;&#x7ED9;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x4F46;&#x662F;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x7387;&#x6BD4;&#x8F83;&#x4F4E;&#x3002; &#x5B9E;&#x73B0; <code>IDisposable</code> &#x63A5;&#x53E3;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x8D44;&#x6E90;&#x7684;&#x5229;&#x7528;&#x7387;&#xFF0C;
 &#x4F46;&#x662F;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x8C03;&#x7528;&#x8005;&#x5FD8;&#x8BB0;&#x8C03;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F7F;&#x8D44;&#x6E90;&#x5F97;&#x4E0D;&#x5230;&#x91CA;&#x653E;&#x3002;&#x4EBA;&#x603B;&#x6709;&#x72AF;&#x9519;&#x8BEF;&#x7684;&#x65F6;&#x5019;&#x3002;&#x6240;&#x4EE5;&#x6700;&#x4F73;&#x7684;&#x5B9E;&#x8DF5;&#x5C31;&#x662F;&#x5C06;&#x4E8C;&#x8005;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#xFF0C;&#x4E8C;&#x8005;&#x76F8;&#x5F97;&#x76CA;&#x5F70;&#x3002;&#x5FAE;&#x8F6F;&#x7ED9;&#x51FA;&#x4E86;&#x6807;&#x51C6;&#x7684;Dispose Pattern&#x3002;
 &#x5728;Visual Studio&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x60F3;&#x8981;&#x5B9E;&#x73B0;IDisposable&#x63A5;&#x53E3;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;&#x7684;&#x63D0;&#x793A;&#x83DC;&#x5355;&#xFF0C;VS&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x5E2E;&#x4F60;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;
 </p>
+
 <div class="org-src-container">
 <figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyResourceWrapper</span>:<span class="title">IDisposable</span></span><br><span class="line">{</span><br><span class="line"></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">region</span> IDisposable Support</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">bool</span> disposedValue = <span class="keyword">false</span>; <span class="comment">// To detect redundant calls</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"><span class="keyword">bool</span> disposing</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="keyword">if</span> (!disposedValue)</span><br><span class="line">	{</span><br><span class="line">	    <span class="keyword">if</span> (disposing)</span><br><span class="line">	    {</span><br><span class="line">		<span class="comment">// <span class="doctag">TODO:</span> dispose managed state (managed objects).</span></span><br><span class="line">	    }</span><br><span class="line"></span><br><span class="line">	    <span class="comment">// <span class="doctag">TODO:</span> free unmanaged resources (unmanaged objects) and override a finalizer below.</span></span><br><span class="line">	    <span class="comment">// <span class="doctag">TODO:</span> set large fields to null.</span></span><br><span class="line"></span><br><span class="line">	    disposedValue = <span class="keyword">true</span>;</span><br><span class="line">	}</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.</span></span><br><span class="line">    ~MyResourceWrapper() {</span><br><span class="line">	<span class="comment">// Do not change this code. Put cleanup code in Dispose(bool disposing) above.</span></span><br><span class="line">	Dispose(<span class="keyword">false</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This code added to correctly implement the disposable pattern.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// Do not change this code. Put cleanup code in Dispose(bool disposing) above.</span></span><br><span class="line">	Dispose(<span class="keyword">true</span>);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> uncomment the following line if the finalizer is overridden above.</span></span><br><span class="line">	GC.SuppressFinalize(<span class="keyword">this</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="preprocessor">#<span class="keyword">endregion</span></span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
@@ -536,8 +537,8 @@ collections to truly finalize an object.
 </div>
 </div>
 
-<div id="outline-container-org6f6978b" class="outline-2">
-<h2 id="org6f6978b"><span class="section-number-2">5</span> &#x603B;&#x7ED3;</h2>
+<div id="outline-container-org9f9cd83" class="outline-2">
+<h2 id="org9f9cd83"><span class="section-number-2">5</span> &#x603B;&#x7ED3;</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 &#x5C31;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x6765;&#x8BB2;&#xFF0C;&#x4E8C;&#x8005;&#x5747;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x76EE;&#x7684;&#x3002;&#x4F46;&#x662F;&#x4E8C;&#x8005;&#x8FD8;&#x662F;&#x6709;&#x4E9B;&#x4E0D;&#x540C;&#x7684;:
@@ -705,7 +706,7 @@ collections to truly finalize an object.
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -716,7 +717,7 @@ collections to truly finalize an object.
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -727,7 +728,7 @@ collections to truly finalize an object.
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -762,7 +763,7 @@ collections to truly finalize an object.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org55d9dc8"><span class="nav-number">1.</span> <span class="nav-text">1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org985e5d2"><span class="nav-number">2.</span> <span class="nav-text">2 Object.Finalize()简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orge2278f5"><span class="nav-number">3.</span> <span class="nav-text">3 IDisosable.Dispose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org38f4e58"><span class="nav-number">4.</span> <span class="nav-text">4 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org6f6978b"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org74a2702"><span class="nav-number">1.</span> <span class="nav-text">1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org0353770"><span class="nav-number">2.</span> <span class="nav-text">2 Object.Finalize()简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org2d566a3"><span class="nav-number">3.</span> <span class="nav-text">3 IDisosable.Dispose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgac1e3d2"><span class="nav-number">4.</span> <span class="nav-text">4 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org9f9cd83"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
             
 
           </div>
