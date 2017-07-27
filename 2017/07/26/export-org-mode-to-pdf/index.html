@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5728;&amp;#x7814;&amp;#x7A76;&amp;#x5982;&amp;#x4F55;&amp;#x5C06;org&amp;#x6587;&amp;#x4EF6;&amp;#x5BFC;&amp;#x51FA;PDF&amp;#x3002;org-mode&amp;#x7684;&amp;#x5F3A;&amp;#x5927;&amp;#x4E4B;&amp;#x5904;&amp;#x5C31;&amp;#x4E0D;&amp;#x7528;&amp;#x6211;&amp;#x8BF4;">
+<meta name="description" content="最近在研究如何将org文件导出PDF。org-mode的强大之处就不用我说了，可以做笔记、GTD等。 org-mode虽好，但是懂的人相对较少。直接分享org文件会有些不人性化。随着Github开始支持org-mode，相信这么优秀的文件格式将来越来越被接受，学习的人也会越来越多。 PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果可以将org文件导出PDF与人分享那当然是最好的了。其实">
 <meta name="keywords" content="Emacs,Org-mode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="将org导出PDF">
 <meta property="og:url" content="jack2gs.github.io/2017/07/26/export-org-mode-to-pdf/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5728;&amp;#x7814;&amp;#x7A76;&amp;#x5982;&amp;#x4F55;&amp;#x5C06;org&amp;#x6587;&amp;#x4EF6;&amp;#x5BFC;&amp;#x51FA;PDF&amp;#x3002;org-mode&amp;#x7684;&amp;#x5F3A;&amp;#x5927;&amp;#x4E4B;&amp;#x5904;&amp;#x5C31;&amp;#x4E0D;&amp;#x7528;&amp;#x6211;&amp;#x8BF4;">
+<meta property="og:description" content="最近在研究如何将org文件导出PDF。org-mode的强大之处就不用我说了，可以做笔记、GTD等。 org-mode虽好，但是懂的人相对较少。直接分享org文件会有些不人性化。随着Github开始支持org-mode，相信这么优秀的文件格式将来越来越被接受，学习的人也会越来越多。 PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果可以将org文件导出PDF与人分享那当然是最好的了。其实">
 <meta property="og:updated_time" content="2017-07-26T12:37:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="将org导出PDF">
-<meta name="twitter:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x5728;&amp;#x7814;&amp;#x7A76;&amp;#x5982;&amp;#x4F55;&amp;#x5C06;org&amp;#x6587;&amp;#x4EF6;&amp;#x5BFC;&amp;#x51FA;PDF&amp;#x3002;org-mode&amp;#x7684;&amp;#x5F3A;&amp;#x5927;&amp;#x4E4B;&amp;#x5904;&amp;#x5C31;&amp;#x4E0D;&amp;#x7528;&amp;#x6211;&amp;#x8BF4;">
+<meta name="twitter:description" content="最近在研究如何将org文件导出PDF。org-mode的强大之处就不用我说了，可以做笔记、GTD等。 org-mode虽好，但是懂的人相对较少。直接分享org文件会有些不人性化。随着Github开始支持org-mode，相信这么优秀的文件格式将来越来越被接受，学习的人也会越来越多。 PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果可以将org文件导出PDF与人分享那当然是最好的了。其实">
 
 
 
@@ -382,49 +382,51 @@
       
         <div id="content">
 <p>
-&#x6700;&#x8FD1;&#x5728;&#x7814;&#x7A76;&#x5982;&#x4F55;&#x5C06;org&#x6587;&#x4EF6;&#x5BFC;&#x51FA;PDF&#x3002;org-mode&#x7684;&#x5F3A;&#x5927;&#x4E4B;&#x5904;&#x5C31;&#x4E0D;&#x7528;&#x6211;&#x8BF4;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x505A;&#x7B14;&#x8BB0;&#x3001;GTD&#x7B49;&#x3002;
-org-mode&#x867D;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x61C2;&#x7684;&#x4EBA;&#x76F8;&#x5BF9;&#x8F83;&#x5C11;&#x3002;&#x76F4;&#x63A5;&#x5206;&#x4EAB;org&#x6587;&#x4EF6;&#x4F1A;&#x6709;&#x4E9B;&#x4E0D;&#x4EBA;&#x6027;&#x5316;&#x3002;&#x968F;&#x7740;Github&#x5F00;&#x59CB;&#x652F;&#x6301;org-mode&#xFF0C;&#x76F8;&#x4FE1;&#x8FD9;&#x4E48;&#x4F18;&#x79C0;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x5C06;&#x6765;&#x8D8A;&#x6765;&#x8D8A;&#x88AB;&#x63A5;&#x53D7;&#xFF0C;&#x5B66;&#x4E60;&#x7684;&#x4EBA;&#x4E5F;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#x3002;
-PDF&#x6587;&#x4EF6;&#x51FA;&#x4F17;&#x7684;&#x6587;&#x5B57;&#x6E32;&#x67D3;&#x6548;&#x679C;&#x8BA9;&#x4EBA;&#x6709;&#x7740;&#x66F4;&#x597D;&#x7684;&#x9605;&#x8BFB;&#x4F53;&#x9A8C;&#x3002;&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x5C06;org&#x6587;&#x4EF6;&#x5BFC;&#x51FA;PDF&#x4E0E;&#x4EBA;&#x5206;&#x4EAB;&#x90A3;&#x5F53;&#x7136;&#x662F;&#x6700;&#x597D;&#x7684;&#x4E86;&#x3002;&#x5176;&#x5B9E;org-mode&#x662F;&#x9ED8;&#x8BA4;&#x662F;&#x652F;&#x6301;&#x8F6C;&#x6210;PDF&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x9ED8;&#x8BA4;&#x5BF9;&#x4E2D;&#x6587;&#x652F;&#x6301;&#x4E0D;&#x597D;&#x3002;
-&#x53E6;&#x5916;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x6574;&#x5929;&#x8981;&#x8DDF;&#x4EE3;&#x7801;&#x6253;&#x4EA4;&#x9053;&#x3002;org&#x6587;&#x4EF6;&#x4E2D;&#x4E5F;&#x4F1A;&#x5D4C;&#x5165;&#x4E9B;&#x4EE3;&#x7801;&#xFF0C;&#x5BFC;&#x51FA;PDF&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x4EE3;&#x7801;&#x9AD8;&#x4EAE;&#xFF0C;&#x90A3;&#x81EA;&#x662F;&#x6700;&#x597D;&#x4E0D;&#x8FC7;&#x4E86;&#x3002;
-&#x6211;&#x82B1;&#x4E86;&#x4E24;&#x4E2A;&#x5468;&#x672B;&#x65F6;&#x95F4;&#x53BB;&#x7814;&#x7A76;&#x53BB;&#x5C1D;&#x8BD5;&#xFF0C;&#x73B0;&#x5728;&#x7EC8;&#x4E8E;&#x53EF;&#x4EE5;&#x5B8C;&#x7F8E;&#x7684;&#x652F;&#x6301;&#x4E2D;&#x6587;&#x548C;&#x4EE3;&#x7801;&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;&#x4E86;&#x3002;&#x73B0;&#x5728;&#x5199;&#x51FA;&#x6765;&#x4E0E;&#x5927;&#x5BB6;&#x5206;&#x4EAB;&#x3002;
+最近在研究如何将org文件导出PDF。org-mode的强大之处就不用我说了，可以做笔记、GTD等。
+org-mode虽好，但是懂的人相对较少。直接分享org文件会有些不人性化。随着Github开始支持org-mode，相信这么优秀的文件格式将来越来越被接受，学习的人也会越来越多。
+PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果可以将org文件导出PDF与人分享那当然是最好的了。其实org-mode是默认是支持转成PDF文件的，但是其默认对中文支持不好。
+另外，作为一个程序员，整天要跟代码打交道。org文件中也会嵌入些代码，导出PDF如果可以支持代码高亮，那自是最好不过了。
+我花了两个周末时间去研究去尝试，现在终于可以完美的支持中文和代码语法高亮了。现在写出来与大家分享。
 </p>
 
 <a id="more"></a>
 
 <p>
-&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x7B14;&#x8005;&#x4E00;&#x76F4;&#x5728;macOS&#x4E0B;&#x5DE5;&#x4F5C;&#xFF0C;&#x672C;&#x6587;&#x5982;&#x65E0;&#x7279;&#x6B8A;&#x8BF4;&#x660E;&#x5747;&#x9ED8;&#x8BA4;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E3A;macOS&#x3002;
+需要注意的是，笔者一直在macOS下工作，本文如无特殊说明均默认操作系统为macOS。
 </p>
 
-<div id="outline-container-orgeb75f05" class="outline-2">
-<h2 id="orgeb75f05"><span class="section-number-2">1</span> &#x5B89;&#x88C5;</h2>
+<div id="outline-container-orgbf870be" class="outline-2">
+<h2 id="orgbf870be"><span class="section-number-2">1</span> 安装</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org72ca0f6" class="outline-3">
-<h3 id="org72ca0f6"><span class="section-number-3">1.1</span> &#x5B89;&#x88C5;Emacs</h3>
+</div><div id="outline-container-org3b69d75" class="outline-3">
+<h3 id="org3b69d75"><span class="section-number-3">1.1</span> 安装Emacs</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">sudo brew cask install emacs</span><br></pre></td></tr></table></figure>
+<pre class="src src-shell">sudo brew cask install emacs
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbfa4f32" class="outline-3">
-<h3 id="orgbfa4f32"><span class="section-number-3">1.2</span> &#x5B89;&#x88C5;Mactex</h3>
+<div id="outline-container-org2c44dda" class="outline-3">
+<h3 id="org2c44dda"><span class="section-number-3">1.2</span> 安装Mactex</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">brew cask install mactex</span><br></pre></td></tr></table></figure>
+<pre class="src src-shell">brew cask install mactex
+</pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org99b3ae1" class="outline-2">
-<h2 id="org99b3ae1"><span class="section-number-2">2</span> &#x5BFC;&#x51FA;&#x914D;&#x7F6E;</h2>
+<div id="outline-container-org53317de" class="outline-2">
+<h2 id="org53317de"><span class="section-number-2">2</span> 导出配置</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org52290ac" class="outline-3">
-<h3 id="org52290ac"><span class="section-number-3">2.1</span> &#x57FA;&#x7840;&#x5BFC;&#x51FA;&#x914D;&#x7F6E;</h3>
+</div><div id="outline-container-org8e722c4" class="outline-3">
+<h3 id="org8e722c4"><span class="section-number-3">2.1</span> 基础导出配置</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-&#x57FA;&#x7840;&#x5BFC;&#x51FA;&#x914D;&#x7F6E;&#x653E;&#x5728;&#x6587;&#x6863;&#x7684;&#x5F00;&#x5934;&#xFF0C;&#x4E3B;&#x8981;&#x7EC8;&#x4E8E;&#x6587;&#x6863;&#x7684;&#x5168;&#x5C40;&#x914D;&#x7F6E;&#xFF0C;&#x5305;&#x62EC;&#x652F;&#x6301;&#x4E2D;&#x6587;&#x3001;&#x4EE3;&#x7801;&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;&#x3001;&#x9875;&#x9762;&#x5927;&#x5C0F;&#x7B49;&#x3002;
-&#x4EE5;&#x4E0B;&#x662F;&#x6211;&#x7684;&#x5BFC;&#x51FA;&#x914D;&#x7F6E;&#xFF1A;
+基础导出配置放在文档的开头，主要终于文档的全局配置，包括支持中文、代码语法高亮、页面大小等。
+以下是我的导出配置：
 </p>
 <pre class="example">
 #+LATEX_HEADER: \documentclass{article}
@@ -432,125 +434,131 @@ PDF&#x6587;&#x4EF6;&#x51FA;&#x4F17;&#x7684;&#x6587;&#x5B57;&#x6E32;&#x67D3;&#x65
 #+LATEX_HEADER: \usepackage{xeCJK}
 #+LATEX_HEADER: \usepackage{minted}
 #+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
-#+LATEX_HEADER: \setminted{fontsize=\small,baselinestretch=1}</pre>
+#+LATEX_HEADER: \setminted{fontsize=\small,baselinestretch=1}
+</pre>
 <p>
-&#x7B80;&#x5355;&#x89E3;&#x91CA;&#x4E0B;&#x4EE5;&#x4E0A;&#x5BFC;&#x51FA;&#x8BBE;&#x7F6E;&#x7684;&#x542B;&#x4E49;&#x3002;&#x4E0A;&#x8FF0;&#x914D;&#x7F6E;&#x8BBE;&#x7F6E;&#x5BFC;&#x51FA;&#x7684;&#x6587;&#x6863;&#x7C7B;&#x578B;&#x4E3A;article&#xFF0C;&#x9875;&#x9762;&#x4E3A;A4&#x7EB8;&#x5927;&#x5C0F;&#xFF0C;&#x4F7F;&#x7528;xeCJK&#x5305;&#x652F;&#x6301;&#x4E2D;&#x6587;&#xFF0C;&#x4F7F;&#x7528;minted&#x652F;&#x6301;&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;&#xFF0C;&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#x8DDD;&#x4E3A;2cm&#x3002;
+简单解释下以上导出设置的含义。上述配置设置导出的文档类型为article，页面为A4纸大小，使用xeCJK包支持中文，使用minted支持语法高亮，设置页面距为2cm。
 </p>
 </div>
 </div>
-<div id="outline-container-org93a3f28" class="outline-3">
-<h3 id="org93a3f28"><span class="section-number-3">2.2</span> &#x5185;&#x5BB9;&#x76F8;&#x5173;&#x5BFC;&#x51FA;&#x914D;&#x7F6E;</h3>
+<div id="outline-container-orgcd8ef2f" class="outline-3">
+<h3 id="orgcd8ef2f"><span class="section-number-3">2.2</span> 内容相关导出配置</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-&#x8FD9;&#x91CC;&#x6211;&#x53EA;&#x7ED9;&#x51FA;&#x51E0;&#x79CD;&#x6211;&#x9047;&#x5230;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x9047;&#x5230;&#x5176;&#x4ED6;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x53C2;&#x8003;org-mode&#x624B;&#x518C;&#x7684; <b>LaTeX export</b> &#x90E8;&#x5206;
+这里我只给出几种我遇到的情况，如果你遇到其他问题可以参考org-mode手册的 <b>LaTeX export</b> 部分
 </p>
 </div>
-<div id="outline-container-org33c5559" class="outline-4">
-<h4 id="org33c5559"><span class="section-number-4">2.2.1</span> &#x9632;&#x6B62;&#x5185;&#x5BB9;&#x6EA2;&#x51FA;&#x9875;&#x9762;</h4>
+<div id="outline-container-org6f03d2f" class="outline-4">
+<h4 id="org6f03d2f"><span class="section-number-4">2.2.1</span> 防止内容溢出页面</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <ul class="org-ul">
-<li>&#x8868;&#x683C;</li>
+<li>表格</li>
 </ul>
 <pre class="example">
 #+ATTR_LATEX: :environment longtable :align l|lp{3cm}r|l
 | ..... | ..... |
-| ..... | ..... |</pre>
+| ..... | ..... |
+</pre>
 <p>
-&#x5177;&#x4F53;&#x7684;&#x53EF;&#x4EE5;&#x53C2;&#x89C1;org-mode manual&#x3002;
+具体的可以参见org-mode manual。
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org087509f" class="outline-2">
-<h2 id="org087509f"><span class="section-number-2">3</span> Emacs&#x914D;&#x7F6E;</h2>
+<div id="outline-container-org54cfe51" class="outline-2">
+<h2 id="org54cfe51"><span class="section-number-2">3</span> Emacs配置</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org34a0532" class="outline-3">
-<h3 id="org34a0532"><span class="section-number-3">3.1</span> LaTeX&#x5BFC;&#x51FA;&#x8BBE;&#x7F6E;</h3>
+</div><div id="outline-container-orgd2cfe37" class="outline-3">
+<h3 id="orgd2cfe37"><span class="section-number-3">3.1</span> LaTeX导出设置</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-&#x8BBE;&#x7F6E;&#x7F16;&#x8BD1;&#x5668;
+设置编译器
 </p>
 <div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">(require &apos;ox-latex)
-(setq org-latex-compiler &quot;xelatex&quot;)
-(setq org-latex-pdf-process
-	&apos;(&quot;xelatex -8bit -shell-escape -interaction nonstopmode -output-directory %o %f&quot;))</span><br></pre></td></tr></table></figure>
+<pre class="src src-elisp">(<span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">ox-latex</span>)
+(<span style="color: #a020f0;">setq</span> org-latex-compiler <span style="color: #8b2252;">"xelatex"</span>)
+(<span style="color: #a020f0;">setq</span> org-latex-pdf-process
+        '(<span style="color: #8b2252;">"xelatex -8bit -shell-escape -interaction nonstopmode -output-directory %o %f"</span>))
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org6f80fa6" class="outline-3">
-<h3 id="org6f80fa6"><span class="section-number-3">3.2</span> &#x6E90;&#x4EE3;&#x7801;&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;</h3>
+<div id="outline-container-orgc449860" class="outline-3">
+<h3 id="orgc449860"><span class="section-number-3">3.2</span> 源代码语法高亮</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">;; use minted to hightlight the source code
-(add-to-list &apos;org-latex-packages-alist &apos;(&quot;&quot; &quot;minted&quot;))
-(setq org-latex-listings &apos;minted)
-(add-to-list &apos;org-latex-minted-langs &apos;(csharp &quot;csharp&quot;))
-(setq org-latex-minted-options
-      &apos;(
-	(&quot;linenos=true&quot;)
-;;	(&quot;mathescape=true&quot;)
-;;        (&quot;numbersep=5pt&quot;)
-;;        (&quot;gobble=2&quot;)
-	(&quot;frame=lines&quot;)
-;;        (&quot;framesep=2mm&quot;)
-	))</span><br></pre></td></tr></table></figure>
+<pre class="src src-elisp"><span style="color: #b22222;">;; </span><span style="color: #b22222;">use minted to hightlight the source code</span>
+(add-to-list 'org-latex-packages-alist '(<span style="color: #8b2252;">""</span> <span style="color: #8b2252;">"minted"</span>))
+(<span style="color: #a020f0;">setq</span> org-latex-listings 'minted)
+(add-to-list 'org-latex-minted-langs '(csharp <span style="color: #8b2252;">"csharp"</span>))
+(<span style="color: #a020f0;">setq</span> org-latex-minted-options
+      '(
+        (<span style="color: #8b2252;">"linenos=true"</span>)
+<span style="color: #b22222;">;;</span><span style="color: #b22222;">      ("mathescape=true")</span>
+<span style="color: #b22222;">;;        </span><span style="color: #b22222;">("numbersep=5pt")</span>
+<span style="color: #b22222;">;;        </span><span style="color: #b22222;">("gobble=2")</span>
+        (<span style="color: #8b2252;">"frame=lines"</span>)
+<span style="color: #b22222;">;;        </span><span style="color: #b22222;">("framesep=2mm")</span>
+        ))
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgadc12ed" class="outline-3">
-<h3 id="orgadc12ed"><span class="section-number-3">3.3</span> &#x4E2D;&#x6587;&#x8868;&#x683C;&#x5BF9;&#x9F50;</h3>
+<div id="outline-container-org4bdb69f" class="outline-3">
+<h3 id="org4bdb69f"><span class="section-number-3">3.3</span> 中文表格对齐</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-Emacs&#x9ED8;&#x8BA4;&#x4E0D;&#x652F;&#x6301;&#x542B;&#x6709;&#x4E2D;&#x6587;&#x7684;&#x8868;&#x683C;&#x7684;&#x81EA;&#x52A8;&#x5BF9;&#x9F50;&#xFF0C;&#x8FD9;&#x8BA9;&#x4EBA;&#x770B;&#x8D77;&#x6765;&#x5F88;&#x4E0D;&#x8212;&#x670D;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;
+Emacs默认不支持含有中文的表格的自动对齐，这让人看起来很不舒服，可以用以下配置来解决这个问题。
 </p>
 <div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">;; -----------------------------------------------------------------------------  
-;; setting font for mac system  
-;; -----------------------------------------------------------------------------  
-;; Setting English Font
-(defun s-font()
-  (interactive)
-  ;; font config for org table showing.
+<pre class="src src-elisp"><span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------  </span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">setting font for mac system  </span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------  </span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Setting English Font</span>
+(<span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">s-font</span>()
+  (<span style="color: #a020f0;">interactive</span>)
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">font config for org table showing.</span>
   (set-face-attribute  
-   &apos;default nil :font &quot;Monaco 12&quot;)  
-;; Chinese Font &#x914D;&#x5236;&#x4E2D;&#x6587;&#x5B57;&#x4F53;  
-  (dolist (charset &apos;(kana han symbol cjk-misc bopomofo))  
-    (set-fontset-font (frame-parameter nil &apos;font)  
-		    charset  
-		    (font-spec :family &quot;Microsoft YaHei&quot; :size 14))))  
-;; tune rescale so that Chinese character width = 2 * English character width
-;;(setq face-font-rescale-alist &apos;((&quot;Monaco&quot; . 1.0) (&quot;Microsoft YaHei&quot; . 1.23)))
-(add-to-list &apos;after-make-frame-functions
-	     (lambda (new-frame)
-	       (select-frame new-frame)
-	       (if window-system
-		   (s-font))))
-(if window-system
-    (s-font))</span><br></pre></td></tr></table></figure>
+   'default nil <span style="color: #483d8b;">:font</span> <span style="color: #8b2252;">"Monaco 12"</span>)  
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Chinese Font &#37197;&#21046;&#20013;&#25991;&#23383;&#20307;  </span>
+  (<span style="color: #a020f0;">dolist</span> (charset '(kana han symbol cjk-misc bopomofo))  
+    (set-fontset-font (frame-parameter nil 'font)  
+                    charset  
+                    (font-spec <span style="color: #483d8b;">:family</span> <span style="color: #8b2252;">"Microsoft YaHei"</span> <span style="color: #483d8b;">:size</span> 14))))  
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">tune rescale so that Chinese character width = 2 * English character width</span>
+<span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq face-font-rescale-alist '(("Monaco" . 1.0) ("Microsoft YaHei" . 1.23)))</span>
+(add-to-list 'after-make-frame-functions
+             (<span style="color: #a020f0;">lambda</span> (new-frame)
+               (select-frame new-frame)
+               (<span style="color: #a020f0;">if</span> window-system
+                   (s-font))))
+(<span style="color: #a020f0;">if</span> window-system
+    (s-font))
+</pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdf3126b" class="outline-2">
-<h2 id="orgdf3126b"><span class="section-number-2">4</span> &#x5BFC;&#x51FA;</h2>
+<div id="outline-container-org60c1ee2" class="outline-2">
+<h2 id="org60c1ee2"><span class="section-number-2">4</span> 导出</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-&#x5BFC;&#x51FA;&#x7684;&#x5FEB;&#x6377;&#x952E;&#x662F; <code>C-x C-e l o</code> &#x3002;
-&#x5982;&#x679C;&#x5728;&#x5BFC;&#x51FA;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x51FA;&#x73B0;&#x4E00;&#x4E9B;package&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x63D0;&#x793A;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#x5B89;&#x88C5;&#xFF1A;
+导出的快捷键是 <code>C-x C-e l o</code> 。
+如果在导出的过程中，出现一些package不存在的提示，可以用如下命令安装：
 </p>
 <div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">sudo tlmgr install &lt;package name&gt;</span><br></pre></td></tr></table></figure>
+<pre class="src src-shell">sudo tlmgr install &lt;package name&gt;
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3a9da63" class="outline-2">
-<h2 id="org3a9da63"><span class="section-number-2">5</span> &#x603B;&#x7ED3;</h2>
+<div id="outline-container-org00e587d" class="outline-2">
+<h2 id="org00e587d"><span class="section-number-2">5</span> 总结</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-&#x672C;&#x6587;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E86;&#x4E0B;&#x5982;&#x4F55;&#x5C06;org-mode&#x6587;&#x4EF6;&#x5BFC;&#x51FA;PDF&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x652F;&#x6301;&#x4E2D;&#x6587;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;&#x3002;&#x6211;&#x7684;Emacs&#x7684;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x53C2;&#x89C1;&#x6211;&#x7684;&#x914D;&#x7F6E;<a href="https://github.com/jack2gs/emacs.d" target="_blank" rel="external">Github</a>&#x3002;
-&#x53E6;&#x5916;&#x6211;&#x4E5F;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;YasSnippet&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x6765;&#x8BB0;&#x5F55;&#x6211;&#x63D0;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x5BFC;&#x51FA;&#x914D;&#x7F6E;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x8282;&#x7701;&#x4F60;&#x7684;&#x4E00;&#x4E9B;&#x65F6;&#x95F4;&#xFF0C;&#x8BA9;&#x4F60;&#x66F4;&#x52A0;&#x4E13;&#x6CE8;&#x4E8E;&#x5199;&#x4F5C;&#x3002;
+本文简单介绍了下如何将org-mode文件导出PDF文件，并支持中文和源代码语法高亮。我的Emacs的配置可以参见我的配置<a href="https://github.com/jack2gs/emacs.d" target="_blank" rel="external">Github</a>。
+另外我也建议使用YasSnippet这个插件来记录我提到的一些导出配置，这样可以节省你的一些时间，让你更加专注于写作。
 </p>
 </div>
 </div>
@@ -736,7 +744,7 @@ Emacs&#x9ED8;&#x8BA4;&#x4E0D;&#x652F;&#x6301;&#x542B;&#x6709;&#x4E2D;&#x6587;&#x
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgeb75f05"><span class="nav-number">1.</span> <span class="nav-text">1 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org72ca0f6"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 安装Emacs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgbfa4f32"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 安装Mactex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org99b3ae1"><span class="nav-number">2.</span> <span class="nav-text">2 导出配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org52290ac"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 基础导出配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org93a3f28"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 内容相关导出配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org33c5559"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 防止内容溢出页面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org087509f"><span class="nav-number">3.</span> <span class="nav-text">3 Emacs配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org34a0532"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 LaTeX导出设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org6f80fa6"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 源代码语法高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgadc12ed"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 中文表格对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgdf3126b"><span class="nav-number">4.</span> <span class="nav-text">4 导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org3a9da63"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgbf870be"><span class="nav-number">1.</span> <span class="nav-text">1 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org3b69d75"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 安装Emacs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org2c44dda"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 安装Mactex</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org53317de"><span class="nav-number">2.</span> <span class="nav-text">2 导出配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org8e722c4"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 基础导出配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgcd8ef2f"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 内容相关导出配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org6f03d2f"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 防止内容溢出页面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org54cfe51"><span class="nav-number">3.</span> <span class="nav-text">3 Emacs配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgd2cfe37"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 LaTeX导出设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgc449860"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 源代码语法高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org4bdb69f"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 中文表格对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org60c1ee2"><span class="nav-number">4.</span> <span class="nav-text">4 导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org00e587d"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
             
 
           </div>
