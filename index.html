@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-26T20:37:44+08:00">
-                2017-07-26
+              <time title="Post modified" itemprop="dateModified" datetime="2017-07-27T08:32:26+08:00">
+                2017-07-27
               </time>
             
           </span>
@@ -380,11 +380,11 @@
         
           <div id="content">
 <p>
-最近在研究如何将org文件导出PDF。org-mode的强大之处就不用我说了，可以做笔记、GTD等。
-org-mode虽好，但是懂的人相对较少。直接分享org文件会有些不人性化。随着Github开始支持org-mode，相信这么优秀的文件格式将来越来越被接受，学习的人也会越来越多。
-PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果可以将org文件导出PDF与人分享那当然是最好的了。其实org-mode是默认是支持转成PDF文件的，但是其默认对中文支持不好。
-另外，作为一个程序员，整天要跟代码打交道。org文件中也会嵌入些代码，导出PDF如果可以支持代码高亮，那自是最好不过了。
-我花了两个周末时间去研究去尝试，现在终于可以完美的支持中文和代码语法高亮了。现在写出来与大家分享。
+&#x6700;&#x8FD1;&#x5728;&#x7814;&#x7A76;&#x5982;&#x4F55;&#x5C06;org&#x6587;&#x4EF6;&#x5BFC;&#x51FA;PDF&#x3002;org-mode&#x7684;&#x5F3A;&#x5927;&#x4E4B;&#x5904;&#x5C31;&#x4E0D;&#x7528;&#x6211;&#x8BF4;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x505A;&#x7B14;&#x8BB0;&#x3001;GTD&#x7B49;&#x3002;
+org-mode&#x867D;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x61C2;&#x7684;&#x4EBA;&#x76F8;&#x5BF9;&#x8F83;&#x5C11;&#x3002;&#x76F4;&#x63A5;&#x5206;&#x4EAB;org&#x6587;&#x4EF6;&#x4F1A;&#x6709;&#x4E9B;&#x4E0D;&#x4EBA;&#x6027;&#x5316;&#x3002;&#x968F;&#x7740;Github&#x5F00;&#x59CB;&#x652F;&#x6301;org-mode&#xFF0C;&#x76F8;&#x4FE1;&#x8FD9;&#x4E48;&#x4F18;&#x79C0;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x5C06;&#x6765;&#x8D8A;&#x6765;&#x8D8A;&#x88AB;&#x63A5;&#x53D7;&#xFF0C;&#x5B66;&#x4E60;&#x7684;&#x4EBA;&#x4E5F;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#x3002;
+PDF&#x6587;&#x4EF6;&#x51FA;&#x4F17;&#x7684;&#x6587;&#x5B57;&#x6E32;&#x67D3;&#x6548;&#x679C;&#x8BA9;&#x4EBA;&#x6709;&#x7740;&#x66F4;&#x597D;&#x7684;&#x9605;&#x8BFB;&#x4F53;&#x9A8C;&#x3002;&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x5C06;org&#x6587;&#x4EF6;&#x5BFC;&#x51FA;PDF&#x4E0E;&#x4EBA;&#x5206;&#x4EAB;&#x90A3;&#x5F53;&#x7136;&#x662F;&#x6700;&#x597D;&#x7684;&#x4E86;&#x3002;&#x5176;&#x5B9E;org-mode&#x662F;&#x9ED8;&#x8BA4;&#x662F;&#x652F;&#x6301;&#x8F6C;&#x6210;PDF&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x9ED8;&#x8BA4;&#x5BF9;&#x4E2D;&#x6587;&#x652F;&#x6301;&#x4E0D;&#x597D;&#x3002;
+&#x53E6;&#x5916;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x6574;&#x5929;&#x8981;&#x8DDF;&#x4EE3;&#x7801;&#x6253;&#x4EA4;&#x9053;&#x3002;org&#x6587;&#x4EF6;&#x4E2D;&#x4E5F;&#x4F1A;&#x5D4C;&#x5165;&#x4E9B;&#x4EE3;&#x7801;&#xFF0C;&#x5BFC;&#x51FA;PDF&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x4EE3;&#x7801;&#x9AD8;&#x4EAE;&#xFF0C;&#x90A3;&#x81EA;&#x662F;&#x6700;&#x597D;&#x4E0D;&#x8FC7;&#x4E86;&#x3002;
+&#x6211;&#x82B1;&#x4E86;&#x4E24;&#x4E2A;&#x5468;&#x672B;&#x65F6;&#x95F4;&#x53BB;&#x7814;&#x7A76;&#x53BB;&#x5C1D;&#x8BD5;&#xFF0C;&#x73B0;&#x5728;&#x7EC8;&#x4E8E;&#x53EF;&#x4EE5;&#x5B8C;&#x7F8E;&#x7684;&#x652F;&#x6301;&#x4E2D;&#x6587;&#x548C;&#x4EE3;&#x7801;&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;&#x4E86;&#x3002;&#x73B0;&#x5728;&#x5199;&#x51FA;&#x6765;&#x4E0E;&#x5927;&#x5BB6;&#x5206;&#x4EAB;&#x3002;
 </p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -537,8 +537,8 @@ PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果�
         
           <div id="content">
 <p>
-记得C\C++中只要主线程结束后整个进程会结束，不论次线程是否已经运行完。在.NET的世界中，进程的结束与否与全部标记为Foreground线程是否运行完毕有关。
-使用Thread类创建的线程，默认是Foreground线程。当然可以通过 <code>Thread.IsForeground</code> 属性设置。
+&#x8BB0;&#x5F97;C\C++&#x4E2D;&#x53EA;&#x8981;&#x4E3B;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x540E;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#x4F1A;&#x7ED3;&#x675F;&#xFF0C;&#x4E0D;&#x8BBA;&#x6B21;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x5B8C;&#x3002;&#x5728;.NET&#x7684;&#x4E16;&#x754C;&#x4E2D;&#xFF0C;&#x8FDB;&#x7A0B;&#x7684;&#x7ED3;&#x675F;&#x4E0E;&#x5426;&#x4E0E;&#x5168;&#x90E8;&#x6807;&#x8BB0;&#x4E3A;Foreground&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x8FD0;&#x884C;&#x5B8C;&#x6BD5;&#x6709;&#x5173;&#x3002;
+&#x4F7F;&#x7528;Thread&#x7C7B;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;Foreground&#x7EBF;&#x7A0B;&#x3002;&#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>Thread.IsForeground</code> &#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x3002;
 </p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -691,9 +691,9 @@ PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果�
         
           <div id="content">
 <p>
-之前一直在macOS下阅读PDF文档。虽然macOS自带的三键词典功能很好用，但是对第三方PDF阅读器支持不是很好。查词不是很方便。
-无奈词汇量不是很大，而我又经常阅读英文资料。所以慢慢开始使用Windows虚拟机中的Adobe Acrobat Reader DC阅读。配合着有道词典，用户体检还算不错。
-但是，不久就发现，该应用程序的任务栏图标无缘无故变成Safari的了。看着很不舒服。。。
+&#x4E4B;&#x524D;&#x4E00;&#x76F4;&#x5728;macOS&#x4E0B;&#x9605;&#x8BFB;PDF&#x6587;&#x6863;&#x3002;&#x867D;&#x7136;macOS&#x81EA;&#x5E26;&#x7684;&#x4E09;&#x952E;&#x8BCD;&#x5178;&#x529F;&#x80FD;&#x5F88;&#x597D;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x7B2C;&#x4E09;&#x65B9;PDF&#x9605;&#x8BFB;&#x5668;&#x652F;&#x6301;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#x3002;&#x67E5;&#x8BCD;&#x4E0D;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x3002;
+&#x65E0;&#x5948;&#x8BCD;&#x6C47;&#x91CF;&#x4E0D;&#x662F;&#x5F88;&#x5927;&#xFF0C;&#x800C;&#x6211;&#x53C8;&#x7ECF;&#x5E38;&#x9605;&#x8BFB;&#x82F1;&#x6587;&#x8D44;&#x6599;&#x3002;&#x6240;&#x4EE5;&#x6162;&#x6162;&#x5F00;&#x59CB;&#x4F7F;&#x7528;Windows&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x7684;Adobe Acrobat Reader DC&#x9605;&#x8BFB;&#x3002;&#x914D;&#x5408;&#x7740;&#x6709;&#x9053;&#x8BCD;&#x5178;&#xFF0C;&#x7528;&#x6237;&#x4F53;&#x68C0;&#x8FD8;&#x7B97;&#x4E0D;&#x9519;&#x3002;
+&#x4F46;&#x662F;&#xFF0C;&#x4E0D;&#x4E45;&#x5C31;&#x53D1;&#x73B0;&#xFF0C;&#x8BE5;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x4EFB;&#x52A1;&#x680F;&#x56FE;&#x6807;&#x65E0;&#x7F18;&#x65E0;&#x6545;&#x53D8;&#x6210;Safari&#x7684;&#x4E86;&#x3002;&#x770B;&#x7740;&#x5F88;&#x4E0D;&#x8212;&#x670D;&#x3002;&#x3002;&#x3002;
 </p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -846,7 +846,7 @@ PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果�
         
           <div id="content">
 <p>
-说到内存管理，C\C++的开发人员肯定遇到过各种各样令人头疼的内存管理问题，以及复杂的指针问题。而相比较而言，Java和C#的开发人员就幸福多了，这两种语言都提供了垃圾回收机制，这极大地减轻了开发人员的内存管理工作。垃圾回收由运行时负责，大部分时间开发人员都不需要开关注此类问题。但是，大部分时间并不是所有时间，例如C#当涉及到非托管的资源时，就需要开发人员自己处理。而 <code>IDisposable.Dispose()</code> 和 <code>Object.Finalize()</code> 就是其中重要的两个方法。本文主要介绍下二者的使用方法、区别与联系和最佳实践。
+&#x8BF4;&#x5230;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#xFF0C;C\C++&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x80AF;&#x5B9A;&#x9047;&#x5230;&#x8FC7;&#x5404;&#x79CD;&#x5404;&#x6837;&#x4EE4;&#x4EBA;&#x5934;&#x75BC;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x95EE;&#x9898;&#xFF0C;&#x4EE5;&#x53CA;&#x590D;&#x6742;&#x7684;&#x6307;&#x9488;&#x95EE;&#x9898;&#x3002;&#x800C;&#x76F8;&#x6BD4;&#x8F83;&#x800C;&#x8A00;&#xFF0C;Java&#x548C;C#&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x5C31;&#x5E78;&#x798F;&#x591A;&#x4E86;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x8BED;&#x8A00;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x6781;&#x5927;&#x5730;&#x51CF;&#x8F7B;&#x4E86;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#x3002;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7531;&#x8FD0;&#x884C;&#x65F6;&#x8D1F;&#x8D23;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x5F00;&#x5173;&#x6CE8;&#x6B64;&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;C#&#x5F53;&#x6D89;&#x53CA;&#x5230;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x81EA;&#x5DF1;&#x5904;&#x7406;&#x3002;&#x800C; <code>IDisposable.Dispose()</code> &#x548C; <code>Object.Finalize()</code> &#x5C31;&#x662F;&#x5176;&#x4E2D;&#x91CD;&#x8981;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x4E0B;&#x4E8C;&#x8005;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3001;&#x533A;&#x522B;&#x4E0E;&#x8054;&#x7CFB;&#x548C;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;
 </p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -999,11 +999,11 @@ PDF文件出众的文字渲染效果让人有着更好的阅读体验。如果�
         
           <div id="content">
 
-<div id="outline-container-orgf61e36a" class="outline-2">
-<h2 id="orgf61e36a"><span class="section-number-2">1</span> 背景</h2>
+<div id="outline-container-org07c9d53" class="outline-2">
+<h2 id="org07c9d53"><span class="section-number-2">1</span> &#x80CC;&#x666F;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Dictionary和HashTable是.NET中经常使用的数据结构。但是，之前对其原理不是太清楚，本文简单介绍下其工作原理： <code>Object.GetHashCode</code> 和 <code>Object.Equals</code> 的作用。
+Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E4B;&#x524D;&#x5BF9;&#x5176;&#x539F;&#x7406;&#x4E0D;&#x662F;&#x592A;&#x6E05;&#x695A;&#xFF0C;&#x672C;&#x6587;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x5176;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A; <code>Object.GetHashCode</code> &#x548C; <code>Object.Equals</code> &#x7684;&#x4F5C;&#x7528;&#x3002;
 </p>
           <!--noindex-->
           <div class="post-button text-center">

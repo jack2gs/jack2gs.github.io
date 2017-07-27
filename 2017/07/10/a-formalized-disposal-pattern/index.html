@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="说到内存管理，C\C++的开发人员肯定遇到过各种各样令人头疼的内存管理问题，以及复杂的指针问题。而相比较而言，Java和C#的开发人员就幸福多了，这两种语言都提供了垃圾回收机制，这极大地减轻了开发人员的内存管理工作。垃圾回收由运行时负责，大部分时间开发人员都不需要开关注此类问题。但是，大部分时间并不是所有时间，例如C#当涉及到非托管的资源时，就需要开发人员自己处理。而 IDisposable.">
+<meta name="description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
 <meta name="keywords" content="CSharp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解IDisposable.Dispose()和Object.Finalize()">
 <meta property="og:url" content="jack2gs.github.io/2017/07/10/a-formalized-disposal-pattern/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="说到内存管理，C\C++的开发人员肯定遇到过各种各样令人头疼的内存管理问题，以及复杂的指针问题。而相比较而言，Java和C#的开发人员就幸福多了，这两种语言都提供了垃圾回收机制，这极大地减轻了开发人员的内存管理工作。垃圾回收由运行时负责，大部分时间开发人员都不需要开关注此类问题。但是，大部分时间并不是所有时间，例如C#当涉及到非托管的资源时，就需要开发人员自己处理。而 IDisposable.">
+<meta property="og:description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
 <meta property="og:updated_time" content="2017-07-23T15:07:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解IDisposable.Dispose()和Object.Finalize()">
-<meta name="twitter:description" content="说到内存管理，C\C++的开发人员肯定遇到过各种各样令人头疼的内存管理问题，以及复杂的指针问题。而相比较而言，Java和C#的开发人员就幸福多了，这两种语言都提供了垃圾回收机制，这极大地减轻了开发人员的内存管理工作。垃圾回收由运行时负责，大部分时间开发人员都不需要开关注此类问题。但是，大部分时间并不是所有时间，例如C#当涉及到非托管的资源时，就需要开发人员自己处理。而 IDisposable.">
+<meta name="twitter:description" content="&amp;#x8BF4;&amp;#x5230;&amp;#x5185;&amp;#x5B58;&amp;#x7BA1;&amp;#x7406;&amp;#xFF0C;C\C++&amp;#x7684;&amp;#x5F00;&amp;#x53D1;&amp;#x4EBA;&amp;#x5458;&amp;#x80AF;&amp;#x5B9A;&amp;#x9047;&amp;#x5230;&amp;#x8FC7;&amp;#x5404;&amp;#x79CD;&amp;#x5404;&amp;#x6837;&amp;#x4EE4;&amp;#x4EBA;&amp;#x5934;&amp;">
 
 
 
@@ -382,39 +382,39 @@
       
         <div id="content">
 <p>
-说到内存管理，C\C++的开发人员肯定遇到过各种各样令人头疼的内存管理问题，以及复杂的指针问题。而相比较而言，Java和C#的开发人员就幸福多了，这两种语言都提供了垃圾回收机制，这极大地减轻了开发人员的内存管理工作。垃圾回收由运行时负责，大部分时间开发人员都不需要开关注此类问题。但是，大部分时间并不是所有时间，例如C#当涉及到非托管的资源时，就需要开发人员自己处理。而 <code>IDisposable.Dispose()</code> 和 <code>Object.Finalize()</code> 就是其中重要的两个方法。本文主要介绍下二者的使用方法、区别与联系和最佳实践。
+&#x8BF4;&#x5230;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#xFF0C;C\C++&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x80AF;&#x5B9A;&#x9047;&#x5230;&#x8FC7;&#x5404;&#x79CD;&#x5404;&#x6837;&#x4EE4;&#x4EBA;&#x5934;&#x75BC;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x95EE;&#x9898;&#xFF0C;&#x4EE5;&#x53CA;&#x590D;&#x6742;&#x7684;&#x6307;&#x9488;&#x95EE;&#x9898;&#x3002;&#x800C;&#x76F8;&#x6BD4;&#x8F83;&#x800C;&#x8A00;&#xFF0C;Java&#x548C;C#&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x5C31;&#x5E78;&#x798F;&#x591A;&#x4E86;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x8BED;&#x8A00;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x6781;&#x5927;&#x5730;&#x51CF;&#x8F7B;&#x4E86;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#x3002;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7531;&#x8FD0;&#x884C;&#x65F6;&#x8D1F;&#x8D23;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x5F00;&#x5173;&#x6CE8;&#x6B64;&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;C#&#x5F53;&#x6D89;&#x53CA;&#x5230;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x81EA;&#x5DF1;&#x5904;&#x7406;&#x3002;&#x800C; <code>IDisposable.Dispose()</code> &#x548C; <code>Object.Finalize()</code> &#x5C31;&#x662F;&#x5176;&#x4E2D;&#x91CD;&#x8981;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x4E0B;&#x4E8C;&#x8005;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3001;&#x533A;&#x522B;&#x4E0E;&#x8054;&#x7CFB;&#x548C;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;
 </p>
 <a id="more"></a>
 
-<div id="outline-container-org31a2c65" class="outline-2">
-<h2 id="org31a2c65"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-org2b731e1" class="outline-2">
+<h2 id="org2b731e1"><span class="section-number-2">1</span> &#x5F15;&#x8A00;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-.NET中主要有两种资源：托管的资源和非托管的资源。顾名思义，托管的资源由.NET运行时管理，非托管的资源由开发人员管理。
+.NET&#x4E2D;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x79CD;&#x8D44;&#x6E90;&#xFF1A;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x7531;.NET&#x8FD0;&#x884C;&#x65F6;&#x7BA1;&#x7406;&#xFF0C;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x7531;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7BA1;&#x7406;&#x3002;
 </p>
 
 <p>
-托管资源指的是.NET可以自动进行回收的资源，主要是指托管堆上分配的内存资源。托管资源的回收工作是不需要人工干预的，由.NET运行时在合适的时机调用垃圾回收器进行回收。
+&#x6258;&#x7BA1;&#x8D44;&#x6E90;&#x6307;&#x7684;&#x662F;.NET&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x56DE;&#x6536;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x6307;&#x6258;&#x7BA1;&#x5806;&#x4E0A;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#x3002;&#x6258;&#x7BA1;&#x8D44;&#x6E90;&#x7684;&#x56DE;&#x6536;&#x5DE5;&#x4F5C;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x4EBA;&#x5DE5;&#x5E72;&#x9884;&#x7684;&#xFF0C;&#x7531;.NET&#x8FD0;&#x884C;&#x65F6;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x673A;&#x8C03;&#x7528;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x8FDB;&#x884C;&#x56DE;&#x6536;&#x3002;
 </p>
 
 <p>
-非托管资源指的是.NET不知道如何回收的资源，最常见的一类非托管资源是包装操作系统资源的对象，例如文件，窗口，网络连接，数据库连接，画刷，图标等。这类资源，垃圾回收器在清理的时候会调用 <code>Object.Finalize()</code> 方法。默认情况下，方法是空的，对于非托管对象，需要在此方法中编写回收非托管资源的代码，以便垃圾回收器正确回收资源。
+&#x975E;&#x6258;&#x7BA1;&#x8D44;&#x6E90;&#x6307;&#x7684;&#x662F;.NET&#x4E0D;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x56DE;&#x6536;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x7C7B;&#x975E;&#x6258;&#x7BA1;&#x8D44;&#x6E90;&#x662F;&#x5305;&#x88C5;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F8B;&#x5982;&#x6587;&#x4EF6;&#xFF0C;&#x7A97;&#x53E3;&#xFF0C;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF0C;&#x753B;&#x5237;&#xFF0C;&#x56FE;&#x6807;&#x7B49;&#x3002;&#x8FD9;&#x7C7B;&#x8D44;&#x6E90;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x5728;&#x6E05;&#x7406;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x8C03;&#x7528; <code>Object.Finalize()</code> &#x65B9;&#x6CD5;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x65B9;&#x6CD5;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x975E;&#x6258;&#x7BA1;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x6B64;&#x65B9;&#x6CD5;&#x4E2D;&#x7F16;&#x5199;&#x56DE;&#x6536;&#x975E;&#x6258;&#x7BA1;&#x8D44;&#x6E90;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4EE5;&#x4FBF;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x6B63;&#x786E;&#x56DE;&#x6536;&#x8D44;&#x6E90;&#x3002;
 </p>
 
 <p>
-但是有些非托管资源往往比较宝贵，而垃圾回收是由.NET运行时执行的。这样就无法保证及时地释放掉这些资源。鉴于此，.NET提供了 <code>IDisposeable</code> 接口。凡是实现了该接口的对象，使用者都可以手动调用该对象的Dispose方法释放资源，以保证相关资源及时回收，提高资源使用效率。
+&#x4F46;&#x662F;&#x6709;&#x4E9B;&#x975E;&#x6258;&#x7BA1;&#x8D44;&#x6E90;&#x5F80;&#x5F80;&#x6BD4;&#x8F83;&#x5B9D;&#x8D35;&#xFF0C;&#x800C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x662F;&#x7531;.NET&#x8FD0;&#x884C;&#x65F6;&#x6267;&#x884C;&#x7684;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x53CA;&#x65F6;&#x5730;&#x91CA;&#x653E;&#x6389;&#x8FD9;&#x4E9B;&#x8D44;&#x6E90;&#x3002;&#x9274;&#x4E8E;&#x6B64;&#xFF0C;.NET&#x63D0;&#x4F9B;&#x4E86; <code>IDisposeable</code> &#x63A5;&#x53E3;&#x3002;&#x51E1;&#x662F;&#x5B9E;&#x73B0;&#x4E86;&#x8BE5;&#x63A5;&#x53E3;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F7F;&#x7528;&#x8005;&#x90FD;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x8C03;&#x7528;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;Dispose&#x65B9;&#x6CD5;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x76F8;&#x5173;&#x8D44;&#x6E90;&#x53CA;&#x65F6;&#x56DE;&#x6536;&#xFF0C;&#x63D0;&#x9AD8;&#x8D44;&#x6E90;&#x4F7F;&#x7528;&#x6548;&#x7387;&#x3002;
 </p>
 
 <p>
-二者均可以进行资源回收，只是使用场景，调用时机和调用对象不同而已。
+&#x4E8C;&#x8005;&#x5747;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x8D44;&#x6E90;&#x56DE;&#x6536;&#xFF0C;&#x53EA;&#x662F;&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x8C03;&#x7528;&#x65F6;&#x673A;&#x548C;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x4E0D;&#x540C;&#x800C;&#x5DF2;&#x3002;
 </p>
 </div>
 </div>
-<div id="outline-container-org3885d0e" class="outline-2">
-<h2 id="org3885d0e"><span class="section-number-2">2</span> Object.Finalize()简介</h2>
+<div id="outline-container-org51e7619" class="outline-2">
+<h2 id="org51e7619"><span class="section-number-2">2</span> Object.Finalize()&#x7B80;&#x4ECB;</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-<code>Object.Finalize</code> 用于在运行时进行垃圾回收时， <b>回收非托管的资源</b> ，这点很重要。 他跟垃圾回收器有着紧密的联系。这里只是简单提下垃圾回收机制，下一篇文章再详细介绍。当一个对象被创建时，垃圾回收器会检查该对象有没有自定义 <code>Finalize()</code> 方法。如果已自定义，它会把这个对象标记为 <b>Finalizable</b> 并且将一个指向该对象的指针存入到 <code>finalization queue</code> 。当该对象需要被回收时，如果 <code>finalization queue</code> 中有指针指向该对象，垃圾回收器会将该对象从堆上拷贝至另外一个托管的结构体中， <code>finalization reachable table</code> 。 <b>重要</b> 在下一次垃圾回收时，垃圾回收器会创建一个单独的线程，调用所有在 <code>finalization reachable table</code> 中的对象的 <code>Finalize()</code> 方法。所以，Finalizeable的对象被完全回收需要 <b>至少两个</b> 垃圾回收周期。以下内容出自 <b>Pro C#5.0 and the .NET Framework</b> : 
+<code>Object.Finalize</code> &#x7528;&#x4E8E;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C; <b>&#x56DE;&#x6536;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;</b> &#xFF0C;&#x8FD9;&#x70B9;&#x5F88;&#x91CD;&#x8981;&#x3002; &#x4ED6;&#x8DDF;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x6709;&#x7740;&#x7D27;&#x5BC6;&#x7684;&#x8054;&#x7CFB;&#x3002;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x63D0;&#x4E0B;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF0C;&#x4E0B;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x518D;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x88AB;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x68C0;&#x67E5;&#x8BE5;&#x5BF9;&#x8C61;&#x6709;&#x6CA1;&#x6709;&#x81EA;&#x5B9A;&#x4E49; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x5DF2;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x5B83;&#x4F1A;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x6807;&#x8BB0;&#x4E3A; <b>Finalizable</b> &#x5E76;&#x4E14;&#x5C06;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x5B58;&#x5165;&#x5230; <code>finalization queue</code> &#x3002;&#x5F53;&#x8BE5;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x88AB;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x5982;&#x679C; <code>finalization queue</code> &#x4E2D;&#x6709;&#x6307;&#x9488;&#x6307;&#x5411;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x4ECE;&#x5806;&#x4E0A;&#x62F7;&#x8D1D;&#x81F3;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6258;&#x7BA1;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#xFF0C; <code>finalization reachable table</code> &#x3002; <b>&#x91CD;&#x8981;</b> &#x5728;&#x4E0B;&#x4E00;&#x6B21;&#x5783;&#x573E;&#x56DE;&#x6536;&#x65F6;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x8C03;&#x7528;&#x6240;&#x6709;&#x5728; <code>finalization reachable table</code> &#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x7684; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x3002;&#x6240;&#x4EE5;&#xFF0C;Finalizeable&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x5B8C;&#x5168;&#x56DE;&#x6536;&#x9700;&#x8981; <b>&#x81F3;&#x5C11;&#x4E24;&#x4E2A;</b> &#x5783;&#x573E;&#x56DE;&#x6536;&#x5468;&#x671F;&#x3002;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x51FA;&#x81EA; <b>Pro C#5.0 and the .NET Framework</b> : 
 </p>
 
 <blockquote>
@@ -429,7 +429,7 @@ finalized before it is removed from the heap.
 <p>
 When the garbage collector determines it is time to free an object from memory, it examines each
 entry on the finalization queue and copies the object off the heap to yet another managed structure
-termed the finalization reachable table (often abbreviated as freachable, and pronounced “effreachable”).
+termed the finalization reachable table (often abbreviated as freachable, and pronounced &#x201C;effreachable&#x201D;).
 At this point, a separate thread is spawned to invoke the Finalize() method for each object
 on the freachable table at the next garbage collection. Given this, it will take, at the very least, two garbage
 collections to truly finalize an object.
@@ -437,24 +437,14 @@ collections to truly finalize an object.
 </blockquote>
 
 <p>
-但是开发人员不允许直接重载 <code>Finalize()</code> 方法，而是只能重载析构方法。我觉得主要是出于程序鲁棒性方面的考虑。下面是重载析构方法的样例代码。
+&#x4F46;&#x662F;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4E0D;&#x5141;&#x8BB8;&#x76F4;&#x63A5;&#x91CD;&#x8F7D; <code>Finalize()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x662F;&#x53EA;&#x80FD;&#x91CD;&#x8F7D;&#x6790;&#x6784;&#x65B9;&#x6CD5;&#x3002;&#x6211;&#x89C9;&#x5F97;&#x4E3B;&#x8981;&#x662F;&#x51FA;&#x4E8E;&#x7A0B;&#x5E8F;&#x9C81;&#x68D2;&#x6027;&#x65B9;&#x9762;&#x7684;&#x8003;&#x8651;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x91CD;&#x8F7D;&#x6790;&#x6784;&#x65B9;&#x6CD5;&#x7684;&#x6837;&#x4F8B;&#x4EE3;&#x7801;&#x3002;
 </p>
 <div class="org-src-container">
-<pre class="src src-csharp">// Override System.Object.Finalize() via finalizer syntax.
-class MyResourceWrapper
-{
-    ~MyResourceWrapper()
-    {
-	// Clean up unmanaged resources here.
-	// Beep when destroyed (testing purposes only!)
-	Console.Beep();
-    }
-}
-</pre>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Override System.Object.Finalize() via finalizer syntax.</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">MyResourceWrapper</span></span><br><span class="line">{</span><br><span class="line">    ~MyResourceWrapper()</span><br><span class="line">    {</span><br><span class="line">	<span class="comment">// Clean up unmanaged resources here.</span></span><br><span class="line">	<span class="comment">// Beep when destroyed (testing purposes only!)</span></span><br><span class="line">	Console.Beep();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
-编译后生成的IL代码：
+&#x7F16;&#x8BD1;&#x540E;&#x751F;&#x6210;&#x7684;IL&#x4EE3;&#x7801;&#xFF1A;
 </p>
 
 <pre class="example">
@@ -482,156 +472,76 @@ class MyResourceWrapper
    } // end handler
    IL_001b: nop
    IL_001c: ret
-} // end of method MyResourceWrapper::Finalize
-</pre>
+} // end of method MyResourceWrapper::Finalize</pre>
 
 <p>
-由此可以看出，编译后，析构方法的代码会被拷贝至 <code>Finalize()</code> 方法的 <b>try</b> 块中，以防止自定义析构方法抛出异常影响垃圾回收器的正常运行。
+&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x7F16;&#x8BD1;&#x540E;&#xFF0C;&#x6790;&#x6784;&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x88AB;&#x62F7;&#x8D1D;&#x81F3; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x7684; <b>try</b> &#x5757;&#x4E2D;&#xFF0C;&#x4EE5;&#x9632;&#x6B62;&#x81EA;&#x5B9A;&#x4E49;&#x6790;&#x6784;&#x65B9;&#x6CD5;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x5F71;&#x54CD;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x7684;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org06dac7f" class="outline-2">
-<h2 id="org06dac7f"><span class="section-number-2">3</span> IDisosable.Dispose简介</h2>
+<div id="outline-container-org85a43b4" class="outline-2">
+<h2 id="org85a43b4"><span class="section-number-2">3</span> IDisosable.Dispose&#x7B80;&#x4ECB;</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-接口 <code>IDisposable</code> 是对 <code>Object.Finalize()</code> 方法的补充，使用该接口可以及时地释放资源，提高资源使用效率。其原理也比较简单，垃圾回收不再由垃圾回收器负责，而是由调用方手动触发。当然触发得越及时，资源回收得越及时。假设现在有一个资源类 <code>MyResourceWrapper</code> 实现了该接口：
+&#x63A5;&#x53E3; <code>IDisposable</code> &#x662F;&#x5BF9; <code>Object.Finalize()</code> &#x65B9;&#x6CD5;&#x7684;&#x8865;&#x5145;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x63A5;&#x53E3;&#x53EF;&#x4EE5;&#x53CA;&#x65F6;&#x5730;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF0C;&#x63D0;&#x9AD8;&#x8D44;&#x6E90;&#x4F7F;&#x7528;&#x6548;&#x7387;&#x3002;&#x5176;&#x539F;&#x7406;&#x4E5F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x4E0D;&#x518D;&#x7531;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#x8D1F;&#x8D23;&#xFF0C;&#x800C;&#x662F;&#x7531;&#x8C03;&#x7528;&#x65B9;&#x624B;&#x52A8;&#x89E6;&#x53D1;&#x3002;&#x5F53;&#x7136;&#x89E6;&#x53D1;&#x5F97;&#x8D8A;&#x53CA;&#x65F6;&#xFF0C;&#x8D44;&#x6E90;&#x56DE;&#x6536;&#x5F97;&#x8D8A;&#x53CA;&#x65F6;&#x3002;&#x5047;&#x8BBE;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7C7B; <code>MyResourceWrapper</code> &#x5B9E;&#x73B0;&#x4E86;&#x8BE5;&#x63A5;&#x53E3;&#xFF1A;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-csharp">// Implementing IDisposable.
-class MyResourceWrapper : IDisposable
-{
-    // The object user should call this method
-    // when they finish with the object.
-    public void Dispose()
-    {
-	// Clean up unmanaged resources...
-	// Dispose other contained disposable objects...
-	// Just for a test.
-	Console.WriteLine("***** In Dispose! *****");
-    }
-}
-</pre>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Implementing IDisposable.</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">MyResourceWrapper</span> : <span class="title">IDisposable</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">// The object user should call this method</span></span><br><span class="line">    <span class="comment">// when they finish with the object.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// Clean up unmanaged resources...</span></span><br><span class="line">	<span class="comment">// Dispose other contained disposable objects...</span></span><br><span class="line">	<span class="comment">// Just for a test.</span></span><br><span class="line">	Console.WriteLine(<span class="string">&quot;***** In Dispose! *****&quot;</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
-我们可以这样使用：
+&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#xFF1A;
 </p>
 <div class="org-src-container">
-<pre class="src src-csharp">static void Main(string[] args)
-{
-    Console.WriteLine("***** Fun with Dispose *****\n");
-    MyResourceWrapper rw = new MyResourceWrapper ();
-    try
-    {
-	// Use the members of rw.
-    }
-    finally
-    {
-	// Always call Dispose(), error or not.
-	rw.Dispose();
-    }
-}
-</pre>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>{</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;***** Fun with Dispose *****\n&quot;</span>);</span><br><span class="line">    MyResourceWrapper rw = <span class="keyword">new</span> MyResourceWrapper ();</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    {</span><br><span class="line">	<span class="comment">// Use the members of rw.</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">finally</span></span><br><span class="line">    {</span><br><span class="line">	<span class="comment">// Always call Dispose(), error or not.</span></span><br><span class="line">	rw.Dispose();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
-借助于C#的语法糖，我们也可以这样使用：
+&#x501F;&#x52A9;&#x4E8E;C#&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#xFF1A;
 </p>
 <div class="org-src-container">
-<pre class="src src-csharp">static void Main(string[] args)
-{
-    Console.WriteLine("***** Fun with Dispose *****\n");
-    // Dispose() is called automatically when the
-    // using scope exits.
-    using(MyResourceWrapper rw = new MyResourceWrapper())
-    {
-	// Use rw object.
-    }
-}
-</pre>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span><br><span class="line"></span>{</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;***** Fun with Dispose *****\n&quot;</span>);</span><br><span class="line">    <span class="comment">// Dispose() is called automatically when the</span></span><br><span class="line">    <span class="comment">// using scope exits.</span></span><br><span class="line">    <span class="keyword">using</span>(MyResourceWrapper rw = <span class="keyword">new</span> MyResourceWrapper())</span><br><span class="line">    {</span><br><span class="line">	<span class="comment">// Use rw object.</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
-编译器编译后生成的中间代码是一致的。
+&#x7F16;&#x8BD1;&#x5668;&#x7F16;&#x8BD1;&#x540E;&#x751F;&#x6210;&#x7684;&#x4E2D;&#x95F4;&#x4EE3;&#x7801;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;
 </p>
 </div>
 </div>
-<div id="outline-container-orgc652b78" class="outline-2">
-<h2 id="orgc652b78"><span class="section-number-2">4</span> 最佳实践</h2>
+<div id="outline-container-org8cc07e6" class="outline-2">
+<h2 id="org8cc07e6"><span class="section-number-2">4</span> &#x6700;&#x4F73;&#x5B9E;&#x8DF5;</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-自定义 <code>Finalize()</code> 方法可以在一定程度上解放开发人员，将资源回收的工作完全交给垃圾回收器，但是资源利用率比较低。 实现 <code>IDisposable</code> 接口可以提高资源的利用率，
-但是可能会出现调用者忘记调用的情况，使资源得不到释放。人总有犯错误的时候。所以最佳的实践就是将二者结合起来一起使用，二者相得益彰。微软给出了标准的Dispose Pattern。
-在Visual Studio中，如果一个类想要实现IDisposable接口，点击左侧的提示菜单，VS就会自动帮你生成如下代码：
+&#x81EA;&#x5B9A;&#x4E49; <code>Finalize()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x89E3;&#x653E;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#xFF0C;&#x5C06;&#x8D44;&#x6E90;&#x56DE;&#x6536;&#x7684;&#x5DE5;&#x4F5C;&#x5B8C;&#x5168;&#x4EA4;&#x7ED9;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x4F46;&#x662F;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x7387;&#x6BD4;&#x8F83;&#x4F4E;&#x3002; &#x5B9E;&#x73B0; <code>IDisposable</code> &#x63A5;&#x53E3;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x8D44;&#x6E90;&#x7684;&#x5229;&#x7528;&#x7387;&#xFF0C;
+&#x4F46;&#x662F;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x8C03;&#x7528;&#x8005;&#x5FD8;&#x8BB0;&#x8C03;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F7F;&#x8D44;&#x6E90;&#x5F97;&#x4E0D;&#x5230;&#x91CA;&#x653E;&#x3002;&#x4EBA;&#x603B;&#x6709;&#x72AF;&#x9519;&#x8BEF;&#x7684;&#x65F6;&#x5019;&#x3002;&#x6240;&#x4EE5;&#x6700;&#x4F73;&#x7684;&#x5B9E;&#x8DF5;&#x5C31;&#x662F;&#x5C06;&#x4E8C;&#x8005;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#xFF0C;&#x4E8C;&#x8005;&#x76F8;&#x5F97;&#x76CA;&#x5F70;&#x3002;&#x5FAE;&#x8F6F;&#x7ED9;&#x51FA;&#x4E86;&#x6807;&#x51C6;&#x7684;Dispose Pattern&#x3002;
+&#x5728;Visual Studio&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x60F3;&#x8981;&#x5B9E;&#x73B0;IDisposable&#x63A5;&#x53E3;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;&#x7684;&#x63D0;&#x793A;&#x83DC;&#x5355;&#xFF0C;VS&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x5E2E;&#x4F60;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;
 </p>
 
 <div class="org-src-container">
-<pre class="src src-csharp">public class MyResourceWrapper:IDisposable
-{
-
-    #region IDisposable Support
-    private bool disposedValue = false; // To detect redundant calls
-
-    protected virtual void Dispose(bool disposing)
-    {
-	if (!disposedValue)
-	{
-	    if (disposing)
-	    {
-		// TODO: dispose managed state (managed objects).
-	    }
-
-	    // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-	    // TODO: set large fields to null.
-
-	    disposedValue = true;
-	}
-    }
-
-    // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-    ~MyResourceWrapper() {
-	// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-	Dispose(false);
-    }
-
-    // This code added to correctly implement the disposable pattern.
-    public void Dispose()
-    {
-	// Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-	Dispose(true);
-	// TODO: uncomment the following line if the finalizer is overridden above.
-	GC.SuppressFinalize(this);
-    }
-    #endregion
-}
-</pre>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyResourceWrapper</span>:<span class="title">IDisposable</span></span><br><span class="line">{</span><br><span class="line"></span><br><span class="line">    <span class="preprocessor">#<span class="keyword">region</span> IDisposable Support</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">bool</span> disposedValue = <span class="keyword">false</span>; <span class="comment">// To detect redundant calls</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"><span class="keyword">bool</span> disposing</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="keyword">if</span> (!disposedValue)</span><br><span class="line">	{</span><br><span class="line">	    <span class="keyword">if</span> (disposing)</span><br><span class="line">	    {</span><br><span class="line">		<span class="comment">// <span class="doctag">TODO:</span> dispose managed state (managed objects).</span></span><br><span class="line">	    }</span><br><span class="line"></span><br><span class="line">	    <span class="comment">// <span class="doctag">TODO:</span> free unmanaged resources (unmanaged objects) and override a finalizer below.</span></span><br><span class="line">	    <span class="comment">// <span class="doctag">TODO:</span> set large fields to null.</span></span><br><span class="line"></span><br><span class="line">	    disposedValue = <span class="keyword">true</span>;</span><br><span class="line">	}</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.</span></span><br><span class="line">    ~MyResourceWrapper() {</span><br><span class="line">	<span class="comment">// Do not change this code. Put cleanup code in Dispose(bool disposing) above.</span></span><br><span class="line">	Dispose(<span class="keyword">false</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This code added to correctly implement the disposable pattern.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Dispose</span>(<span class="params"></span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// Do not change this code. Put cleanup code in Dispose(bool disposing) above.</span></span><br><span class="line">	Dispose(<span class="keyword">true</span>);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> uncomment the following line if the finalizer is overridden above.</span></span><br><span class="line">	GC.SuppressFinalize(<span class="keyword">this</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="preprocessor">#<span class="keyword">endregion</span></span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
-这里有一个地方不太容易理解，即
+&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x4E0D;&#x592A;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#xFF0C;&#x5373;
 </p>
 <div class="org-src-container">
-<pre class="src src-csharp">if (disposing)
- {
-     // TODO: dispose managed state (managed objects).
- }
-</pre>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (disposing)</span><br><span class="line"> {</span><br><span class="line">     <span class="comment">// <span class="doctag">TODO:</span> dispose managed state (managed objects).</span></span><br><span class="line"> }</span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
-这个地方为什么只有 <code>IDisposable.Dispose()</code> 方法调用时才生效？其实这跟.NET的垃圾回收机制有关，前面也提到过，如果自定义 <code>Finalize()</code> 方法，该方法的调用需要至少两个垃圾回收周期。
-而等到那时候，那些需要释放资源的托管对象是否存在就不得而知了。
+&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x4E3A;&#x4EC0;&#x4E48;&#x53EA;&#x6709; <code>IDisposable.Dispose()</code> &#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#x624D;&#x751F;&#x6548;&#xFF1F;&#x5176;&#x5B9E;&#x8FD9;&#x8DDF;.NET&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#x6709;&#x5173;&#xFF0C;&#x524D;&#x9762;&#x4E5F;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x5982;&#x679C;&#x81EA;&#x5B9A;&#x4E49; <code>Finalize()</code> &#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x9700;&#x8981;&#x81F3;&#x5C11;&#x4E24;&#x4E2A;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5468;&#x671F;&#x3002;
+&#x800C;&#x7B49;&#x5230;&#x90A3;&#x65F6;&#x5019;&#xFF0C;&#x90A3;&#x4E9B;&#x9700;&#x8981;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x7684;&#x6258;&#x7BA1;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x5B58;&#x5728;&#x5C31;&#x4E0D;&#x5F97;&#x800C;&#x77E5;&#x4E86;&#x3002;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org06e8301" class="outline-2">
-<h2 id="org06e8301"><span class="section-number-2">5</span> 总结</h2>
+<div id="outline-container-orga4c757b" class="outline-2">
+<h2 id="orga4c757b"><span class="section-number-2">5</span> &#x603B;&#x7ED3;</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-就释放资源来讲，二者均可以达到目的。但是二者还是有些不同的:
+&#x5C31;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x6765;&#x8BB2;&#xFF0C;&#x4E8C;&#x8005;&#x5747;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x76EE;&#x7684;&#x3002;&#x4F46;&#x662F;&#x4E8C;&#x8005;&#x8FD8;&#x662F;&#x6709;&#x4E9B;&#x4E0D;&#x540C;&#x7684;:
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -645,27 +555,27 @@ class MyResourceWrapper : IDisposable
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&#xA0;</th>
 <th scope="col" class="org-left">IDisposable.Dispose</th>
 <th scope="col" class="org-left">Finalize()</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">调用方</td>
-<td class="org-left">使用者</td>
-<td class="org-left">垃圾回收器</td>
+<td class="org-left">&#x8C03;&#x7528;&#x65B9;</td>
+<td class="org-left">&#x4F7F;&#x7528;&#x8005;</td>
+<td class="org-left">&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;</td>
 </tr>
 
 <tr>
-<td class="org-left">适用场景</td>
-<td class="org-left">需要及时释放资源，对象的生命周期确定</td>
-<td class="org-left">对资源释放时间无特殊要求，对象生命周期不确定</td>
+<td class="org-left">&#x9002;&#x7528;&#x573A;&#x666F;</td>
+<td class="org-left">&#x9700;&#x8981;&#x53CA;&#x65F6;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#xFF0C;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x786E;&#x5B9A;</td>
+<td class="org-left">&#x5BF9;&#x8D44;&#x6E90;&#x91CA;&#x653E;&#x65F6;&#x95F4;&#x65E0;&#x7279;&#x6B8A;&#x8981;&#x6C42;&#xFF0C;&#x5BF9;&#x8C61;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E0D;&#x786E;&#x5B9A;</td>
 </tr>
 </tbody>
 </table>
 <p>
-如果对象只在单线程中使用，那么其生命周期是确定的；但是如果多个线程都使用了该对象，那么其生命周期就不太好确定了。不论如何，还是最好使用微软给出的Dispose Pattern, 将二者结合使用。
+&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x53EA;&#x5728;&#x5355;&#x7EBF;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF1B;&#x4F46;&#x662F;&#x5982;&#x679C;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x90FD;&#x4F7F;&#x7528;&#x4E86;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x751F;&#x547D;&#x5468;&#x671F;&#x5C31;&#x4E0D;&#x592A;&#x597D;&#x786E;&#x5B9A;&#x4E86;&#x3002;&#x4E0D;&#x8BBA;&#x5982;&#x4F55;&#xFF0C;&#x8FD8;&#x662F;&#x6700;&#x597D;&#x4F7F;&#x7528;&#x5FAE;&#x8F6F;&#x7ED9;&#x51FA;&#x7684;Dispose Pattern, &#x5C06;&#x4E8C;&#x8005;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#x3002;
 </p>
 </div>
 </div>
@@ -853,7 +763,7 @@ class MyResourceWrapper : IDisposable
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org31a2c65"><span class="nav-number">1.</span> <span class="nav-text">1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org3885d0e"><span class="nav-number">2.</span> <span class="nav-text">2 Object.Finalize()简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org06dac7f"><span class="nav-number">3.</span> <span class="nav-text">3 IDisosable.Dispose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgc652b78"><span class="nav-number">4.</span> <span class="nav-text">4 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org06e8301"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org2b731e1"><span class="nav-number">1.</span> <span class="nav-text">1 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org51e7619"><span class="nav-number">2.</span> <span class="nav-text">2 Object.Finalize()简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org85a43b4"><span class="nav-number">3.</span> <span class="nav-text">3 IDisosable.Dispose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org8cc07e6"><span class="nav-number">4.</span> <span class="nav-text">4 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orga4c757b"><span class="nav-number">5.</span> <span class="nav-text">5 总结</span></a></li></ol></div>
             
 
           </div>
