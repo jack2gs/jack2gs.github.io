@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -136,7 +136,7 @@
 
 
 
-  <title>Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Jack Gao's Blog</title>
   
 
 
@@ -161,7 +161,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -267,6 +267,1012 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/10/07/write-maintainale-software/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Gao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jack Gao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/07/write-maintainale-software/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-07T22:20:01+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-10-07T22:20:01+08:00">
+                2017-10-07
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- 2017-10-07 Sat 22:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write maintainable software</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Gao Song">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="content">
+<h1 class="title">Write maintainable software</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org89e52da">1. Preface</a>
+<ul>
+<li><a href="#orgff53713">1.1. What kinds of problem have you met during software development?</a></li>
+<li><a href="#orgd1ddf53">1.2. Ideal software</a></li>
+<li><a href="#orgee93450">1.3. Why we want software maintainable?</a></li>
+</ul>
+</li>
+<li><a href="#orgb0dd40d">2. What's maintainable software?</a></li>
+<li><a href="#org24e3127">3. How do we write maintainable software?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org89e52da" class="outline-2">
+<h2 id="org89e52da"><span class="section-number-2">1</span> Preface</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgff53713" class="outline-3">
+<h3 id="orgff53713"><span class="section-number-3">1.1</span> What kinds of problem have you met during software development?</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Code is not easy to read and understand
+<ul class="org-ul">
+<li><p>
+Bad <b>System Metaphor</b>
+</p>
+
+<p>
+Sometime, we don't have the good <b>System Metaphor</b>, in other words, we don't understand the domain well
+</p></li>
+<li><p>
+Code is not just for you
+</p>
+
+<p>
+We always collabrate together, but we are different. So it may cause misundertanding, make things more complicated.
+</p></li>
+<li><p>
+Code smell
+</p>
+
+<p>
+Some are caused by ourselves, some are caused by others. But we want clean code.
+</p></li>
+</ul></li>
+<li>Bug is not easy to fix
+<ul class="org-ul">
+<li>data preparation is not easy</li>
+<li>highly coupling</li>
+<li>overuse <b>DI(Dependency Injection)</b></li>
+<li>debuging, debuging, debuging&#x2026;</li>
+</ul></li>
+<li>Code is brittle, bugs create bugs
+<ul class="org-ul">
+<li>regression issues</li>
+</ul></li>
+<li>Code is not easy to test</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd1ddf53" class="outline-3">
+<h3 id="orgd1ddf53"><span class="section-number-3">1.2</span> Ideal software</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+According to lifecycle of software development:
+</p>
+<ul class="org-ul">
+<li>Understand the requirement well and build good domain model</li>
+<li>Good software design</li>
+<li>Code is easy to write, read and understand</li>
+<li>Good quality</li>
+<li>Easy to deply and maintain</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgee93450" class="outline-3">
+<h3 id="orgee93450"><span class="section-number-3">1.3</span> Why we want software maintainable?</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Sometimes, we need to fix bugs</li>
+<li>Sometimes, we need to extend it</li>
+<li><p>
+Easy to Read( Understand ) VS Easy to Write
+</p>
+
+<p>
+It costs us much more time to read than to write code, in the lifecycle. According to 80/20 rule:
+</p></li>
+</ul>
+
+
+<div class="figure">
+<p><img src="write-maintainale-software/read-wirte.png" alt="read-wirte.png" width="400px">
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb0dd40d" class="outline-2">
+<h2 id="orgb0dd40d"><span class="section-number-2">2</span> What's maintainable software?</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>easy to understand</li>
+<li>easy to change</li>
+</ul>
+
+<p>
+But we human being has limitations.
+</p>
+
+<p>
+We need <b>Continious Improvement</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org24e3127" class="outline-2">
+<h2 id="org24e3127"><span class="section-number-2">3</span> How do we write maintainable software?</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-10-03 Tue 08:49</p>
+<p class="author">Author: Gao Song</p>
+<p class="date">Created: 2017-10-07 Sat 22:20</p>
+<p class="validation"></p>
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/10/03/write-maintainale-software/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Gao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jack Gao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/03/write-maintainale-software/" itemprop="url">Write maintainable software</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-03T08:49:19+08:00">
+                2017-10-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-10-25T03:35:09+08:00">
+                2017-10-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software-Enineering/" itemprop="url" rel="index">
+                    <span itemprop="name">Software Enineering</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div id="content">
+
+<div id="outline-container-org387a954" class="outline-2">
+<h2 id="org387a954"><span class="section-number-2">1</span> Preface</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org12d2172" class="outline-3">
+<h3 id="org12d2172"><span class="section-number-3">1.1</span> What kinds of problem have you met during software development?</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Code is not easy to read and understand
+<ul class="org-ul">
+<li><p>
+Bad <b>System Metaphor</b>
+</p>
+
+<p>
+Sometime, we don&apos;t have the good <b>System Metaphor</b>, in other words, we don&apos;t understand the domain well
+</p></li>
+<li><p>
+Code is not just for you
+</p>
+
+<p>
+We always collabrate together, but we are different. So it may cause misundertanding, make things more complicated.
+</p></li>
+<li><p>
+Code smell
+</p>
+
+<p>
+Some are caused by ourselves, some are caused by others. But we need clean code.
+</p></li>
+</ul></li>
+<li>Bug is not easy to fix
+<ul class="org-ul">
+<li>data preparation is not easy</li>
+<li>highly coupling</li>
+<li>overuse <b>DI(Dependency Injection)</b></li>
+<li>debuging, debuging, debuging&#x2026;</li>
+</ul></li>
+<li>Code is brittle, bugs create bugs
+<ul class="org-ul">
+<li>regression issues</li>
+</ul></li>
+<li>Code is not easy to test</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdc4c49e" class="outline-3">
+<h3 id="orgdc4c49e"><span class="section-number-3">1.2</span> Ideal software</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+According to lifecycle of software development:
+</p>
+<ul class="org-ul">
+<li>Understand the requirement well and build good domain model</li>
+<li>Good software design</li>
+<li>Code is easy to write, read and understand</li>
+<li>Good quality</li>
+<li>Easy to deply and maintain</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0883c7d" class="outline-3">
+<h3 id="org0883c7d"><span class="section-number-3">1.3</span> Why we want software maintainable?</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Sometimes, we need to fix bugs</li>
+<li>Sometimes, we need to extend it</li>
+<li><p>
+Easy to Read( Understand ) VS Easy to Write
+</p>
+
+<p>
+It costs us much more time to read than to write code, in the lifecycle. According to 80/20 rule:
+</p></li>
+</ul>
+
+
+<div id="org320a383" class="figure">
+<p><img src="read-wirte.png" width="400px">
+</p>
+<p><span class="figure-number">Figure 1: </span>Read Vs Wright</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org43cf46d" class="outline-2">
+<h2 id="org43cf46d"><span class="section-number-2">2</span> What&apos;s maintainable software?</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+My understanding:
+</p>
+<ul class="org-ul">
+<li>EASY to understand</li>
+<li>EASY to change</li>
+</ul>
+
+<p>
+Features of mainainalbe software:
+</p>
+<ul class="org-ul">
+<li>System has all the features required.</li>
+<li>System has good <b>System Metaphor</b>.</li>
+<li>System has good design.</li>
+<li>Few bugs</li>
+<li>Bugs are easy to get and fix</li>
+<li>System is easy to understand and change</li>
+</ul>
+
+<p>
+But we human being has limitations:
+</p>
+<ul class="org-ul">
+<li>Human being are not good at dealing with complicated things, but software are always complicated.</li>
+<li>Gap bewteen team members.</li>
+</ul>
+
+<p>
+So we need <b>Continious Improvement</b>:
+</p>
+<ul class="org-ul">
+<li>Incremental development</li>
+<li>Feedbacks
+<ul class="org-ul">
+<li>Positive feedback</li>
+<li>Negetive feedback</li>
+</ul></li>
+</ul>
+
+<p>
+All in all, what we need are:
+</p>
+<ul class="org-ul">
+<li>System has all the features required(Requirement)</li>
+<li>Good design</li>
+<li>Testable</li>
+<li>Incremental development</li>
+<li>Feedbacks</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org53a4801" class="outline-2">
+<h2 id="org53a4801"><span class="section-number-2">3</span> How do we write maintainable software?</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgb680dce" class="outline-3">
+<h3 id="orgb680dce"><span class="section-number-3">3.1</span> Cornerstones to write maintainable software</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Three cornerstones of maintainable software:
+</p>
+
+<div id="orgb2401ec" class="figure">
+<p><img src="cornerstones_of_maintainable_software.png">
+</p>
+<p><span class="figure-number">Figure 2: </span>Cornerstones of maintainable software</p>
+</div>
+</div>
+<div id="outline-container-org516587e" class="outline-4">
+<h4 id="org516587e"><span class="section-number-4">3.1.1</span> TDD</h4>
+<div class="outline-text-4" id="text-3-1-1">
+
+<div id="orga0a6cb7" class="figure">
+<p><img src="inner-and-outer-feedback-loops-in-tdd.png">
+</p>
+<p><span class="figure-number">Figure 3: </span>Inner and outer feedback loops in TDD</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge19c64e" class="outline-4">
+<h4 id="orge19c64e"><span class="section-number-4">3.1.2</span> OO</h4>
+<div class="outline-text-4" id="text-3-1-2">
+
+<div id="org8192594" class="figure">
+<p><img src="a-web-of-objects.png">
+</p>
+<p><span class="figure-number">Figure 4: </span>A web of objects</p>
+</div>
+
+
+<div id="org167dcd4" class="figure">
+<p><img src="testing-an-object-with-mock-objects.png">
+</p>
+<p><span class="figure-number">Figure 5: </span>Testing an object with mock objects</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4faa63f" class="outline-4">
+<h4 id="org4faa63f"><span class="section-number-4">3.1.3</span> Design Patterns</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+In software engineering, a <b>software design pattern</b> is a general reusable solution to a commonly occurring problem within a given context in software design.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb4fe13c" class="outline-3">
+<h3 id="orgb4fe13c"><span class="section-number-3">3.2</span> Benefit of <b>TDD</b>, <b>OO</b> and <b>Design Patterns</b></h3>
+<div class="outline-text-3" id="text-3-2">
+<table id="orga01f3f0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Benefit of the cornerstones</caption>
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Method</th>
+<th scope="col" class="org-left">Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">TDD/ATDD</td>
+<td class="org-left">Requirement</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Incremental Development</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Feedbacks</td>
+</tr>
+
+<tr>
+<td class="org-left">OOA/OOD/OOP</td>
+<td class="org-left">Good design</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Testable</td>
+</tr>
+
+<tr>
+<td class="org-left">Desgin Pattern</td>
+<td class="org-left">Good design</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Testable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org2afd0dc" class="outline-3">
+<h3 id="org2afd0dc"><span class="section-number-3">3.3</span> Put them together</h3>
+<div class="outline-text-3" id="text-3-3">
+<ol class="org-ol">
+<li>Use TDD(core of agile practice) to <b>find</b> the issues</li>
+<li>Use OOP to <b>dignose</b> the issues</li>
+<li>Use Design Patterns to <b>solve</b> the issues</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf3dc00e" class="outline-2">
+<h2 id="orgf3dc00e"><span class="section-number-2">4</span> Example</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Simple CQRS</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
+|                                                      |
+|                      UI                              |
++------------------------------------------------------+
+	|                                |       ^
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|      cGRE          |            |      cGRE          |
+|  Command Handler   |            |   Query Handler    |
++--------------------+            +----------+---------+
+	|                                    |   
+	|                                    |   
+	|     +------------------------+     |   
+	|     |                        |     |   
+	+----&gt;|                        |&lt;----+   
+	      |       Database         |         
+	      |                    {s} |         
+	      +------------------------+</span><br></pre></td></tr></table></figure>
+</div>
+
+<ul class="org-ul">
+<li>CQRS with BUS</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
+|                                                      |
+|                      UI                              |
++------------------------------------------------------+
+	|                                |       ^                    
+	|                                |       |
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|      cBLU          |            |    cBLU            |
+|   Command BUS      |            |   Query BUS        |
++--------------------+            +--------------------+
+	|                                |       ^
+	|                                |       |
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|      cGRE          |            |      cGRE          |
+|  Command Handler   |            |   Query Handler    |
++--------------------+            +--------------------+
+	|                                    ^
+	|                                    |
+	|     +------------------------+     |
+	|     |                        |     |
+	+----&gt;|                        |&lt;----+   
+	      |       Database         |         
+	      |                    {s} |         
+	      +------------------------+</span><br></pre></td></tr></table></figure>
+</div>
+
+<ul class="org-ul">
+<li>CQRS with BUS and Event Source</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
+|                                                      |
+|                      UI                              |
++------------------------------------------------------+
+	|                                |       ^
+	|                                |       |
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|     cBLU           |            |       cBLU         |
+|   Command BUS      |&lt;--+        |    Query BUS       |
++--------------------+   |        +--------------------+
+	|                |               |       ^
+	|                |               |       |
+	|                |               |       |
+	v                |               v       |
++--------------------+   |        +--------------------+
+|      cGRE          |   |        |      cGRE          |
+|  Command Handler   |   |        |   Query Handler    |
++--------------------+   |        +--------------------+
+	|                |                   ^
+	|                |                   |
+	v                |                   |
++--------------------+   |                   |
+|     cBLU           |   |                   |
+|   Event BUS        |   |                   |
++--------------------+   |                   |
+	|                |                   |
+	|                |                   |
+	v                |                   |
++--------------------+   |                   |
+|      cGRE          |   |                   |
+|   Event Handler    +---+                   |
++--------------------+                       |
+	|                                    |
+	|     +------------------------+     |
+	|     |                        |     |
+	+----&gt;|                        |&lt;----+   
+	      |       Database         |         
+	      |                    {s} |         
+	      +------------------------+</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1511,316 +2517,6 @@ PDF&#x6587;&#x4EF6;&#x51FA;&#x4F17;&#x7684;&#x6587;&#x5B57;&#x6E32;&#x67D3;&#x65
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/10/a-formalized-disposal-pattern/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack Gao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jack Gao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/10/a-formalized-disposal-pattern/" itemprop="url">理解IDisposable.Dispose()和Object.Finalize()</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-10T21:29:24+08:00">
-                2017-07-10
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-23T23:07:54+08:00">
-                2017-07-23
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NET/" itemprop="url" rel="index">
-                    <span itemprop="name">.NET</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <div id="content">
-<p>
-&#x8BF4;&#x5230;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#xFF0C;C\C++&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x80AF;&#x5B9A;&#x9047;&#x5230;&#x8FC7;&#x5404;&#x79CD;&#x5404;&#x6837;&#x4EE4;&#x4EBA;&#x5934;&#x75BC;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x95EE;&#x9898;&#xFF0C;&#x4EE5;&#x53CA;&#x590D;&#x6742;&#x7684;&#x6307;&#x9488;&#x95EE;&#x9898;&#x3002;&#x800C;&#x76F8;&#x6BD4;&#x8F83;&#x800C;&#x8A00;&#xFF0C;Java&#x548C;C#&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x5C31;&#x5E78;&#x798F;&#x591A;&#x4E86;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x8BED;&#x8A00;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x6781;&#x5927;&#x5730;&#x51CF;&#x8F7B;&#x4E86;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;&#x3002;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7531;&#x8FD0;&#x884C;&#x65F6;&#x8D1F;&#x8D23;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x5F00;&#x5173;&#x6CE8;&#x6B64;&#x7C7B;&#x95EE;&#x9898;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;C#&#x5F53;&#x6D89;&#x53CA;&#x5230;&#x975E;&#x6258;&#x7BA1;&#x7684;&#x8D44;&#x6E90;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x81EA;&#x5DF1;&#x5904;&#x7406;&#x3002;&#x800C; <code>IDisposable.Dispose()</code> &#x548C; <code>Object.Finalize()</code> &#x5C31;&#x662F;&#x5176;&#x4E2D;&#x91CD;&#x8981;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x4E0B;&#x4E8C;&#x8005;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x3001;&#x533A;&#x522B;&#x4E0E;&#x8054;&#x7CFB;&#x548C;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;
-</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/10/a-formalized-disposal-pattern/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jack Gao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jack Gao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/09/get-hash-code-and-equals/" itemprop="url">GetHashCode and Equals</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T21:58:53+08:00">
-                2017-07-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-30T17:07:35+08:00">
-                2017-07-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NET/" itemprop="url" rel="index">
-                    <span itemprop="name">.NET</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <div id="content">
-
-<div id="outline-container-org07c9d53" class="outline-2">
-<h2 id="org07c9d53"><span class="section-number-2">1</span> &#x80CC;&#x666F;</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E4B;&#x524D;&#x5BF9;&#x5176;&#x539F;&#x7406;&#x4E0D;&#x662F;&#x592A;&#x6E05;&#x695A;&#xFF0C;&#x672C;&#x6587;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x5176;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A; <code>Object.GetHashCode</code> &#x548C; <code>Object.Equals</code> &#x7684;&#x4F5C;&#x7528;&#x3002;
-</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/09/get-hash-code-and-equals/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1870,7 +2566,7 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1881,7 +2577,7 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1892,7 +2588,7 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -2058,24 +2754,7 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 

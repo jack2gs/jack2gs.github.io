@@ -1,0 +1,1178 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Development,CI,Unit Test,OOA,OOP,OOD," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="1 Preface   1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good System Metap">
+<meta name="keywords" content="Development,CI,Unit Test,OOA,OOP,OOD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Write maintainable software">
+<meta property="og:url" content="jack2gs.github.io/2017/10/03/write-maintainale-software/index.html">
+<meta property="og:site_name" content="Jack Gao&#39;s Blog">
+<meta property="og:description" content="1 Preface   1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good System Metap">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/read-wirte.png">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/cornerstones_of_maintainable_software.png">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/inner-and-outer-feedback-loops-in-tdd.png">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/a-web-of-objects.png">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/testing-an-object-with-mock-objects.png">
+<meta property="og:updated_time" content="2017-10-24T19:35:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Write maintainable software">
+<meta name="twitter:description" content="1 Preface   1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good System Metap">
+<meta name="twitter:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/read-wirte.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="jack2gs.github.io/2017/10/03/write-maintainale-software/"/>
+
+
+
+
+
+
+  <title>Write maintainable software | Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jack Gao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Road & Book</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/10/03/write-maintainale-software/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Gao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jack Gao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Write maintainable software</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-03T08:49:19+08:00">
+                2017-10-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-10-25T03:35:09+08:00">
+                2017-10-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software-Enineering/" itemprop="url" rel="index">
+                    <span itemprop="name">Software Enineering</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div id="content">
+
+<div id="outline-container-org387a954" class="outline-2">
+<h2 id="org387a954"><span class="section-number-2">1</span> Preface</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-org12d2172" class="outline-3">
+<h3 id="org12d2172"><span class="section-number-3">1.1</span> What kinds of problem have you met during software development?</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Code is not easy to read and understand
+<ul class="org-ul">
+<li><p>
+Bad <b>System Metaphor</b>
+</p>
+
+<p>
+Sometime, we don&apos;t have the good <b>System Metaphor</b>, in other words, we don&apos;t understand the domain well
+</p></li>
+<li><p>
+Code is not just for you
+</p>
+
+<p>
+We always collabrate together, but we are different. So it may cause misundertanding, make things more complicated.
+</p></li>
+<li><p>
+Code smell
+</p>
+
+<p>
+Some are caused by ourselves, some are caused by others. But we need clean code.
+</p></li>
+</ul></li>
+<li>Bug is not easy to fix
+<ul class="org-ul">
+<li>data preparation is not easy</li>
+<li>highly coupling</li>
+<li>overuse <b>DI(Dependency Injection)</b></li>
+<li>debuging, debuging, debuging&#x2026;</li>
+</ul></li>
+<li>Code is brittle, bugs create bugs
+<ul class="org-ul">
+<li>regression issues</li>
+</ul></li>
+<li>Code is not easy to test</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdc4c49e" class="outline-3">
+<h3 id="orgdc4c49e"><span class="section-number-3">1.2</span> Ideal software</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+According to lifecycle of software development:
+</p>
+<ul class="org-ul">
+<li>Understand the requirement well and build good domain model</li>
+<li>Good software design</li>
+<li>Code is easy to write, read and understand</li>
+<li>Good quality</li>
+<li>Easy to deply and maintain</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0883c7d" class="outline-3">
+<h3 id="org0883c7d"><span class="section-number-3">1.3</span> Why we want software maintainable?</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>Sometimes, we need to fix bugs</li>
+<li>Sometimes, we need to extend it</li>
+<li><p>
+Easy to Read( Understand ) VS Easy to Write
+</p>
+
+<p>
+It costs us much more time to read than to write code, in the lifecycle. According to 80/20 rule:
+</p></li>
+</ul>
+
+
+<div id="org320a383" class="figure">
+<p><img src="read-wirte.png" width="400px">
+</p>
+<p><span class="figure-number">Figure 1: </span>Read Vs Wright</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org43cf46d" class="outline-2">
+<h2 id="org43cf46d"><span class="section-number-2">2</span> What&apos;s maintainable software?</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+My understanding:
+</p>
+<ul class="org-ul">
+<li>EASY to understand</li>
+<li>EASY to change</li>
+</ul>
+
+<p>
+Features of mainainalbe software:
+</p>
+<ul class="org-ul">
+<li>System has all the features required.</li>
+<li>System has good <b>System Metaphor</b>.</li>
+<li>System has good design.</li>
+<li>Few bugs</li>
+<li>Bugs are easy to get and fix</li>
+<li>System is easy to understand and change</li>
+</ul>
+
+<p>
+But we human being has limitations:
+</p>
+<ul class="org-ul">
+<li>Human being are not good at dealing with complicated things, but software are always complicated.</li>
+<li>Gap bewteen team members.</li>
+</ul>
+
+<p>
+So we need <b>Continious Improvement</b>:
+</p>
+<ul class="org-ul">
+<li>Incremental development</li>
+<li>Feedbacks
+<ul class="org-ul">
+<li>Positive feedback</li>
+<li>Negetive feedback</li>
+</ul></li>
+</ul>
+
+<p>
+All in all, what we need are:
+</p>
+<ul class="org-ul">
+<li>System has all the features required(Requirement)</li>
+<li>Good design</li>
+<li>Testable</li>
+<li>Incremental development</li>
+<li>Feedbacks</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org53a4801" class="outline-2">
+<h2 id="org53a4801"><span class="section-number-2">3</span> How do we write maintainable software?</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgb680dce" class="outline-3">
+<h3 id="orgb680dce"><span class="section-number-3">3.1</span> Cornerstones to write maintainable software</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Three cornerstones of maintainable software:
+</p>
+
+<div id="orgb2401ec" class="figure">
+<p><img src="cornerstones_of_maintainable_software.png">
+</p>
+<p><span class="figure-number">Figure 2: </span>Cornerstones of maintainable software</p>
+</div>
+</div>
+<div id="outline-container-org516587e" class="outline-4">
+<h4 id="org516587e"><span class="section-number-4">3.1.1</span> TDD</h4>
+<div class="outline-text-4" id="text-3-1-1">
+
+<div id="orga0a6cb7" class="figure">
+<p><img src="inner-and-outer-feedback-loops-in-tdd.png">
+</p>
+<p><span class="figure-number">Figure 3: </span>Inner and outer feedback loops in TDD</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge19c64e" class="outline-4">
+<h4 id="orge19c64e"><span class="section-number-4">3.1.2</span> OO</h4>
+<div class="outline-text-4" id="text-3-1-2">
+
+<div id="org8192594" class="figure">
+<p><img src="a-web-of-objects.png">
+</p>
+<p><span class="figure-number">Figure 4: </span>A web of objects</p>
+</div>
+
+
+<div id="org167dcd4" class="figure">
+<p><img src="testing-an-object-with-mock-objects.png">
+</p>
+<p><span class="figure-number">Figure 5: </span>Testing an object with mock objects</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4faa63f" class="outline-4">
+<h4 id="org4faa63f"><span class="section-number-4">3.1.3</span> Design Patterns</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+In software engineering, a <b>software design pattern</b> is a general reusable solution to a commonly occurring problem within a given context in software design.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb4fe13c" class="outline-3">
+<h3 id="orgb4fe13c"><span class="section-number-3">3.2</span> Benefit of <b>TDD</b>, <b>OO</b> and <b>Design Patterns</b></h3>
+<div class="outline-text-3" id="text-3-2">
+<table id="orga01f3f0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Benefit of the cornerstones</caption>
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Method</th>
+<th scope="col" class="org-left">Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">TDD/ATDD</td>
+<td class="org-left">Requirement</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Incremental Development</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Feedbacks</td>
+</tr>
+
+<tr>
+<td class="org-left">OOA/OOD/OOP</td>
+<td class="org-left">Good design</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Testable</td>
+</tr>
+
+<tr>
+<td class="org-left">Desgin Pattern</td>
+<td class="org-left">Good design</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xA0;</td>
+<td class="org-left">Testable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org2afd0dc" class="outline-3">
+<h3 id="org2afd0dc"><span class="section-number-3">3.3</span> Put them together</h3>
+<div class="outline-text-3" id="text-3-3">
+<ol class="org-ol">
+<li>Use TDD(core of agile practice) to <b>find</b> the issues</li>
+<li>Use OOP to <b>dignose</b> the issues</li>
+<li>Use Design Patterns to <b>solve</b> the issues</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf3dc00e" class="outline-2">
+<h2 id="orgf3dc00e"><span class="section-number-2">4</span> Example</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Simple CQRS</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
+|                                                      |
+|                      UI                              |
++------------------------------------------------------+
+	|                                |       ^
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|      cGRE          |            |      cGRE          |
+|  Command Handler   |            |   Query Handler    |
++--------------------+            +----------+---------+
+	|                                    |   
+	|                                    |   
+	|     +------------------------+     |   
+	|     |                        |     |   
+	+----&gt;|                        |&lt;----+   
+	      |       Database         |         
+	      |                    {s} |         
+	      +------------------------+</span><br></pre></td></tr></table></figure>
+</div>
+
+<ul class="org-ul">
+<li>CQRS with BUS</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
+|                                                      |
+|                      UI                              |
++------------------------------------------------------+
+	|                                |       ^                    
+	|                                |       |
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|      cBLU          |            |    cBLU            |
+|   Command BUS      |            |   Query BUS        |
++--------------------+            +--------------------+
+	|                                |       ^
+	|                                |       |
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|      cGRE          |            |      cGRE          |
+|  Command Handler   |            |   Query Handler    |
++--------------------+            +--------------------+
+	|                                    ^
+	|                                    |
+	|     +------------------------+     |
+	|     |                        |     |
+	+----&gt;|                        |&lt;----+   
+	      |       Database         |         
+	      |                    {s} |         
+	      +------------------------+</span><br></pre></td></tr></table></figure>
+</div>
+
+<ul class="org-ul">
+<li>CQRS with BUS and Event Source</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
+|                                                      |
+|                      UI                              |
++------------------------------------------------------+
+	|                                |       ^
+	|                                |       |
+	|                                |       |
+	v                                v       |
++--------------------+            +--------------------+
+|     cBLU           |            |       cBLU         |
+|   Command BUS      |&lt;--+        |    Query BUS       |
++--------------------+   |        +--------------------+
+	|                |               |       ^
+	|                |               |       |
+	|                |               |       |
+	v                |               v       |
++--------------------+   |        +--------------------+
+|      cGRE          |   |        |      cGRE          |
+|  Command Handler   |   |        |   Query Handler    |
++--------------------+   |        +--------------------+
+	|                |                   ^
+	|                |                   |
+	v                |                   |
++--------------------+   |                   |
+|     cBLU           |   |                   |
+|   Event BUS        |   |                   |
++--------------------+   |                   |
+	|                |                   |
+	|                |                   |
+	v                |                   |
++--------------------+   |                   |
+|      cGRE          |   |                   |
+|   Event Handler    +---+                   |
++--------------------+                       |
+	|                                    |
+	|     +------------------------+     |
+	|     |                        |     |
+	+----&gt;|                        |&lt;----+   
+	      |       Database         |         
+	      |                    {s} |         
+	      +------------------------+</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Development/" rel="tag"># Development</a>
+          
+            <a href="/tags/CI/" rel="tag"># CI</a>
+          
+            <a href="/tags/Unit-Test/" rel="tag"># Unit Test</a>
+          
+            <a href="/tags/OOA/" rel="tag"># OOA</a>
+          
+            <a href="/tags/OOP/" rel="tag"># OOP</a>
+          
+            <a href="/tags/OOD/" rel="tag"># OOD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/02/use-emacs-as-python-ide/" rel="next" title="使用Emacs作为Python IDE">
+                <i class="fa fa-chevron-left"></i> 使用Emacs作为Python IDE
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/07/write-maintainale-software/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jack Gao" />
+          <p class="site-author-name" itemprop="name">Jack Gao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Jack Gao's Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org387a954"><span class="nav-number">1.</span> <span class="nav-text">1 Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org12d2172"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 What kinds of problem have you met during software development?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgdc4c49e"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Ideal software</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0883c7d"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Why we want software maintainable?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org43cf46d"><span class="nav-number">2.</span> <span class="nav-text">2 What's maintainable software?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org53a4801"><span class="nav-number">3.</span> <span class="nav-text">3 How do we write maintainable software?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb680dce"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Cornerstones to write maintainable software</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org516587e"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 TDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orge19c64e"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 OO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org4faa63f"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 Design Patterns</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb4fe13c"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Benefit of TDD, OO and Design Patterns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org2afd0dc"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Put them together</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgf3dc00e"><span class="nav-number">4.</span> <span class="nav-text">4 Example</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Gao</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
