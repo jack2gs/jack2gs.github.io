@@ -93,22 +93,25 @@
 
 
 
-<meta name="description" content="test    1 Preface    1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good Syst">
+<meta name="description" content="1 Preface    1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good System Meta">
 <meta name="keywords" content="Development,CI,Unit Test,OOA,OOP,OOD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Write maintainable software">
 <meta property="og:url" content="jack2gs.github.io/2017/10/03/write-maintainale-software/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="test    1 Preface    1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good Syst">
+<meta property="og:description" content="1 Preface    1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good System Meta">
 <meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/read-wirte.png">
 <meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/cornerstones_of_maintainable_software.png">
 <meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/inner-and-outer-feedback-loops-in-tdd.png">
 <meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/a-web-of-objects.png">
 <meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/testing-an-object-with-mock-objects.png">
-<meta property="og:updated_time" content="2017-10-25T02:19:16.000Z">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/simple-cqrs.png">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/csrs-with-bus.png">
+<meta property="og:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/cqrs-with-bus-and-event-source.png">
+<meta property="og:updated_time" content="2017-10-25T02:33:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Write maintainable software">
-<meta name="twitter:description" content="test    1 Preface    1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good Syst">
+<meta name="twitter:description" content="1 Preface    1.1 What kinds of problem have you met during software development?   Code is not easy to read and understand   Bad System Metaphor    Sometime, we don&amp;apos;t have the good System Meta">
 <meta name="twitter:image" content="jack2gs.github.io/2017/10/03/write-maintainale-software/read-wirte.png">
 
 
@@ -328,7 +331,7 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-10-25T10:19:16+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2017-10-25T10:33:59+08:00">
                 2017-10-25
               </time>
             
@@ -387,16 +390,13 @@
 
       
         <div id="content">
-<p>
-test
-</p>
 
-<div id="outline-container-org11dfabd" class="outline-2">
-<h2 id="org11dfabd"><span class="section-number-2">1</span> Preface</h2>
+<div id="outline-container-org275d94a" class="outline-2">
+<h2 id="org275d94a"><span class="section-number-2">1</span> Preface</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org4fc8e40" class="outline-3">
-<h3 id="org4fc8e40"><span class="section-number-3">1.1</span> What kinds of problem have you met during software development?</h3>
+<div id="outline-container-org563b4d7" class="outline-3">
+<h3 id="org563b4d7"><span class="section-number-3">1.1</span> What kinds of problem have you met during software development?</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Code is not easy to read and understand
@@ -438,8 +438,8 @@ Some are caused by ourselves, some are caused by others. But we need clean code.
 </ul>
 </div>
 </div>
-<div id="outline-container-org5db0e0f" class="outline-3">
-<h3 id="org5db0e0f"><span class="section-number-3">1.2</span> Ideal software</h3>
+<div id="outline-container-org9073f3a" class="outline-3">
+<h3 id="org9073f3a"><span class="section-number-3">1.2</span> Ideal software</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 According to lifecycle of software development:
@@ -453,21 +453,23 @@ According to lifecycle of software development:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgda55850" class="outline-3">
-<h3 id="orgda55850"><span class="section-number-3">1.3</span> Why we want software maintainable?</h3>
+<div id="outline-container-org311abf8" class="outline-3">
+<h3 id="org311abf8"><span class="section-number-3">1.3</span> Why we want software maintainable?</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>Sometimes, we need to fix bugs</li>
 <li>Sometimes, we need to extend it</li>
 <li>Easy to Read( Understand ) VS Easy to Write</li>
 </ul>
+
 <a id="more"></a>
+
 <p>
 It costs us much more time to read than to write code, in the lifecycle. According to 80/20 rule:
 </p>
 
 
-<div id="org09769ff" class="figure">
+<div id="org4b347cd" class="figure">
 <p><img src="read-wirte.png" width="400px">
 </p>
 <p><span class="figure-number">Figure 1: </span>Read Vs Wright</p>
@@ -475,8 +477,8 @@ It costs us much more time to read than to write code, in the lifecycle. Accordi
 </div>
 </div>
 </div>
-<div id="outline-container-org9b56e20" class="outline-2">
-<h2 id="org9b56e20"><span class="section-number-2">2</span> What&apos;s maintainable software?</h2>
+<div id="outline-container-org106574a" class="outline-2">
+<h2 id="org106574a"><span class="section-number-2">2</span> What&apos;s maintainable software?</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 My understanding:
@@ -531,54 +533,54 @@ All in all, what we need are:
 </div>
 </div>
 
-<div id="outline-container-org38e2b4b" class="outline-2">
-<h2 id="org38e2b4b"><span class="section-number-2">3</span> How do we write maintainable software?</h2>
+<div id="outline-container-orgb7fc6a6" class="outline-2">
+<h2 id="orgb7fc6a6"><span class="section-number-2">3</span> How do we write maintainable software?</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgd1307b7" class="outline-3">
-<h3 id="orgd1307b7"><span class="section-number-3">3.1</span> Cornerstones to write maintainable software</h3>
+<div id="outline-container-org95040a7" class="outline-3">
+<h3 id="org95040a7"><span class="section-number-3">3.1</span> Cornerstones to write maintainable software</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Three cornerstones of maintainable software:
 </p>
 
-<div id="orgbf1a5a6" class="figure">
+<div id="org77359e8" class="figure">
 <p><img src="cornerstones_of_maintainable_software.png">
 </p>
 <p><span class="figure-number">Figure 2: </span>Cornerstones of maintainable software</p>
 </div>
 </div>
-<div id="outline-container-orgad1d149" class="outline-4">
-<h4 id="orgad1d149"><span class="section-number-4">3.1.1</span> TDD</h4>
+<div id="outline-container-org55651af" class="outline-4">
+<h4 id="org55651af"><span class="section-number-4">3.1.1</span> TDD</h4>
 <div class="outline-text-4" id="text-3-1-1">
 
-<div id="org423b95d" class="figure">
+<div id="org41c99a3" class="figure">
 <p><img src="inner-and-outer-feedback-loops-in-tdd.png">
 </p>
 <p><span class="figure-number">Figure 3: </span>Inner and outer feedback loops in TDD</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org80b8b11" class="outline-4">
-<h4 id="org80b8b11"><span class="section-number-4">3.1.2</span> OO</h4>
+<div id="outline-container-org72bcaeb" class="outline-4">
+<h4 id="org72bcaeb"><span class="section-number-4">3.1.2</span> OO</h4>
 <div class="outline-text-4" id="text-3-1-2">
 
-<div id="org926b818" class="figure">
+<div id="org59e0fb4" class="figure">
 <p><img src="a-web-of-objects.png">
 </p>
 <p><span class="figure-number">Figure 4: </span>A web of objects</p>
 </div>
 
 
-<div id="org87274e2" class="figure">
+<div id="orgeaf6b51" class="figure">
 <p><img src="testing-an-object-with-mock-objects.png">
 </p>
 <p><span class="figure-number">Figure 5: </span>Testing an object with mock objects</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org241f604" class="outline-4">
-<h4 id="org241f604"><span class="section-number-4">3.1.3</span> Design Patterns</h4>
+<div id="outline-container-org8f0e515" class="outline-4">
+<h4 id="org8f0e515"><span class="section-number-4">3.1.3</span> Design Patterns</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <p>
 In software engineering, a <b>software design pattern</b> is a general reusable solution to a commonly occurring problem within a given context in software design.
@@ -587,10 +589,10 @@ In software engineering, a <b>software design pattern</b> is a general reusable 
 </div>
 </div>
 
-<div id="outline-container-orgfc98601" class="outline-3">
-<h3 id="orgfc98601"><span class="section-number-3">3.2</span> Benefit of <b>TDD</b>, <b>OO</b> and <b>Design Patterns</b></h3>
+<div id="outline-container-org6c3a4b4" class="outline-3">
+<h3 id="org6c3a4b4"><span class="section-number-3">3.2</span> Benefit of <b>TDD</b>, <b>OO</b> and <b>Design Patterns</b></h3>
 <div class="outline-text-3" id="text-3-2">
-<table id="orgc93b056" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org53d7e85" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Benefit of the cornerstones</caption>
 
 <colgroup>
@@ -643,8 +645,8 @@ In software engineering, a <b>software design pattern</b> is a general reusable 
 </table>
 </div>
 </div>
-<div id="outline-container-orgc78a6f7" class="outline-3">
-<h3 id="orgc78a6f7"><span class="section-number-3">3.3</span> Put them together</h3>
+<div id="outline-container-orga35abd9" class="outline-3">
+<h3 id="orga35abd9"><span class="section-number-3">3.3</span> Put them together</h3>
 <div class="outline-text-3" id="text-3-3">
 <ol class="org-ol">
 <li>Use TDD(core of agile practice) to <b>find</b> the issues</li>
@@ -654,113 +656,37 @@ In software engineering, a <b>software design pattern</b> is a general reusable 
 </div>
 </div>
 </div>
-<div id="outline-container-org668099b" class="outline-2">
-<h2 id="org668099b"><span class="section-number-2">4</span> Example</h2>
+<div id="outline-container-orgcc02a6c" class="outline-2">
+<h2 id="orgcc02a6c"><span class="section-number-2">4</span> Example</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Simple CQRS</li>
 </ul>
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
-|                                                      |
-|                      UI                              |
-+------------------------------------------------------+
-        |                                |       ^
-        |                                |       |
-        v                                v       |
-+--------------------+            +--------------------+
-|      cGRE          |            |      cGRE          |
-|  Command Handler   |            |   Query Handler    |
-+--------------------+            +----------+---------+
-        |                                    |   
-        |                                    |   
-        |     +------------------------+     |   
-        |     |                        |     |   
-        +----&gt;|                        |&lt;----+   
-              |       Database         |         
-              |                    {s} |         
-              +------------------------+</span><br></pre></td></tr></table></figure>
+
+<div id="org969023a" class="figure">
+<p><img src="simple-cqrs.png">
+</p>
+<p><span class="figure-number">Figure 6: </span>Sinple CQRS</p>
 </div>
 
 <ul class="org-ul">
 <li>CQRS with BUS</li>
 </ul>
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
-|                                                      |
-|                      UI                              |
-+------------------------------------------------------+
-        |                                |       ^                    
-        |                                |       |
-        |                                |       |
-        v                                v       |
-+--------------------+            +--------------------+
-|      cBLU          |            |    cBLU            |
-|   Command BUS      |            |   Query BUS        |
-+--------------------+            +--------------------+
-        |                                |       ^
-        |                                |       |
-        |                                |       |
-        v                                v       |
-+--------------------+            +--------------------+
-|      cGRE          |            |      cGRE          |
-|  Command Handler   |            |   Query Handler    |
-+--------------------+            +--------------------+
-        |                                    ^
-        |                                    |
-        |     +------------------------+     |
-        |     |                        |     |
-        +----&gt;|                        |&lt;----+   
-              |       Database         |         
-              |                    {s} |         
-              +------------------------+</span><br></pre></td></tr></table></figure>
+
+<div id="orga8f7945" class="figure">
+<p><img src="csrs-with-bus.png">
+</p>
+<p><span class="figure-number">Figure 7: </span>CQRS with BUS</p>
 </div>
 
 <ul class="org-ul">
 <li>CQRS with BUS and Event Source</li>
 </ul>
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
-|                                                      |
-|                      UI                              |
-+------------------------------------------------------+
-        |                                |       ^
-        |                                |       |
-        |                                |       |
-        v                                v       |
-+--------------------+            +--------------------+
-|     cBLU           |            |       cBLU         |
-|   Command BUS      |&lt;--+        |    Query BUS       |
-+--------------------+   |        +--------------------+
-        |                |               |       ^
-        |                |               |       |
-        |                |               |       |
-        v                |               v       |
-+--------------------+   |        +--------------------+
-|      cGRE          |   |        |      cGRE          |
-|  Command Handler   |   |        |   Query Handler    |
-+--------------------+   |        +--------------------+
-        |                |                   ^
-        |                |                   |
-        v                |                   |
-+--------------------+   |                   |
-|     cBLU           |   |                   |
-|   Event BUS        |   |                   |
-+--------------------+   |                   |
-        |                |                   |
-        |                |                   |
-        v                |                   |
-+--------------------+   |                   |
-|      cGRE          |   |                   |
-|   Event Handler    +---+                   |
-+--------------------+                       |
-        |                                    |
-        |     +------------------------+     |
-        |     |                        |     |
-        +----&gt;|                        |&lt;----+   
-              |       Database         |         
-              |                    {s} |         
-              +------------------------+</span><br></pre></td></tr></table></figure>
+
+<div id="org0470d09" class="figure">
+<p><img src="cqrs-with-bus-and-event-source.png">
+</p>
+<p><span class="figure-number">Figure 8: </span>CQRS with BUS and Event Source</p>
 </div>
 </div>
 </div>
@@ -954,7 +880,7 @@ In software engineering, a <b>software design pattern</b> is a general reusable 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org11dfabd"><span class="nav-number">1.</span> <span class="nav-text">1 Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org4fc8e40"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 What kinds of problem have you met during software development?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org5db0e0f"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Ideal software</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgda55850"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Why we want software maintainable?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org9b56e20"><span class="nav-number">2.</span> <span class="nav-text">2 What's maintainable software?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org38e2b4b"><span class="nav-number">3.</span> <span class="nav-text">3 How do we write maintainable software?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgd1307b7"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Cornerstones to write maintainable software</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orgad1d149"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 TDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org80b8b11"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 OO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org241f604"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 Design Patterns</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgfc98601"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Benefit of TDD, OO and Design Patterns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgc78a6f7"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Put them together</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org668099b"><span class="nav-number">4.</span> <span class="nav-text">4 Example</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org275d94a"><span class="nav-number">1.</span> <span class="nav-text">1 Preface</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org563b4d7"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 What kinds of problem have you met during software development?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org9073f3a"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Ideal software</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org311abf8"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Why we want software maintainable?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org106574a"><span class="nav-number">2.</span> <span class="nav-text">2 What's maintainable software?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgb7fc6a6"><span class="nav-number">3.</span> <span class="nav-text">3 How do we write maintainable software?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org95040a7"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Cornerstones to write maintainable software</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org55651af"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 TDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org72bcaeb"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 OO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org8f0e515"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 Design Patterns</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org6c3a4b4"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Benefit of TDD, OO and Design Patterns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orga35abd9"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Put them together</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgcc02a6c"><span class="nav-number">4.</span> <span class="nav-text">4 Example</span></a></li></ol></div>
             
 
           </div>
