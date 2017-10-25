@@ -809,7 +809,7 @@ We need <b>Continious Improvement</b>.
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-10-25T03:35:09+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2017-10-25T09:45:59+08:00">
                 2017-10-25
               </time>
             
@@ -863,14 +863,13 @@ We need <b>Continious Improvement</b>.
 
       
         
-          
-            <div id="content">
+          <div id="content">
 
-<div id="outline-container-org387a954" class="outline-2">
-<h2 id="org387a954"><span class="section-number-2">1</span> Preface</h2>
+<div id="outline-container-org2425442" class="outline-2">
+<h2 id="org2425442"><span class="section-number-2">1</span> Preface</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org12d2172" class="outline-3">
-<h3 id="org12d2172"><span class="section-number-3">1.1</span> What kinds of problem have you met during software development?</h3>
+</div><div id="outline-container-orgf76e841" class="outline-3">
+<h3 id="orgf76e841"><span class="section-number-3">1.1</span> What kinds of problem have you met during software development?</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Code is not easy to read and understand
@@ -912,8 +911,8 @@ Some are caused by ourselves, some are caused by others. But we need clean code.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdc4c49e" class="outline-3">
-<h3 id="orgdc4c49e"><span class="section-number-3">1.2</span> Ideal software</h3>
+<div id="outline-container-org9ee825e" class="outline-3">
+<h3 id="org9ee825e"><span class="section-number-3">1.2</span> Ideal software</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 According to lifecycle of software development:
@@ -927,321 +926,21 @@ According to lifecycle of software development:
 </ul>
 </div>
 </div>
-<div id="outline-container-org0883c7d" class="outline-3">
-<h3 id="org0883c7d"><span class="section-number-3">1.3</span> Why we want software maintainable?</h3>
+<div id="outline-container-orgbe20a38" class="outline-3">
+<h3 id="orgbe20a38"><span class="section-number-3">1.3</span> Why we want software maintainable?</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>Sometimes, we need to fix bugs</li>
 <li>Sometimes, we need to extend it</li>
-<li><p>
-Easy to Read( Understand ) VS Easy to Write
-</p>
-
-<p>
-It costs us much more time to read than to write code, in the lifecycle. According to 80/20 rule:
-</p></li>
+<li>Easy to Read( Understand ) VS Easy to Write</li>
 </ul>
-
-
-<div id="org320a383" class="figure">
-<p><img src="read-wirte.png" width="400px">
-</p>
-<p><span class="figure-number">Figure 1: </span>Read Vs Wright</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org43cf46d" class="outline-2">
-<h2 id="org43cf46d"><span class="section-number-2">2</span> What&apos;s maintainable software?</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-My understanding:
-</p>
-<ul class="org-ul">
-<li>EASY to understand</li>
-<li>EASY to change</li>
-</ul>
-
-<p>
-Features of mainainalbe software:
-</p>
-<ul class="org-ul">
-<li>System has all the features required.</li>
-<li>System has good <b>System Metaphor</b>.</li>
-<li>System has good design.</li>
-<li>Few bugs</li>
-<li>Bugs are easy to get and fix</li>
-<li>System is easy to understand and change</li>
-</ul>
-
-<p>
-But we human being has limitations:
-</p>
-<ul class="org-ul">
-<li>Human being are not good at dealing with complicated things, but software are always complicated.</li>
-<li>Gap bewteen team members.</li>
-</ul>
-
-<p>
-So we need <b>Continious Improvement</b>:
-</p>
-<ul class="org-ul">
-<li>Incremental development</li>
-<li>Feedbacks
-<ul class="org-ul">
-<li>Positive feedback</li>
-<li>Negetive feedback</li>
-</ul></li>
-</ul>
-
-<p>
-All in all, what we need are:
-</p>
-<ul class="org-ul">
-<li>System has all the features required(Requirement)</li>
-<li>Good design</li>
-<li>Testable</li>
-<li>Incremental development</li>
-<li>Feedbacks</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org53a4801" class="outline-2">
-<h2 id="org53a4801"><span class="section-number-2">3</span> How do we write maintainable software?</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgb680dce" class="outline-3">
-<h3 id="orgb680dce"><span class="section-number-3">3.1</span> Cornerstones to write maintainable software</h3>
-<div class="outline-text-3" id="text-3-1">
-<p>
-Three cornerstones of maintainable software:
-</p>
-
-<div id="orgb2401ec" class="figure">
-<p><img src="cornerstones_of_maintainable_software.png">
-</p>
-<p><span class="figure-number">Figure 2: </span>Cornerstones of maintainable software</p>
-</div>
-</div>
-<div id="outline-container-org516587e" class="outline-4">
-<h4 id="org516587e"><span class="section-number-4">3.1.1</span> TDD</h4>
-<div class="outline-text-4" id="text-3-1-1">
-
-<div id="orga0a6cb7" class="figure">
-<p><img src="inner-and-outer-feedback-loops-in-tdd.png">
-</p>
-<p><span class="figure-number">Figure 3: </span>Inner and outer feedback loops in TDD</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orge19c64e" class="outline-4">
-<h4 id="orge19c64e"><span class="section-number-4">3.1.2</span> OO</h4>
-<div class="outline-text-4" id="text-3-1-2">
-
-<div id="org8192594" class="figure">
-<p><img src="a-web-of-objects.png">
-</p>
-<p><span class="figure-number">Figure 4: </span>A web of objects</p>
-</div>
-
-
-<div id="org167dcd4" class="figure">
-<p><img src="testing-an-object-with-mock-objects.png">
-</p>
-<p><span class="figure-number">Figure 5: </span>Testing an object with mock objects</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org4faa63f" class="outline-4">
-<h4 id="org4faa63f"><span class="section-number-4">3.1.3</span> Design Patterns</h4>
-<div class="outline-text-4" id="text-3-1-3">
-<p>
-In software engineering, a <b>software design pattern</b> is a general reusable solution to a commonly occurring problem within a given context in software design.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb4fe13c" class="outline-3">
-<h3 id="orgb4fe13c"><span class="section-number-3">3.2</span> Benefit of <b>TDD</b>, <b>OO</b> and <b>Design Patterns</b></h3>
-<div class="outline-text-3" id="text-3-2">
-<table id="orga01f3f0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption class="t-above"><span class="table-number">Table 1:</span> Benefit of the cornerstones</caption>
-
-<colgroup>
-<col class="org-left">
-
-<col class="org-left">
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Method</th>
-<th scope="col" class="org-left">Benefit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">TDD/ATDD</td>
-<td class="org-left">Requirement</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xA0;</td>
-<td class="org-left">Incremental Development</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xA0;</td>
-<td class="org-left">Feedbacks</td>
-</tr>
-
-<tr>
-<td class="org-left">OOA/OOD/OOP</td>
-<td class="org-left">Good design</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xA0;</td>
-<td class="org-left">Testable</td>
-</tr>
-
-<tr>
-<td class="org-left">Desgin Pattern</td>
-<td class="org-left">Good design</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xA0;</td>
-<td class="org-left">Testable</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-org2afd0dc" class="outline-3">
-<h3 id="org2afd0dc"><span class="section-number-3">3.3</span> Put them together</h3>
-<div class="outline-text-3" id="text-3-3">
-<ol class="org-ol">
-<li>Use TDD(core of agile practice) to <b>find</b> the issues</li>
-<li>Use OOP to <b>dignose</b> the issues</li>
-<li>Use Design Patterns to <b>solve</b> the issues</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="outline-container-orgf3dc00e" class="outline-2">
-<h2 id="orgf3dc00e"><span class="section-number-2">4</span> Example</h2>
-<div class="outline-text-2" id="text-4">
-<ul class="org-ul">
-<li>Simple CQRS</li>
-</ul>
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
-|                                                      |
-|                      UI                              |
-+------------------------------------------------------+
-	|                                |       ^
-	|                                |       |
-	v                                v       |
-+--------------------+            +--------------------+
-|      cGRE          |            |      cGRE          |
-|  Command Handler   |            |   Query Handler    |
-+--------------------+            +----------+---------+
-	|                                    |   
-	|                                    |   
-	|     +------------------------+     |   
-	|     |                        |     |   
-	+----&gt;|                        |&lt;----+   
-	      |       Database         |         
-	      |                    {s} |         
-	      +------------------------+</span><br></pre></td></tr></table></figure>
-</div>
-
-<ul class="org-ul">
-<li>CQRS with BUS</li>
-</ul>
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
-|                                                      |
-|                      UI                              |
-+------------------------------------------------------+
-	|                                |       ^                    
-	|                                |       |
-	|                                |       |
-	v                                v       |
-+--------------------+            +--------------------+
-|      cBLU          |            |    cBLU            |
-|   Command BUS      |            |   Query BUS        |
-+--------------------+            +--------------------+
-	|                                |       ^
-	|                                |       |
-	|                                |       |
-	v                                v       |
-+--------------------+            +--------------------+
-|      cGRE          |            |      cGRE          |
-|  Command Handler   |            |   Query Handler    |
-+--------------------+            +--------------------+
-	|                                    ^
-	|                                    |
-	|     +------------------------+     |
-	|     |                        |     |
-	+----&gt;|                        |&lt;----+   
-	      |       Database         |         
-	      |                    {s} |         
-	      +------------------------+</span><br></pre></td></tr></table></figure>
-</div>
-
-<ul class="org-ul">
-<li>CQRS with BUS and Event Source</li>
-</ul>
-<div class="org-src-container">
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">+------------------------------------------------------+
-|                                                      |
-|                      UI                              |
-+------------------------------------------------------+
-	|                                |       ^
-	|                                |       |
-	|                                |       |
-	v                                v       |
-+--------------------+            +--------------------+
-|     cBLU           |            |       cBLU         |
-|   Command BUS      |&lt;--+        |    Query BUS       |
-+--------------------+   |        +--------------------+
-	|                |               |       ^
-	|                |               |       |
-	|                |               |       |
-	v                |               v       |
-+--------------------+   |        +--------------------+
-|      cGRE          |   |        |      cGRE          |
-|  Command Handler   |   |        |   Query Handler    |
-+--------------------+   |        +--------------------+
-	|                |                   ^
-	|                |                   |
-	v                |                   |
-+--------------------+   |                   |
-|     cBLU           |   |                   |
-|   Event BUS        |   |                   |
-+--------------------+   |                   |
-	|                |                   |
-	|                |                   |
-	v                |                   |
-+--------------------+   |                   |
-|      cGRE          |   |                   |
-|   Event Handler    +---+                   |
-+--------------------+                       |
-	|                                    |
-	|     +------------------------+     |
-	|     |                        |     |
-	+----&gt;|                        |&lt;----+   
-	      |       Database         |         
-	      |                    {s} |         
-	      +------------------------+</span><br></pre></td></tr></table></figure>
-</div>
-</div>
-</div>
-</div>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/03/write-maintainale-software/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
