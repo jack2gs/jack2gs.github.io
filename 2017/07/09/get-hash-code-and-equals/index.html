@@ -93,20 +93,17 @@
 
 
 
-<meta name="description" content="1 &amp;#x80CC;&amp;#x666F;   Dictionary&amp;#x548C;HashTable&amp;#x662F;.NET&amp;#x4E2D;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x4F46;&amp;#x662F;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;">
+<meta name="description" content="Jack Gao&apos;s Blog">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GetHashCode and Equals">
 <meta property="og:url" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="1 &amp;#x80CC;&amp;#x666F;   Dictionary&amp;#x548C;HashTable&amp;#x662F;.NET&amp;#x4E2D;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x4F46;&amp;#x662F;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;">
-<meta property="og:image" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/hash-search-store.png">
-<meta property="og:image" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/hash-search-search.png">
+<meta property="og:description" content="Jack Gao&apos;s Blog">
 <meta property="og:updated_time" content="2017-07-30T09:07:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GetHashCode and Equals">
-<meta name="twitter:description" content="1 &amp;#x80CC;&amp;#x666F;   Dictionary&amp;#x548C;HashTable&amp;#x662F;.NET&amp;#x4E2D;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x4F46;&amp;#x662F;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;">
-<meta name="twitter:image" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/hash-search-store.png">
+<meta name="twitter:description" content="Jack Gao&apos;s Blog">
 
 
 
@@ -378,65 +375,7 @@
       
 
       
-        <div id="content">
-
-<div id="outline-container-org07c9d53" class="outline-2">
-<h2 id="org07c9d53"><span class="section-number-2">1</span> &#x80CC;&#x666F;</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E4B;&#x524D;&#x5BF9;&#x5176;&#x539F;&#x7406;&#x4E0D;&#x662F;&#x592A;&#x6E05;&#x695A;&#xFF0C;&#x672C;&#x6587;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x5176;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A; <code>Object.GetHashCode</code> &#x548C; <code>Object.Equals</code> &#x7684;&#x4F5C;&#x7528;&#x3002;
-</p>
-
-<a id="more"></a>
-</div>
-</div>
-
-<div id="outline-container-orgb902ace" class="outline-2">
-<h2 id="orgb902ace"><span class="section-number-2">2</span> &#x54C8;&#x5E0C;&#x67E5;&#x627E;</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-&#x54C8;&#x5E0C;&#x67E5;&#x627E;&#x662F;Dictionary&#x548C;HashTable&#x7684;&#x57FA;&#x7840;&#x3002;&#x5EFA;&#x8BAE;&#x9996;&#x5148;&#x770B;&#x4E0B;&#x54C8;&#x5E0C;&#x67E5;&#x627E;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x3002;&#x54C8;&#x5E0C;&#x67E5;&#x627E;&#x7B97;&#x6CD5;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF1A;1.&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7B97;&#x6CD5;&#xFF1B;2.&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x7B97;&#x6CD5;&#x3002;&#x8FD9;&#x91CC;&#x4EE5;.NET&#x7684;&#x5B9E;&#x73B0;&#x4E3A;&#x4F8B;&#x7B80;&#x8981;&#x5206;&#x6790;&#x4E0B;&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;&#x3002;
-</p>
-</div>
-
-<div id="outline-container-org89b0986" class="outline-3">
-<h3 id="org89b0986"><span class="section-number-3">2.1</span> &#x6570;&#x636E;&#x5B58;&#x50A8;&#x7B97;&#x6CD5;</h3>
-<div class="outline-text-3" id="text-2-1">
-
-<div id="orgc999811" class="figure">
-<p><img src="hash-search-store.png">
-</p>
-<p><span class="figure-number">Figure 1: </span>&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7B97;&#x6CD5;</p>
-</div>
-
-<p>
-&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x53D1;&#x751F;&#x51B2;&#x7A81;&#x7684;&#x65F6;&#x5019;Object.Equals&#x65B9;&#x6CD5;&#x624D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;
-</p>
-</div>
-</div>
-
-<div id="outline-container-org137df55" class="outline-3">
-<h3 id="org137df55"><span class="section-number-3">2.2</span> &#x6570;&#x636E;&#x8BFB;&#x53D6;&#x7B97;&#x6CD5;</h3>
-<div class="outline-text-3" id="text-2-2">
-
-<div id="org26ebe78" class="figure">
-<p><img src="hash-search-search.png">
-</p>
-<p><span class="figure-number">Figure 2: </span>&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x7B97;&#x6CD5;</p>
-</div>
-
-<p>
-&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5728;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x65E0;&#x8BBA;&#x53D1;&#x751F;&#x51B2;&#x7A81;&#x4E0E;&#x5426;Object.Equals&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;
-</p>
-
-<p>
-&#x53E6;&#x5916;&#xFF0C;MSDN&#x4E2D;&#x6709;&#x63D0;&#x5230;&#xFF0C;&#x5F53;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x76F8;&#x540C;&#x65F6;&#x5176;Hash&#x503C;&#x80AF;&#x5B9A;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;Hash&#x503C;&#x76F8;&#x540C;&#x65F6;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x672A;&#x5FC5;&#x76F8;&#x540C;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B58;&#x53D6;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x91CD;&#x8F7D;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x6700;&#x597D;&#x4E00;&#x8D77;&#x91CD;&#x8F7D;&#x3002;
-</p>
-</div>
-</div>
-</div>
-</div>
-
+        
       
     </div>
 
@@ -537,17 +476,8 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -609,22 +539,6 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org07c9d53"><span class="nav-number">1.</span> <span class="nav-text">1 背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgb902ace"><span class="nav-number">2.</span> <span class="nav-text">2 哈希查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org89b0986"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 数据存储算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org137df55"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 数据读取算法</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
