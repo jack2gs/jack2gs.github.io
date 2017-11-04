@@ -93,17 +93,23 @@
 
 
 
-<meta name="description" content="Jack Gao&apos;s Blog">
+<meta name="description" content="&amp;#x524D;&amp;#x4E0D;&amp;#x4E45;&amp;#x516C;&amp;#x53F8;&amp;#x7EC4;&amp;#x7EC7;&amp;#x4E86;C#&amp;#x5B66;&amp;#x4E60;&amp;#x5C0F;&amp;#x7EC4;&amp;#xFF0C;&amp;#x671F;&amp;#x95F4;&amp;#x6211;&amp;#x505A;&amp;#x4E86;&amp;#x4E24;&amp;#x6B21;&amp;#x5206;&amp;#x4EAB;&amp;#x3002;&amp;#x73B0;&amp;#x6">
 <meta name="keywords" content="CSharp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#编程基础2">
 <meta property="og:url" content="jack2gs.github.io/2017/07/29/core-csharp-programming-constructs-2/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="Jack Gao&apos;s Blog">
+<meta property="og:description" content="&amp;#x524D;&amp;#x4E0D;&amp;#x4E45;&amp;#x516C;&amp;#x53F8;&amp;#x7EC4;&amp;#x7EC7;&amp;#x4E86;C#&amp;#x5B66;&amp;#x4E60;&amp;#x5C0F;&amp;#x7EC4;&amp;#xFF0C;&amp;#x671F;&amp;#x95F4;&amp;#x6211;&amp;#x505A;&amp;#x4E86;&amp;#x4E24;&amp;#x6B21;&amp;#x5206;&amp;#x4EAB;&amp;#x3002;&amp;#x73B0;&amp;#x6">
+<meta property="og:image" content="jack2gs.github.io/2017/07/29/core-csharp-programming-constructs-2/the-class-hierarchy-of-system-types.png">
+<meta property="og:image" content="jack2gs.github.io/2017/07/29/core-csharp-programming-constructs-2/passing-value-types-by-value.png">
+<meta property="og:image" content="jack2gs.github.io/2017/07/29/core-csharp-programming-constructs-2/passing-value-types-by-reference.png">
+<meta property="og:image" content="jack2gs.github.io/2017/07/29/core-csharp-programming-constructs-2/passing-reference-types-by-value.png">
+<meta property="og:image" content="jack2gs.github.io/2017/07/29/core-csharp-programming-constructs-2/passing-reference-types-by-reference.png">
 <meta property="og:updated_time" content="2017-07-30T10:07:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#编程基础2">
-<meta name="twitter:description" content="Jack Gao&apos;s Blog">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x4E0D;&amp;#x4E45;&amp;#x516C;&amp;#x53F8;&amp;#x7EC4;&amp;#x7EC7;&amp;#x4E86;C#&amp;#x5B66;&amp;#x4E60;&amp;#x5C0F;&amp;#x7EC4;&amp;#xFF0C;&amp;#x671F;&amp;#x95F4;&amp;#x6211;&amp;#x505A;&amp;#x4E86;&amp;#x4E24;&amp;#x6B21;&amp;#x5206;&amp;#x4EAB;&amp;#x3002;&amp;#x73B0;&amp;#x6">
+<meta name="twitter:image" content="jack2gs.github.io/2017/07/29/core-csharp-programming-constructs-2/the-class-hierarchy-of-system-types.png">
 
 
 
@@ -375,7 +381,701 @@
       
 
       
-        
+        <div id="content">
+<p>
+&#x524D;&#x4E0D;&#x4E45;&#x516C;&#x53F8;&#x7EC4;&#x7EC7;&#x4E86;C#&#x5B66;&#x4E60;&#x5C0F;&#x7EC4;&#xFF0C;&#x671F;&#x95F4;&#x6211;&#x505A;&#x4E86;&#x4E24;&#x6B21;&#x5206;&#x4EAB;&#x3002;&#x73B0;&#x628A;&#x5185;&#x5BB9;&#x6574;&#x7406;&#x4E0B;&#x5206;&#x4EAB;&#x7ED9;&#x5927;&#x5BB6;&#x3002;
+&#x8FD9;&#x6B21;&#x5206;&#x4EAB;&#x7684;&#x5185;&#x5BB9;&#x4E3B;&#x8981;&#x662F;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x6027;&#x77E5;&#x8BC6;&#xFF0C;&#x5982;&#x65B9;&#x6CD5;&#xFF0C;&#x679A;&#x4E3E;&#xFF0C;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x6570;&#x7EC4;&#xFF0C;&#x503C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x533A;&#x522B;&#x4E0E;&#x8054;&#x7CFB;&#xFF0C;&#x53EF;&#x7A7A;&#x7C7B;&#x578B;&#x7B49;&#x3002;
+&#x867D;&#x7136;&#x57FA;&#x7840;&#x4F46;&#x662F;&#x518D;&#x6B21;&#x7CFB;&#x7EDF;&#x5730;&#x5B66;&#x4E60;&#x4E0B;&#x4E5F;&#x662F;&#x86EE;&#x597D;&#x7684;&#xFF0C;&#x6E29;&#x6545;&#x800C;&#x77E5;&#x65B0;&#x561B;&#x3002;
+</p>
+
+<a id="more"></a>
+
+<div id="outline-container-org4e7b814" class="outline-2">
+<h2 id="org4e7b814"><span class="section-number-2">1</span> &#x65B9;&#x6CD5;&#x548C;&#x53C2;&#x6570;&#x4FEE;&#x9970;&#x7B26;</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgece164e" class="outline-3">
+<h3 id="orgece164e"><span class="section-number-3">1.1</span> &#x53C2;&#x6570;&#x4FEE;&#x9970;&#x7B26;</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+&#x5728;C#&#x7684;&#x4E16;&#x754C;&#x4E2D;&#xFF0C;&#x5E38;&#x7528;&#x7684;&#x53C2;&#x6570;&#x4FEE;&#x9970;&#x7B26;&#x6709;&#x4E09;&#x4E2A; <code>out</code>, <code>ref</code>, <code>params</code> &#x3002;
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> &#x53C2;&#x6570;&#x4FEE;&#x9970;&#x7B26;</caption>
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xA0;</th>
+<th scope="col" class="org-left">&#x7528;&#x9014;</th>
+<th scope="col" class="org-left">&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">out</td>
+<td class="org-left">&#x5C06;&#x6570;&#x636E;&#x4ECE;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#x4EE5;&#x53C2;&#x6570;&#x7684;&#x5F62;&#x5F0F;&#x4F20;&#x9012;&#x51FA;&#x6765;</td>
+<td class="org-left">&#x6807;&#x8BB0;&#x4E3A;out&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#x5FC5;&#x987B;&#x4E3A;&#x5176;&#x8D4B;&#x503C;</td>
+</tr>
+
+<tr>
+<td class="org-left">ref</td>
+<td class="org-left">&#x4F7F;&#x5F97;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x51FD;&#x6570;&#x4F5C;&#x7528;&#x57DF;&#x5916;&#x7684;&#x53D8;&#x91CF;</td>
+<td class="org-left">&#x4E0E;out&#x76F8;&#x6BD4;&#xFF0C;&#x8D4B;&#x503C;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;</td>
+</tr>
+
+<tr>
+<td class="org-left">params</td>
+<td class="org-left">&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4EFB;&#x610F;&#x4E2A;&#x6570;&#x7684;&#x53C2;&#x6570;</td>
+<td class="org-left">&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x6807;&#x8BB0;&#x4E3A;params&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5FC5;&#x987B;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<p>
+&#x4F8B;&#x5B50;&#xFF1A;
+</p>
+<ul class="org-ul">
+<li>out</li>
+</ul>
+<p>
+&#x4E24;&#x6570;&#x76F8;&#x52A0;&#xFF0C;&#x5E76;&#x4EE5;&#x53C2;&#x6570;&#x5F62;&#x5F0F;&#x5C06;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sum</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">out</span> <span class="keyword">int</span> c</span>)</span><br><span class="line"></span>{</span><br><span class="line">    c=a+b;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<ul class="org-ul">
+<li>ref</li>
+</ul>
+<p>
+&#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x6574;&#x6570;&#x7684;&#x503C;:
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Swap</span>(<span class="params"><span class="keyword">ref</span> <span class="keyword">int</span> a, <span class="keyword">ref</span> <span class="keyword">int</span> b</span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">int</span> c=a^b;</span><br><span class="line">    a^=c;</span><br><span class="line">    b^=c;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+<b>&#x6CE8;&#x610F;&#xFF1A;</b> &#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x6574;&#x6570;&#x6570;&#x503C;&#x6709;&#x591A;&#x79CD;&#x7B97;&#x6CD5;&#xFF0C;&#x8FD9;&#x91CC;&#x5229;&#x7528;&#x4E86; \(a \oplus a = 0\) &#x7684;&#x7279;&#x6027;&#x3002;
+</p>
+
+<ul class="org-ul">
+<li>params</li>
+</ul>
+<p>
+&#x8BA1;&#x7B97;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x6574;&#x6570;&#x7684;&#x548C;:
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Sum</span>(<span class="params"><span class="keyword">params</span> <span class="keyword">int</span>[] values</span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">return</span> values.Sum(e=&gt;e);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org48a9780" class="outline-3">
+<h3 id="org48a9780"><span class="section-number-3">1.2</span> &#x53EF;&#x9009;&#x53C2;&#x6570;</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+&#x53EF;&#x9009;&#x53C2;&#x6570;&#x4E0E;C++&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x4E0E;&#x4E4B;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;C#&#x65E0;&#x4E25;&#x683C;&#x7684;&#x5B9A;&#x4E49;&#x548C;&#x58F0;&#x660E;&#x4E4B;&#x5206;&#x3002;C++&#x662F;&#x5728;&#x58F0;&#x660E;&#x7684;&#x65F6;&#x5019;&#x6307;&#x5B9A;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x503C;&#xFF0C;&#x800C;C#&#x662F;&#x5728;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x3002;
+&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x662F;&#x53EF;&#x6709;&#x53EF;&#x65E0;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5728;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x4F20;&#x9012;&#x3002;
+</p>
+
+<p>
+&#x53EF;&#x9009;&#x53C2;&#x6570;&#x7684;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a=<span class="number">5</span>, <span class="keyword">int</span> b=<span class="number">5</span></span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8C03;&#x7528;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#x4E0D;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x4E0E;Add(5,5)&#x7B49;&#x6548;</span></span><br><span class="line">Add();</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x53EA;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E0E;Add(x,5);&#x7B49;&#x6548;</span></span><br><span class="line">Add(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x4F20;&#x9012;&#x4E24;&#x4E2A;&#x53C2;&#x6570;</span></span><br><span class="line">Add(<span class="number">10</span>,<span class="number">20</span>); <span class="comment">// &#x8BA1;&#x7B97;10+20&#x7684;&#x548C;</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x53EA;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x672B;&#x5C3E;&#x90E8;&#x5206;&#xFF0C;&#x4EE5;&#x4E0B;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x7684;&#x5B9A;&#x4E49;&#x662F;&#x8FDD;&#x6CD5;&#x7684;:
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#x975E;&#x6CD5;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a=<span class="number">10</span>, <span class="keyword">int</span> b</span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x5408;&#x6CD5;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b=<span class="number">0</span></span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org63d79c2" class="outline-3">
+<h3 id="org63d79c2"><span class="section-number-3">1.3</span> &#x547D;&#x540D;&#x53C2;&#x6570;</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+&#x547D;&#x540D;&#x53C2;&#x6570;&#x662F;.NET Framework 4.0&#x4E2D;&#x5F15;&#x5165;&#x7684;&#x65B0;&#x8BED;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x547D;&#x540D;&#x53C2;&#x6570;&#x8BED;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x524D;&#x7F00;&#xFF0C;&#x6539;&#x53D8;&#x53C2;&#x6570;&#x987A;&#x5E8F;&#xFF0C;&#x8BA9;&#x7A0B;&#x5E8F;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x5F3A;&#x3002;&#x4F8B;&#x5982;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#x6C42;&#x4E24;&#x6570;&#x4E4B;&#x548C;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span>{</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8C03;&#x7528;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span>(<span class="params">a:<span class="number">10</span>, b:<span class="number">20</span></span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8C03;&#x7528;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span>(<span class="params">b:<span class="number">20</span>, a:<span class="number">10</span></span>)</span>;</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x867D;&#x7136;&#x547D;&#x540D;&#x53C2;&#x6570;&#x652F;&#x6301;&#x8C03;&#x7528;&#x65F6;&#x6539;&#x53D8;&#x53C2;&#x6570;&#x987A;&#x5E8F;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x4E0E;&#x5B9A;&#x4E49;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5EFA;&#x8BAE;&#x4E0D;&#x8FD9;&#x4E48;&#x505A;&#x3002;
+</p>
+</div>
+</div>
+<div id="outline-container-org83c73fe" class="outline-3">
+<h3 id="org83c73fe"><span class="section-number-3">1.4</span> &#x65B9;&#x6CD5;&#x91CD;&#x8F7D;</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+C&#x8BED;&#x8A00;&#x4E2D;&#x662F;&#x6CA1;&#x6709;&#x91CD;&#x8F7D;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x7684;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x76F8;&#x540C;&#x540D;&#x5B57;&#x7684;&#x51FD;&#x6570;&#x3002;C++&#x5F15;&#x5165;&#x4E86;&#x91CD;&#x8F7D;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x51FD;&#x6570;&#x540D;&#xFF0C;&#x4F46;&#x662F;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x4E00;&#x5B9A;&#x7684;&#x89C4;&#x5219;&#x3002;
+&#x6709;&#x5174;&#x8DA3;&#x7684;&#x53EF;&#x4EE5;&#x770B;&#x4E0B; <b>&#x51FD;&#x6570;&#x540D;&#x79F0;&#x91CD;&#x6574;</b> &#x3002;C#&#x548C;Java&#x4E5F;&#x652F;&#x6301;&#x65B9;&#x6CD5;&#x91CD;&#x8F7D;&#x3002;C#&#x4E2D;&#x51FD;&#x6570;&#x7684;&#x5168;&#x540D;&#x79F0;&#x79F0;&#x4E4B;&#x4E3A; <b>&#x65B9;&#x6CD5;&#x7B7E;&#x540D;</b> &#xFF1A;
+&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x65B9;&#x6CD5;&#x7684;&#x8BBF;&#x95EE;&#x7EA7;&#x522B;&#xFF08;&#x4F8B;&#x5982; public &#x6216;private&#xFF09;&#x3001;&#x53EF;&#x9009;&#x4FEE;&#x9970;&#x7B26;&#xFF08;&#x4F8B;&#x5982;abstract &#x6216;sealed&#xFF09;&#x3001;&#x8FD4;&#x56DE;&#x503C;&#x3001;&#x540D;&#x79F0;&#x548C;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x6216; &#x7ED3;&#x6784;&#x4E2D;&#x58F0;&#x660E;&#x65B9;&#x6CD5;&#x3002;
+&#x8FD9;&#x4E9B;&#x90E8;&#x5206;&#x7EDF;&#x79F0;&#x4E3A;&#x65B9;&#x6CD5;&#x7684;&#x201C;&#x7B7E;&#x540D;&#x201D;&#x3002;&#x91CD;&#x8F7D;&#x7684;&#x89C4;&#x5219;&#x5305;&#x62EC;&#xFF1A;
+</p>
+<ul class="org-ul">
+<li>&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x91CD;&#x8F7D;</li>
+</ul>
+<p>
+&#x4F8B;&#x5982;&#xFF0C;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x8FD9;&#x662F;&#x975E;&#x6CD5;&#x7684;&#x91CD;&#x8F7D;
+</p>
+<ul class="org-ul">
+<li>&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x91CD;&#x8F7D;</li>
+</ul>
+<p>
+&#x4F8B;&#x5982;&#xFF0C;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">Add</span>(<span class="params"><span class="keyword">double</span> a, <span class="keyword">double</span> b</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x8FD9;&#x662F;&#x5141;&#x8BB8;&#x7684;
+</p>
+<ul class="org-ul">
+<li>&#x53C2;&#x6570;&#x987A;&#x5E8F;&#x4E0D;&#x540C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x91CD;&#x8F7D;</li>
+</ul>
+<p>
+&#x4F8B;&#x5982;&#xFF0C;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">Add</span>(<span class="params"><span class="keyword">double</span> a, <span class="keyword">string</span> b</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">Add</span>(<span class="params"><span class="keyword">string</span> a, <span class="keyword">string</span> b</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x8FD9;&#x4E5F;&#x662F;&#x5141;&#x8BB8;&#x7684;&#x3002;
+</p>
+<ul class="org-ul">
+<li>&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x4E0D;&#x540C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x91CD;&#x8F7D;</li>
+</ul>
+<p>
+&#x4F8B;&#x5982;&#xFF0C;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Calculator</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c</span>)</span><br><span class="line">    </span>{</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x867D;&#x7136;&#x5F88;&#x5C11;&#x6709;&#x4EBA;&#x8FD9;&#x6837;&#x5199;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x786E;&#x5B9E;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x91CD;&#x8F7D;&#x3002;
+</p>
+
+<p>
+&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x89C4;&#x5219;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x56DB;&#x6761;&#x89C4;&#x5219;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x6CDB;&#x578B;&#x7684;&#x51FA;&#x73B0;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x5F31;&#x5316;&#x4E86;&#x91CD;&#x8F7D;&#x7684;&#x5FC5;&#x8981;&#x6027;&#x3002;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged27ec1" class="outline-2">
+<h2 id="orged27ec1"><span class="section-number-2">2</span> &#x6570;&#x7EC4;</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+&#x6570;&#x7EC4;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x4E24;&#x4E2A;&#x8981;&#x7D20;&#xFF1A;1. &#x6570;&#x7EC4;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#xFF1B; 2. &#x7EF4;&#x5EA6;&#x3002;
+</p>
+</div>
+<div id="outline-container-orga20de2e" class="outline-3">
+<h3 id="orga20de2e"><span class="section-number-3">2.1</span> &#x521D;&#x59CB;&#x5316;&#x6570;&#x7EC4;</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>&#x663E;&#x793A;&#x521D;&#x59CB;&#x5316;</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[]{<span class="number">1</span>,<span class="number">2</span>};</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x663E;&#x5F0F;&#x6307;&#x660E;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x4E3A;&#x6574;&#x578B;&#x7C7B;&#x578B;&#xFF0C;&#x7EF4;&#x5EA6;&#x4E3A;1&#xFF0C;&#x957F;&#x5EA6;&#x4E3A;2&#x3002;
+</p>
+<ul class="org-ul">
+<li>&#x9690;&#x5F0F;&#x521D;&#x59CB;&#x5316;</li>
+</ul>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = <span class="keyword">new</span>[] { <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span> };</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x9690;&#x5F0F;&#x521D;&#x59CB;&#x5316;&#x5229;&#x7528;&#x4E86;C#&#x7684;var&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x5BF9;&#x5176;&#x7C7B;&#x578B;&#x81EA;&#x52A8;&#x63A8;&#x65AD;&#x3002;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x8BED;&#x6CD5;&#x521D;&#x59CB;&#x5316;&#x6570;&#x7EC4;&#xFF0C;&#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x62A5;&#x9519;&#x3002;
+</p>
+</div>
+</div>
+<div id="outline-container-org20dec0d" class="outline-3">
+<h3 id="org20dec0d"><span class="section-number-3">2.2</span> &#x591A;&#x7EF4;&#x6570;&#x7EC4;</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+&#x4E0E;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;&#x4E00;&#x6837;&#xFF0C;&#x5B9A;&#x4E49;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#x65F6;&#x4E5F;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x548C;&#x7EF4;&#x5EA6;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> [,] numbers = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>,<span class="number">2</span>]{ {<span class="number">1</span>, <span class="number">3</span>}, {<span class="number">2</span>, <span class="number">4</span>} };</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x6570;&#x7EC4;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x8FD8;&#x6D89;&#x53CA;&#x5230;C#&#x6570;&#x7EC4;&#x5185;&#x7F6E;&#x7684;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x8FDB;&#x4E00;&#x6B65;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1512f8e" class="outline-2">
+<h2 id="org1512f8e"><span class="section-number-2">3</span> &#x679A;&#x4E3E;</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+&#x597D;&#x591A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#x90FD;&#x6709;&#x679A;&#x4E3E;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x3002;&#x5728;&#x67D0;&#x4E9B;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5E38;&#x91CF;&#x548C;&#x5B8F;&#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;&#x6548;&#x679C;&#x3002;&#x4F46;&#x662F;&#x679A;&#x4E3E;&#x7684;&#x597D;&#x5904;&#x591A;&#x591A;&#xFF1A;
+</p>
+<ol class="org-ol">
+<li>&#x679A;&#x4E3E;&#x662F;&#x4E00;&#x79CD;&#x5F3A;&#x7C7B;&#x578B;&#xFF0C;&#x5199;&#x4EE3;&#x7801;&#x65F6;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x7ED9;&#x4E88;&#x8BED;&#x6CD5;&#x68C0;&#x67E5;&#xFF0C;&#x5C3D;&#x65E9;&#x5730;&#x6392;&#x9664;&#x9519;&#x8BEF;&#xFF1B;</li>
+<li>&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5E95;&#x5C42;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;, &#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x7075;&#x6D3B;&#xFF0C;&#x4F18;&#x5316;&#x5185;&#x5B58;&#xFF1B;</li>
+<li>&#x503C;&#x57DF;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x53EF;&#x679A;&#x4E3E;&#x7684;&#xFF1B;</li>
+</ol>
+</div>
+<div id="outline-container-orgcad8df4" class="outline-3">
+<h3 id="orgcad8df4"><span class="section-number-3">3.1</span> &#x81EA;&#x5B9A;&#x4E49;&#x679A;&#x4E3E;&#x7C7B;&#x578B;</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x6027;&#x522B;&#x679A;&#x4E3E;&#xFF1A;Female&#x548C;Male&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Gender</span><br><span class="line">{</span><br><span class="line">    Female,</span><br><span class="line">    Male</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x9ED8;&#x8BA4;&#x7684;&#xFF0C;Female&#x7684;&#x503C;&#x4E3A;0&#xFF0C; Male&#x7684;&#x503C;&#x4E3A;1&#x3002;&#x5E95;&#x5C42;&#x7684;&#x5B58;&#x50A8;&#x7C7B;&#x578B;&#x9ED8;&#x8BA4;&#x4E3A;&#x6574;&#x578B;&#x3002;
+</p>
+
+<p>
+&#x5F53;&#x7136;&#x6211;&#x4EEC;&#xFF0C;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x679A;&#x4E3E;&#x503C;&#x7684;&#x5B58;&#x50A8;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Gender:<span class="keyword">byte</span></span><br><span class="line">{</span><br><span class="line">    Female=<span class="number">1</span>,</span><br><span class="line">    Male=<span class="number">2</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x73B0;&#x5728;&#xFF0C;Gender&#x7684;&#x679A;&#x4E3E;&#x6210;&#x5458;&#x662F;byte&#x7C7B;&#x578B;&#xFF0C;Female&#x7684;&#x503C;&#x4E3A;1&#xFF0C;Male&#x7684;&#x503C;&#x4E3A;2.
+</p>
+</div>
+</div>
+<div id="outline-container-org5b13335" class="outline-3">
+<h3 id="org5b13335"><span class="section-number-3">3.2</span> &#x58F0;&#x660E;&#x548C;&#x4F7F;&#x7528;&#x679A;&#x4E3E;&#x53D8;&#x91CF;</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;Gender&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5176;&#x503C;&#x4E3A;Gender.Female.
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">Gender g = Gender.Female;</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org806f6b4" class="outline-3">
+<h3 id="org806f6b4"><span class="section-number-3">3.3</span> &#x6253;&#x5370;&#x679A;&#x4E3E;&#x7684;Name/Value&#x5BF9;</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x6253;&#x5370;&#x679A;&#x4E3E;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">// This method will print out the details of any enum.</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">EvaluateEnum</span>(<span class="params">System.Enum e</span>)</span><br><span class="line"></span>{</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;=&gt; Information about {0}&quot;</span>, e.GetType().Name);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Underlying storage type: {0}&quot;</span>,</span><br><span class="line">		      Enum.GetUnderlyingType(e.GetType()));</span><br><span class="line">    <span class="comment">// Get all name/value pairs for incoming parameter.</span></span><br><span class="line">    Array enumData = Enum.GetValues(e.GetType());</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;This enum has {0} members.&quot;</span>, enumData.Length);</span><br><span class="line">    <span class="comment">// Now show the string name and associated value, using the D format</span></span><br><span class="line">    <span class="comment">// flag (see Chapter 3).</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; enumData.Length; i++)</span><br><span class="line">    {</span><br><span class="line">	Console.WriteLine(<span class="string">&quot;Name: {0}, Value: {0:D}&quot;</span>,</span><br><span class="line">			  enumData.GetValue(i));</span><br><span class="line">    }</span><br><span class="line">    Console.WriteLine();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<ul class="org-ul">
+<li><code>Enum.GetUnderlyingType</code> &#x83B7;&#x53D6;&#x5E95;&#x5C42;&#x7684;&#x5B58;&#x50A8;&#x7C7B;&#x578B;&#xFF1B;</li>
+<li><code>Enum.GetValues(e.GetType())</code> &#x83B7;&#x53D6;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x7684;&#x6240;&#x6709;Name/Value&#x5BF9;&#x3002;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org62f4223" class="outline-3">
+<h3 id="org62f4223"><span class="section-number-3">3.4</span> &#x679A;&#x4E3E;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+&#x4ECE;&#x4E0B;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x7EE7;&#x627F;&#x4E8E; <code>System.ValueType</code>. 
+</p>
+
+<div id="org01a9466" class="figure">
+<p><img src="the-class-hierarchy-of-system-types.png">
+</p>
+<p><span class="figure-number">Figure 1: </span>&#x7CFB;&#x7EDF;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7C7B;&#x56FE;</p>
+</div>
+
+<p>
+&#x4F7F;&#x7528;ildasm.exe&#x6765;&#x68C0;&#x67E5;&#x6211;&#x4EEC;&#x521A;&#x624D;&#x5B9A;&#x4E49;&#x7684;Gender&#x7C7B;&#x578B;&#x7684;&#x5143;&#x6570;&#x636E;&#xFF1A;
+</p>
+<pre class="example">
+.class public auto ansi sealed ForegroundAndBackgroudThreadDemo.Gender
+       extends [mscorlib]System.Enum
+{
+} // end of class ForegroundAndBackgroudThreadDemo.Gender</pre>
+<p>
+&#x53EF;&#x89C1;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Gender&#x7C7B;&#x578B;&#x76F4;&#x63A5;&#x7EE7;&#x627F;&#x4E8E; <code>System.Enum</code> &#x7C7B;&#x578B;&#x3002;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfbd3544" class="outline-2">
+<h2 id="orgfbd3544"><span class="section-number-2">4</span> &#x7ED3;&#x6784;&#x4F53;&#x7C7B;&#x578B;</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org48ca147" class="outline-3">
+<h3 id="org48ca147"><span class="section-number-3">4.1</span> &#x81EA;&#x5B9A;&#x4E49;&#x7ED3;&#x6784;&#x4F53;</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5B9A;&#x4E49;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x5B9A;&#x4E49;&#x7C7B;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> Point</span><br><span class="line">{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> X;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Y;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org79c481e" class="outline-3">
+<h3 id="org79c481e"><span class="section-number-3">4.2</span> &#x521B;&#x5EFA;&#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF;</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+&#x7ED3;&#x6784;&#x4F53;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x58F0;&#x660E;&#x9075;&#x5FAA;&#x57FA;&#x672C;&#x7684;C#&#x8BED;&#x6CD5;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">Point p;</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org94e8550" class="outline-3">
+<h3 id="org94e8550"><span class="section-number-3">4.3</span> &#x7ED3;&#x6784;&#x4F53;&#x4E0E;&#x7C7B;&#x7684;&#x533A;&#x522B;&#x548C;&#x8054;&#x7CFB;</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+&#x7ED3;&#x6784;&#x4F53;&#x7C7B;&#x6709;&#x4E9B;&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x5DEE;&#x5F02;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x660E;&#x663E;&#x7684;&#xFF1A;
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> &#x7ED3;&#x6784;&#x4F53;&#x4E0E;&#x7C7B;&#x7684;&#x533A;&#x522B;&#x4E0E;&#x8054;&#x7CFB;</caption>
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xA0;</th>
+<th scope="col" class="org-left">&#x7ED3;&#x6784;&#x4F53;</th>
+<th scope="col" class="org-left">&#x7C7B;</th>
+<th scope="col" class="org-left">&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&#x5B58;&#x50A8;</td>
+<td class="org-left">&#x6808;&#x4E0A;</td>
+<td class="org-left">&#x5806;&#x4E0A;</td>
+<td class="org-left">&#xA0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x7EE7;&#x627F;</td>
+<td class="org-left">&#x4E0D;&#x652F;&#x6301;</td>
+<td class="org-left">&#x652F;&#x6301;</td>
+<td class="org-left">&#xA0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x81EA;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x51FD;&#x6570;</td>
+<td class="org-left">&#x652F;&#x6301;</td>
+<td class="org-left">&#x652F;&#x6301;</td>
+<td class="org-left">&#xA0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x9002;&#x7528;&#x573A;&#x666F;</td>
+<td class="org-left">&#x6570;&#x5B66;&#xFF0C;&#x51E0;&#x4F55;&#xFF0C;&#x539F;&#x5B50;&#x7C7B;&#x578B;&#x7684;&#x5B9E;&#x4F53;</td>
+<td class="org-left">&#x5176;&#x4ED6;</td>
+<td class="org-left">&#xA0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x6548;&#x7387;</td>
+<td class="org-left">&#x9AD8;</td>
+<td class="org-left">&#x4F4E;</td>
+<td class="org-left">&#x56E0;&#x4E3A;&#x7ED3;&#x6784;&#x4F53;&#x5728;&#x6808;&#x4E0A;&#x521B;&#x5EFA;&#x4E0D;&#x6D89;&#x53CA;&#x5783;&#x573E;&#x56DE;&#x6536;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+&#x5982;&#x679C;&#x5BF9;&#x6548;&#x7387;&#x8981;&#x6C42;&#x6BD4;&#x8F83;&#x9AD8;&#x8003;&#x8651;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5982;&#x679C;&#x5408;&#x9002;&#x7684;&#x8BDD;&#x3002;
+</p>
+</div>
+</div>
+<div id="outline-container-org431015a" class="outline-3">
+<h3 id="org431015a"><span class="section-number-3">4.4</span> &#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+&#x901A;&#x8FC7;ildasm.exe&#x6765;&#x67E5;&#x770B;&#x521A;&#x624D;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x5143;&#x6570;&#x636E;&#xFF1A;
+</p>
+<pre class="example">
+.class public sequential ansi sealed beforefieldinit ForegroundAndBackgroudThreadDemo.Point
+       extends [mscorlib]System.ValueType
+{
+} // end of class ForegroundAndBackgroudThreadDemo.Point</pre>
+<p>
+&#x4E0E;&#x679A;&#x4E3E;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7ED3;&#x6784;&#x4F53;&#x76F4;&#x63A5;&#x7EE7;&#x627F;&#x4E8E; <code>System.ValueType</code> &#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>System.Struct</code>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga5912ad" class="outline-2">
+<h2 id="orga5912ad"><span class="section-number-2">5</span> &#x503C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+&#x53C2;&#x8003;&#x524D;&#x9762;&#x63D0;&#x5230;C#&#x7C7B;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;&#x56FE;<a href="#org01a9466">1</a>&#x3002;&#x503C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x662F;.NET&#x4E2D;&#x7684;&#x4E24;&#x79CD;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;
+&#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x7528;&#x5230;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x8981;&#x4E48;&#x76F4;&#x63A5;&#x8981;&#x4E48;&#x95F4;&#x63A5;&#x7EE7;&#x627F;&#x4E8E;&#x5B83;&#x4EEC;&#x3002;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x6700;&#x5927;&#x7684;&#x4E0D;&#x540C;&#x662F;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x503C;&#x7C7B;&#x578B;&#x5B58;&#x50A8;&#x5728;&#x6808;&#x4E0A;&#xFF0C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5B58;&#x50A8;&#x5728;&#x5806;&#x4E0A;&#x3002;
+&#x56E0;&#x6B64;&#xFF0C;&#x4ED6;&#x4EEC;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E5F;&#x4E0D;&#x540C;&#xFF1A;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x4F9D;&#x8D56;&#x4E8E;&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;&#x800C;&#x503C;&#x7C7B;&#x578B;&#x8DDF;&#x4F5C;&#x7528;&#x57DF;&#x6709;&#x5173;&#x3002;
+</p>
+
+<p>
+&#x503C;&#x7C7B;&#x578B;&#x4E00;&#x822C;&#x662F;&#x5B58;&#x50A8;&#x5728;&#x6808;&#x4E0A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x653E;&#x5165;&#x5230;&#x4E00;&#x4E9B;&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x4F1A;&#x6D89;&#x53CA;&#x5230;boxing&#x548C;unboxing&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x90A3;&#x65F6;&#x4ED6;&#x4EEC;&#x7684;&#x503C;&#x4F1A;&#x88AB;&#x590D;&#x5236;&#x5230;&#x5806;&#x4E0A;&#x5B58;&#x50A8;&#x3002;
+</p>
+</div>
+<div id="outline-container-org5c1df04" class="outline-3">
+<h3 id="org5c1df04"><span class="section-number-3">5.1</span> &#x53D8;&#x91CF;&#x8D4B;&#x503C;</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>&#x503C;&#x7C7B;&#x578B;</li>
+</ul>
+<p>
+&#x590D;&#x5236;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> b=a;</span><br><span class="line"></span><br><span class="line">a=<span class="number">2</span>;</span><br><span class="line">b=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x8FC7;&#x540E;&#xFF0C; <code>a</code> &#x7684;&#x503C;&#x4E3A;2&#xFF0C; <code>b</code> &#x7684;&#x503C;&#x4E3A;10.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 3:</span> &#x503C;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x4E3E;&#x4F8B;</caption>
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-right">
+
+<col class="org-right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xA0;</th>
+<th scope="col" class="org-right">a</th>
+<th scope="col" class="org-right">b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">int a=10</td>
+<td class="org-right">10</td>
+<td class="org-right">N/A</td>
+</tr>
+
+<tr>
+<td class="org-left">int b=a</td>
+<td class="org-right">10</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-left">a=2</td>
+<td class="org-right">2</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-left">b=10</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>&#x5F15;&#x7528;&#x7C7B;&#x578B;</li>
+</ul>
+<p>
+&#x590D;&#x5236;&#x5F15;&#x7528;&#x503C;&#xFF0C;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x4E8E;C++&#x4E2D;&#x7684;&#x6307;&#x9488;&#x3002;&#x4EE5;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x8BF4;&#x660E;&#xFF0C;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyInt</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Value;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF0C; <code>MyInt</code> . &#x8D4B;&#x503C;&#x8BED;&#x53E5;&#x4E0E;&#x503C;&#x7C7B;&#x578B;&#x7C7B;&#x4F3C;&#xFF0C;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">MyInt a = <span class="keyword">new</span> MyInt{Value=<span class="number">10</span>};</span><br><span class="line">MyInt b = a;</span><br><span class="line"></span><br><span class="line">a.Value = <span class="number">2</span>;</span><br><span class="line">b.Value = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x540E;&#xFF0C; <code>a.Value</code> &#x548C; <code>b.Value</code> &#x90FD;&#x4E3A;3&#x3002;
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 4:</span> &#x5F15;&#x7528;&#x7C7B;&#x578B;&#x8D4B;&#x503C;&#x4E3E;&#x4F8B;</caption>
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-right">
+
+<col class="org-right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xA0;</th>
+<th scope="col" class="org-right">a.Value</th>
+<th scope="col" class="org-right">b.Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MyInt a = new MyInt{Value=10}</td>
+<td class="org-right">10</td>
+<td class="org-right">N/A</td>
+</tr>
+
+<tr>
+<td class="org-left">MyInt b = a;</td>
+<td class="org-right">10</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-left">a.Value = 2</td>
+<td class="org-right">2</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">b.Value = 3</td>
+<td class="org-right">3</td>
+<td class="org-right">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9063776" class="outline-3">
+<h3 id="org9063776"><span class="section-number-3">5.2</span> &#x53C2;&#x6570;&#x4F20;&#x9012;</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+&#x524D;&#x9762;&#x63D0;&#x5230;&#x4E86;&#x5173;&#x952E;&#x5B57; <code>ref</code>.&#x8FD9;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x9002;&#x7528;&#x4E8E;&#x503C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x5173;&#x952E;&#x5B57;&#x65F6;&#xFF0C;&#x53C2;&#x6570;&#x6309;&#x5F15;&#x7528;&#x4F20;&#x9012;&#xFF0C;&#x5426;&#x5219;&#x9ED8;&#x8BA4;&#x6309;&#x503C;&#x4F20;&#x9012;&#x3002;
+&#x56E0;&#x6B64;&#xFF0C;&#x6709;&#x56DB;&#x79CD;&#x60C5;&#x51B5;&#x9700;&#x8981;&#x8BA8;&#x8BBA;&#xFF1A;&#x4EE5;&#x503C;&#x4F20;&#x9012;&#x503C;&#x7C7B;&#x578B;&#xFF1B;&#x4EE5;&#x5F15;&#x7528;&#x4F20;&#x9012;&#x503C;&#x7C7B;&#x578B;&#xFF1B;&#x4EE5;&#x503C;&#x4F20;&#x9012;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF1B;&#x4EE5;&#x5F15;&#x7528;&#x4F20;&#x9012;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x3002;
+&#x8FD9;&#x91CC;&#x5747;&#x5DF2;&#x7C7B;&#x4F3C;&#x7684;&#x52A0;&#x6CD5;&#x8FD0;&#x7B97;&#x6765;&#x8BF4;&#x660E;&#x53C2;&#x6570;&#x7684;&#x4F20;&#x9012;&#x673A;&#x5236;&#x3002;
+</p>
+<ul class="org-ul">
+<li>&#x4EE5;&#x503C;&#x4F20;&#x9012;&#x503C;&#x7C7B;&#x578B;</li>
+</ul>
+<p>
+&#x5BF9;&#x4E8E;&#x503C;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x679C;&#x4F20;&#x9012;&#x4ECE;&#x53C2;&#x6570;&#x65F6;&#x4E0D;&#x6DFB;&#x52A0; <code>ref</code> &#x4FEE;&#x9970;&#x7B26;&#xFF0C;&#x5219;&#x4EE5;&#x503C;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x3002;
+</p>
+
+<div id="org4405c65" class="figure">
+<p><img src="passing-value-types-by-value.png">
+</p>
+<p><span class="figure-number">Figure 2: </span>&#x4EE5;&#x503C;&#x4F20;&#x9012;&#x503C;&#x7C7B;&#x578B;</p>
+</div>
+
+<p>
+&#x5728;&#x8C03;&#x7528;Add&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x672C;&#x5730;&#x53D8;&#x91CF; <code>a</code> &#x548C; <code>b</code> &#x4F1A;&#x88AB;&#x521B;&#x5EFA;&#x5728;Add&#x65B9;&#x6CD5;&#x7684;&#x6808;&#x5E27;&#x4E2D;&#xFF0C;&#x4E0E;&#x6808;&#x5E27;Main&#x4E2D;&#x7684; <code>a</code> &#x548C; <code>b</code> &#x6BEB;&#x65E0;&#x5173;&#x7CFB;&#xFF0C;&#x4E8C;&#x8005;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x3002;
+&#x5728;Add&#x65B9;&#x6CD5;&#x4E2D;&#x6539;&#x53D8; <code>a</code> &#x548C; <code>b</code> &#x7684;&#x503C;&#x4E0D;&#x4F1A;&#x5BF9;Main&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x9020;&#x6210;&#x4EFB;&#x4F55;&#x5F71;&#x54CD;&#x3002;
+</p>
+<ul class="org-ul">
+<li>&#x4EE5;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x503C;&#x7C7B;&#x578B;</li>
+</ul>
+<p>
+&#x6DFB;&#x52A0;&#x4E86; <code>ref</code> &#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8C03;&#x7528;&#x65F6;&#x4F1A;&#x4EE5;&#x5F15;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x53C2;&#x6570;:
+</p>
+
+<div id="org2677b0a" class="figure">
+<p><img src="passing-value-types-by-reference.png">
+</p>
+<p><span class="figure-number">Figure 3: </span>&#x4EE5;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x503C;&#x7C7B;&#x578B;</p>
+</div>
+
+<p>
+Add&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x540E;&#xFF0C;&#x53D8;&#x91CF; <code>a</code> &#x548C; <code>b</code> &#x4F1A;&#x88AB;&#x521B;&#x5EFA;&#x5728;&#x5176;&#x6808;&#x5E27;&#x4E2D;&#x3002;&#x4F46;&#x662F;&#x4ED6;&#x4EEC;&#x4F1A;&#x6307;&#x5411;Main&#x4E2D;&#x7684; <code>a</code>, <code>b</code> &#x53D8;&#x91CF;&#x7A7A;&#x95F4;&#x3002;
+&#x56E0;&#x6B64;&#xFF0C;&#x5728;Add&#x65B9;&#x6CD5;&#x4E2D;&#x6539;&#x53D8; <code>a</code> &#x548C; <code>b</code> &#x7684;&#x503C;&#xFF0C;Main&#x4E2D;&#x7684;&#x503C;&#x4E5F;&#x4F1A;&#x6539;&#x53D8;&#x3002;
+</p>
+<ul class="org-ul">
+<li>&#x4EE5;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x5F15;&#x7528;&#x7C7B;&#x578B;</li>
+</ul>
+<p>
+&#x8FD9;&#x91CC;&#x8FD8;&#x662F;&#x4EE5;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x52A0;&#x6CD5;&#x8FD0;&#x7B97;&#x6765;&#x8BB2;&#x89E3;&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x53E6;&#x5916;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A; <code>MyInt</code> &#x7C7B;&#xFF0C;&#x5982;&#x56FE;&#xFF1A;
+</p>
+
+<div class="figure">
+<p><img src="passing-reference-types-by-value.png">
+</p>
+<p><span class="figure-number">Figure 4: </span>&#x4EE5;&#x503C;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x5F15;&#x7528;&#x7C7B;&#x578B;</p>
+</div>
+
+<p>
+&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x5176;&#x503C;&#x6700;&#x7EC8;&#x4F1A;&#x5728;&#x5806;&#x4E0A;&#x521B;&#x5EFA;&#x3002;&#x4EE5;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#xFF0C;&#x4F20;&#x9012;&#x7684;&#x53EA;&#x662F;&#x5BF9;&#x90A3;&#x5757;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x5F15;&#x7528;&#x503C;&#x3002;
+&#x6240;&#x4EE5;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4E0B;&#xFF0C;Main&#x548C;Add&#x4E2D;&#x7684; <code>a</code> &#x548C; <code>b</code> &#x90FD;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5806;&#x4E0A;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x7684;&#x503C;&#x3002;
+</p>
+<ul class="org-ul">
+<li>&#x4EE5;&#x5F15;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x5F15;&#x7528;&#x7C7B;&#x578B;</li>
+</ul>
+<p>
+&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x6700;&#x590D;&#x6742;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x73B0;&#x5B9E;&#x4E2D;&#x7528;&#x5230;&#x7684;&#x573A;&#x666F;&#x5374;&#x4E0D;&#x591A;&#xFF0C;&#x4E00;&#x822C;&#x6309;&#x503C;&#x4F20;&#x9012;&#x5C31;&#x591F;&#x4E86;&#x3002;
+</p>
+
+<div class="figure">
+<p><img src="passing-reference-types-by-reference.png">
+</p>
+<p><span class="figure-number">Figure 5: </span>&#x4EE5;&#x5F15;&#x7528;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x5F15;&#x7528;&#x7C7B;&#x578B;</p>
+</div>
+
+<p>
+Add&#x65B9;&#x6CD5;&#x4E2D;&#x7684; <code>a</code> &#x548C; <code>b</code> &#x6307;&#x5411;&#x7684;&#x662F;Main&#x4E2D;&#x7684;&#x5BF9;&#x5E94;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;&#x56E0;&#x6B64;Add&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x540C;&#x65F6;&#x6709;&#x6539;&#x53D8;Main&#x4E2D;&#x53D8;&#x91CF;&#x7684;&#x5F15;&#x7528;&#x503C;&#x548C;&#x5806;&#x4E0A;&#x7684;&#x503C;&#x5F97;&#x80FD;&#x529B;&#x3002;
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org719e42e" class="outline-2">
+<h2 id="org719e42e"><span class="section-number-2">6</span> &#x53EF;&#x7A7A;&#x7C7B;&#x578B;</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+&#x53EF;&#x7A7A;&#x7C7B;&#x578B;&#x7684;&#x8BDE;&#x751F;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x6709;&#x5173;&#xFF0C;&#x56E0;&#x4E3A;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x6BB5;&#x90FD;&#x662F;&#x53EF;&#x4EE5;&#x6807;&#x8BB0;&#x4E3A;&#x7A7A;&#x7684;&#x3002;
+&#x4F46;&#x662F;&#xFF0C;C#&#x4E2D;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x662F;&#x4E0D;&#x80FD;&#x8D4B;&#x503C;&#x4E3A;null&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x624D;&#x53EF;&#x4EE5;&#x3002;&#x53EF;&#x4EE5;&#x8BF4;&#x53EF;&#x7A7A;&#x7C7B;&#x578B;&#x53EA;&#x662F;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x4E00;&#x4E2A; <b>Wrapper</b>.
+&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x53EF;&#x7A7A;&#x7C7B;&#x578B;&#x7684;&#x6574;&#x578B;&#x53D8;&#x91CF;&#x5E76;&#x8D4B;&#x503C;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>? a=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>? b=<span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x53EF;&#x7A7A;&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x4E0E;&#x666E;&#x901A;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x53D6;&#x503C;&#x6709;&#x4E9B;&#x4E0D;&#x540C;&#xFF1A;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x53D6;&#x503C;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#x7B2C;&#x4E00;&#x79CD;&#x53D6;&#x503C;&#x65B9;&#x5F0F;&#xFF0C;&#x5224;&#x65AD;a&#x662F;&#x5426;&#x6709;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x503C;&#x5219;&#x76F4;&#x63A5;&#x6253;&#x5370;&#x53CD;&#x4E4B;&#x76F4;&#x63A5;&#x6253;&#x5370;0</span></span><br><span class="line"><span class="keyword">if</span> (a.HasValue)</span><br><span class="line"> {</span><br><span class="line">     Console.WriteLine(<span class="string">&quot;Value of a is: {0}&quot;</span>, a.Value);</span><br><span class="line"> }</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line"> {</span><br><span class="line">     Console.WriteLine(<span class="string">&quot;Value of a is: {0}&quot;</span>, <span class="number">0</span>);</span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x53E6;&#x4E00;&#x79CD;&#x53D6;&#x503C;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD9;&#x53EA;&#x662F;&#x4E00;&#x79CD;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x6548;&#x679C;&#x4E0E;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x76F8;&#x540C;</span></span><br><span class="line">Console.WriteLine(<span class="string">&quot;Value of b is: {0}&quot;</span>, b ?? <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x57FA;&#x672C;&#x4E0A;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x7B2C;&#x4E00;&#x79CD;&#x4F7F;&#x7528; <code>HasValue</code> &#x5C5E;&#x6027;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x6709;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x503C;&#x5219;&#x4F7F;&#x7528; <code>Value</code> &#x5C5E;&#x6027;&#x76F4;&#x63A5;&#x53D6;&#x503C;&#xFF1B;
+&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#x501F;&#x52A9;&#x4E8E;C#&#x7684;&#x8BED;&#x6CD5;&#x7CD6; <code>??</code> &#xFF0C;&#x8FD9;&#x53EA;&#x662F;&#x4E00;&#x79CD;&#x7B80;&#x5199;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0E;&#x7B2C;&#x4E00;&#x65B9;&#x5F0F;&#x6548;&#x679C;&#x4E00;&#x81F4;&#x3002;
+</p>
+</div>
+</div>
+<div id="outline-container-org404d8fd" class="outline-2">
+<h2 id="org404d8fd"><span class="section-number-2">7</span> &#x603B;&#x7ED3;</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+&#x672C;&#x6587;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E86;&#x4E0B;C#&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x5982;&#x65B9;&#x6CD5;&#xFF0C;&#x679A;&#x4E3E;&#xFF0C;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x6570;&#x7EC4;&#xFF0C;&#x503C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x533A;&#x522B;&#x4E0E;&#x8054;&#x7CFB;&#xFF0C;&#x53EF;&#x7A7A;&#x7C7B;&#x578B;&#x7B49;&#x3002;
+&#x867D;&#x7136;&#x57FA;&#x7840;&#xFF0C;&#x4F46;&#x662F;&#x518D;&#x6B21;&#x7CFB;&#x7EDF;&#x5B66;&#x4E60;&#x4E0B;&#x4E5F;&#x662F;&#x633A;&#x597D;&#x7684;&#x3002;&#x6709;&#x4E9B;&#x5730;&#x65B9;&#x53EF;&#x80FD;&#x63CF;&#x8FF0;&#x5F97;&#x4E0D;&#x592A;&#x51C6;&#x786E;&#xFF0C;&#x8BF7;&#x8BFB;&#x8005;&#x89C1;&#x8C05;&#x3002;
+</p>
+</div>
+</div>
+</div>
+
       
     </div>
 
@@ -476,8 +1176,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -539,6 +1248,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org4e7b814"><span class="nav-number">1.</span> <span class="nav-text">1 方法和参数修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgece164e"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 参数修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org48a9780"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 可选参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org63d79c2"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 命名参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org83c73fe"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 方法重载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orged27ec1"><span class="nav-number">2.</span> <span class="nav-text">2 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orga20de2e"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 初始化数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org20dec0d"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 多维数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org1512f8e"><span class="nav-number">3.</span> <span class="nav-text">3 枚举</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgcad8df4"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 自定义枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org5b13335"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 声明和使用枚举变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org806f6b4"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 打印枚举的Name/Value对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org62f4223"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 枚举的底层实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgfbd3544"><span class="nav-number">4.</span> <span class="nav-text">4 结构体类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org48ca147"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 自定义结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org79c481e"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 创建结构体变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org94e8550"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 结构体与类的区别和联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org431015a"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 结构体的底层实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orga5912ad"><span class="nav-number">5.</span> <span class="nav-text">5 值类型和引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org5c1df04"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 变量赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org9063776"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 参数传递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org719e42e"><span class="nav-number">6.</span> <span class="nav-text">6 可空类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org404d8fd"><span class="nav-number">7.</span> <span class="nav-text">7 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
