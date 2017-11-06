@@ -100,7 +100,7 @@
 <meta property="og:url" content="jack2gs.github.io/2017/11/06/spacemacs-note/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
 <meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5185;&amp;#x5BB9;&amp;#x5927;&amp;#x90E8;&amp;#x5206;&amp;#x6458;&amp;#x6284;&amp;#x81EA;Spacemacs&amp;#x4F7F;&amp;#x7528;&amp;#x603B;&amp;#x7ED3;&amp;#xFF0C;&amp;#x505A;&amp;#x4E86;&amp;#x4E9B;&amp;#x4FEE;&amp;#x6B63;&amp;#x3002;&amp;#x611F;&amp;#x89C9;&amp;#x6">
-<meta property="og:updated_time" content="2017-11-06T13:32:56.000Z">
+<meta property="og:updated_time" content="2017-11-06T13:59:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spacemacs使用笔记">
 <meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x5185;&amp;#x5BB9;&amp;#x5927;&amp;#x90E8;&amp;#x5206;&amp;#x6458;&amp;#x6284;&amp;#x81EA;Spacemacs&amp;#x4F7F;&amp;#x7528;&amp;#x603B;&amp;#x7ED3;&amp;#xFF0C;&amp;#x505A;&amp;#x4E86;&amp;#x4E9B;&amp;#x4FEE;&amp;#x6B63;&amp;#x3002;&amp;#x611F;&amp;#x89C9;&amp;#x6">
@@ -322,7 +322,7 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-11-06T21:32:56+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2017-11-06T21:59:53+08:00">
                 2017-11-06
               </time>
             
@@ -382,8 +382,8 @@
 </p>
 </blockquote>
 
-<div id="outline-container-orgb2b1f13" class="outline-2">
-<h2 id="orgb2b1f13"><span class="section-number-2">1</span> &#x5B89;&#x88C5;&amp;&#x4F7F;&#x7528;</h2>
+<div id="outline-container-org870c5fd" class="outline-2">
+<h2 id="org870c5fd"><span class="section-number-2">1</span> &#x5B89;&#x88C5;&amp;&#x4F7F;&#x7528;</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d/
@@ -392,22 +392,51 @@ emacs</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 </div>
 </div>
-<div id="outline-container-org82661bd" class="outline-2">
-<h2 id="org82661bd"><span class="section-number-2">2</span> &#x5E38;&#x7528;&#x7684;&#x5FEB;&#x6377;&#x952E;</h2>
+<div id="outline-container-orgaa6da61" class="outline-2">
+<h2 id="orgaa6da61"><span class="section-number-2">2</span> ELPA&#x56FD;&#x5185;&#x955C;&#x50CF;&#x6E90;&#x8BBE;&#x7F6E;</h2>
 <div class="outline-text-2" id="text-2">
+<p>
+&#x5177;&#x4F53;&#x5730;&#x8BF7;&#x53C2;&#x89C1;&#xFF0C;<a href="https://mirrors.tuna.tsinghua.edu.cn/help/elpa/" target="_blank" rel="external">&#x6E05;&#x534E;&#x5927;&#x5B66;&#x5F00;&#x6E90;&#x8F6F;&#x4EF6;&#x955C;&#x50CF;&#x7AD9;-ELPA</a>&#x3002;&#x91CC;&#x9762;&#x4ECB;&#x7ECD;&#x5F88;&#x8BE6;&#x7EC6;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;Spacemacs&#x9ED8;&#x8BA4;&#x662F;&#x4F7F;&#x7528;HTTPS&#x901A;&#x4FE1;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4F7F;&#x7528;https&#x534F;&#x8BAE;&#x7684;URL&#x3002;
+&#x6216;&#x8005;&#x4E5F;&#x53EF;&#x4EE5;&#x7981;&#x7528;HTTPS, &#x5728;.spacemacs&#x4E2D;:
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">dotspacemacs-elpa-https <span class="literal">t</span></span><br></pre></td></tr></table></figure>
 </div>
-<div id="outline-container-org825c2d4" class="outline-3">
-<h3 id="org825c2d4"><span class="section-number-3">2.1</span> &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7BA1;&#x7406;</h3>
-<div class="outline-text-3" id="text-2-1">
+<p>
+&#x6539;&#x4E3A;&#xFF1A;
+</p>
+<div class="org-src-container">
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">dotspacemacs-elpa-https <span class="literal">nil</span> </span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x6216;&#x8005;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x4F7F;&#x7528;&#x2013;insecure&#x9009;&#x9879;&#x542F;&#x52A8;emacs:
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">emacs --insecure</span><br></pre></td></tr></table></figure>
+</div>
+<blockquote>
+<p>
+&#x6CE8;&#x610F;&#xFF1A; &#x5982;&#x679C;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x4E0D;&#x5BF9;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;package&#x4E0B;&#x8F7D;&#x5931;&#x8D25;&#x3002;
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org53f8621" class="outline-2">
+<h2 id="org53f8621"><span class="section-number-2">3</span> &#x5E38;&#x7528;&#x7684;&#x5FEB;&#x6377;&#x952E;</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orga447231" class="outline-3">
+<h3 id="orga447231"><span class="section-number-3">3.1</span> &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7BA1;&#x7406;</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 <code>SPC f e d</code> &#x5FEB;&#x901F;&#x6253;&#x5F00;&#x914D;&#x7F6E;&#x6587;&#x4EF6; <code>.spacemacs</code>
 <code>SPC f e R</code> &#x540C;&#x6B65;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
 </p>
 </div>
 </div>
-<div id="outline-container-org0eb73a4" class="outline-3">
-<h3 id="org0eb73a4"><span class="section-number-3">2.2</span> &#x6587;&#x4EF6;&#x7BA1;&#x7406;</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-org5626049" class="outline-3">
+<h3 id="org5626049"><span class="section-number-3">3.2</span> &#x6587;&#x4EF6;&#x7BA1;&#x7406;</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 <code>SPC f f</code> &#x6253;&#x5F00;&#x6587;&#x4EF6;
 <code>SPC p f</code> &#x641C;&#x7D22;&#x6587;&#x4EF6;&#x540D;
@@ -417,9 +446,9 @@ emacs</span><br></pre></td></tr></table></figure>
 </p>
 </div>
 </div>
-<div id="outline-container-orgf90b379" class="outline-3">
-<h3 id="orgf90b379"><span class="section-number-3">2.3</span> &#x7A97;&#x53E3;&#x7BA1;&#x7406;</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-orge6110fa" class="outline-3">
+<h3 id="orge6110fa"><span class="section-number-3">3.3</span> &#x7A97;&#x53E3;&#x7BA1;&#x7406;</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 <code>SPC f t</code> &#x6253;&#x5F00;/&#x5173;&#x95ED;&#x4FA7;&#x8FB9;&#x680F;
 </p>
@@ -437,25 +466,25 @@ emacs</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 
-<div id="outline-container-orge62c624" class="outline-3">
-<h3 id="orge62c624"><span class="section-number-3">2.4</span> &#x5BF9;&#x9F50;</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-org41b99a1" class="outline-3">
+<h3 id="org41b99a1"><span class="section-number-3">3.4</span> &#x5BF9;&#x9F50;</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
 <code>SPC j =</code> &#x81EA;&#x52A8;&#x5BF9;&#x9F50;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;beautify
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org798682d" class="outline-2">
-<h2 id="org798682d"><span class="section-number-2">3</span> Emacs &#x670D;&#x52A1;&#x5668;</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgdeae76a" class="outline-2">
+<h2 id="orgdeae76a"><span class="section-number-2">4</span> Emacs &#x670D;&#x52A1;&#x5668;</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 Spacemacs&#x4F1A;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x5728;Spacemacs&#x5173;&#x95ED;&#x7684;&#x65F6;&#x5019;&#x6740;&#x6389;&#x3002;
 </p>
 </div>
-<div id="outline-container-orgde2c6d0" class="outline-3">
-<h3 id="orgde2c6d0"><span class="section-number-3">3.1</span> &#x4F7F;&#x7528;Emacs&#x670D;&#x52A1;&#x5668;</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-org33129d0" class="outline-3">
+<h3 id="org33129d0"><span class="section-number-3">4.1</span> &#x4F7F;&#x7528;Emacs&#x670D;&#x52A1;&#x5668;</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 Spacemacs &#x4F1A;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x5668;&#xFF0C; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x4F7F;&#x7528; <code>emacsclient</code> &#x547D;&#x4EE4;:
 </p>
@@ -465,9 +494,9 @@ Spacemacs &#x4F1A;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x542F;&#x52A8;&#x670D;&#x52A
 </ul>
 </div>
 </div>
-<div id="outline-container-orga399172" class="outline-3">
-<h3 id="orga399172"><span class="section-number-3">3.2</span> &#x6740;&#x6389;Emacs&#x670D;&#x52A1;&#x5668;</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-org201ecdc" class="outline-3">
+<h3 id="org201ecdc"><span class="section-number-3">4.2</span> &#x6740;&#x6389;Emacs&#x670D;&#x52A1;&#x5668;</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 &#x9664;&#x4E86;&#x5173;&#x95ED;Spacemacs&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x6765;&#x6740;&#x6389;Emacs&#x670D;&#x52A1;&#x5668;&#xFF1A;
 </p>
@@ -476,9 +505,9 @@ Spacemacs &#x4F1A;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x542F;&#x52A8;&#x670D;&#x52A
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb7b525b" class="outline-3">
-<h3 id="orgb7b525b"><span class="section-number-3">3.3</span> &#x6301;&#x4E45;&#x5316;Emacs&#x670D;&#x52A1;&#x5668;</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-orgc7dbce6" class="outline-3">
+<h3 id="orgc7dbce6"><span class="section-number-3">4.3</span> &#x6301;&#x4E45;&#x5316;Emacs&#x670D;&#x52A1;&#x5668;</h3>
+<div class="outline-text-3" id="text-4-3">
 <p>
 &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6301;&#x4E45;&#x5316;Emacs&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5728;Emacs&#x5173;&#x95ED;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x4F1A;&#x5173;&#x95ED;&#x3002;&#x53EA;&#x8981;&#x8BBE;&#x7F6E; <code>~/.spacemacs</code> &#x4E2D; <code>dotspacemacs-persistent-server</code> &#x4E3A; <code>t</code> &#x5373;&#x53EF;&#x3002;
 </p>
@@ -494,9 +523,9 @@ Spacemacs &#x4F1A;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x542F;&#x52A8;&#x670D;&#x52A
 </div>
 </div>
 
-<div id="outline-container-org3674c13" class="outline-2">
-<h2 id="org3674c13"><span class="section-number-2">4</span> &#x53C2;&#x8003;&#x8D44;&#x6599;</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org96e4ad7" class="outline-2">
+<h2 id="org96e4ad7"><span class="section-number-2">5</span> &#x53C2;&#x8003;&#x8D44;&#x6599;</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 <a href="http://scarletsky.github.io/2016/01/22/spacemacs-usage/" target="_blank" rel="external">Spacemacs&#x4F7F;&#x7528;&#x603B;&#x7ED3;</a>
 </p>
@@ -682,7 +711,7 @@ Spacemacs &#x4F1A;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x542F;&#x52A8;&#x670D;&#x52A
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgb2b1f13"><span class="nav-number">1.</span> <span class="nav-text">1 安装&使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org82661bd"><span class="nav-number">2.</span> <span class="nav-text">2 常用的快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org825c2d4"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 配置文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0eb73a4"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgf90b379"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 窗口管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orge62c624"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org798682d"><span class="nav-number">3.</span> <span class="nav-text">3 Emacs 服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgde2c6d0"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 使用Emacs服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orga399172"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 杀掉Emacs服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb7b525b"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 持久化Emacs服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org3674c13"><span class="nav-number">4.</span> <span class="nav-text">4 参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org870c5fd"><span class="nav-number">1.</span> <span class="nav-text">1 安装&使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgaa6da61"><span class="nav-number">2.</span> <span class="nav-text">2 ELPA国内镜像源设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org53f8621"><span class="nav-number">3.</span> <span class="nav-text">3 常用的快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orga447231"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 配置文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org5626049"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orge6110fa"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 窗口管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org41b99a1"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgdeae76a"><span class="nav-number">4.</span> <span class="nav-text">4 Emacs 服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org33129d0"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 使用Emacs服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org201ecdc"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 杀掉Emacs服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgc7dbce6"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 持久化Emacs服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org96e4ad7"><span class="nav-number">5.</span> <span class="nav-text">5 参考资料</span></a></li></ol></div>
             
 
           </div>
