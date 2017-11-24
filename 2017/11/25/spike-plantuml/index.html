@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Algorithm," />
+  <meta name="keywords" content="PlantUML,UML," />
 
 
 
@@ -93,20 +93,21 @@
 
 
 
-<meta name="description" content="1 &amp;#x80CC;&amp;#x666F;   Dictionary&amp;#x548C;HashTable&amp;#x662F;.NET&amp;#x4E2D;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x4F46;&amp;#x662F;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;">
-<meta name="keywords" content="Algorithm">
+<meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x7684;PlantUML&amp;#x5B66;&amp;#x4E60;&amp;#xFF0C;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF9;&amp;#x4F60;&amp;#x6709;&amp;#x5E2E;&amp;#x52A9;&amp;#x3002;">
+<meta name="keywords" content="PlantUML,UML">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GetHashCode and Equals">
-<meta property="og:url" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/index.html">
+<meta property="og:title" content="PlantUML实践">
+<meta property="og:url" content="jack2gs.github.io/2017/11/25/spike-plantuml/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="1 &amp;#x80CC;&amp;#x666F;   Dictionary&amp;#x548C;HashTable&amp;#x662F;.NET&amp;#x4E2D;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x4F46;&amp;#x662F;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;">
-<meta property="og:image" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/hash-search-store.png">
-<meta property="og:image" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/hash-search-search.png">
-<meta property="og:updated_time" content="2017-07-30T09:07:35.000Z">
+<meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x7684;PlantUML&amp;#x5B66;&amp;#x4E60;&amp;#xFF0C;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF9;&amp;#x4F60;&amp;#x6709;&amp;#x5E2E;&amp;#x52A9;&amp;#x3002;">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/basic.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/declaring-participant.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/rename-participant.png">
+<meta property="og:updated_time" content="2017-11-24T17:30:36.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GetHashCode and Equals">
-<meta name="twitter:description" content="1 &amp;#x80CC;&amp;#x666F;   Dictionary&amp;#x548C;HashTable&amp;#x662F;.NET&amp;#x4E2D;&amp;#x7ECF;&amp;#x5E38;&amp;#x4F7F;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x4F46;&amp;#x662F;&amp;#xFF0C;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;">
-<meta name="twitter:image" content="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/hash-search-store.png">
+<meta name="twitter:title" content="PlantUML实践">
+<meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x7684;PlantUML&amp;#x5B66;&amp;#x4E60;&amp;#xFF0C;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF9;&amp;#x4F60;&amp;#x6709;&amp;#x5E2E;&amp;#x52A9;&amp;#x3002;">
+<meta name="twitter:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/basic.png">
 
 
 
@@ -134,14 +135,14 @@
 
 
 
-  <link rel="canonical" href="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/"/>
+  <link rel="canonical" href="jack2gs.github.io/2017/11/25/spike-plantuml/"/>
 
 
 
 
 
 
-  <title>GetHashCode and Equals | Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>PlantUML实践 | Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -280,7 +281,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/07/09/get-hash-code-and-equals/">
+    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2017/11/25/spike-plantuml/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jack Gao">
@@ -297,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GetHashCode and Equals</h1>
+          <h1 class="post-title" itemprop="name headline">PlantUML实践</h1>
         
 
         <div class="post-meta">
@@ -309,8 +310,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-09T21:58:53+08:00">
-                2017-07-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-25T00:57:23+08:00">
+                2017-11-25
               </time>
             
 
@@ -325,8 +326,8 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-07-30T17:07:35+08:00">
-                2017-07-30
+              <time title="Post modified" itemprop="dateModified" datetime="2017-11-25T01:30:36+08:00">
+                2017-11-25
               </time>
             
           </span>
@@ -344,8 +345,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NET/" itemprop="url" rel="index">
-                    <span itemprop="name">.NET</span>
+                  <a href="/categories/PlantUML/" itemprop="url" rel="index">
+                    <span itemprop="name">PlantUML</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PlantUML/UML/" itemprop="url" rel="index">
+                    <span itemprop="name">UML</span>
                   </a>
                 </span>
 
@@ -379,59 +391,176 @@
 
       
         <div id="content">
-
-<div id="outline-container-orgacdf86c" class="outline-2">
-<h2 id="orgacdf86c"><span class="section-number-2">1</span> &#x80CC;&#x666F;</h2>
-<div class="outline-text-2" id="text-1">
 <p>
-Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E4B;&#x524D;&#x5BF9;&#x5176;&#x539F;&#x7406;&#x4E0D;&#x662F;&#x592A;&#x6E05;&#x695A;&#xFF0C;&#x672C;&#x6587;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x5176;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A; <code>Object.GetHashCode</code> &#x548C; <code>Object.Equals</code> &#x7684;&#x4F5C;&#x7528;&#x3002;
+&#x672C;&#x6587;&#x662F;&#x535A;&#x4E3B;&#x7684;PlantUML&#x5B66;&#x4E60;&#xFF0C;&#x5B9E;&#x8DF5;&#x4E0E;&#x603B;&#x7ED3;&#x3002;&#x5E0C;&#x671B;&#x5BF9;&#x4F60;&#x6709;&#x5E2E;&#x52A9;&#x3002;
 </p>
-
 <a id="more"></a>
+<div id="outline-container-org9f4b6ca" class="outline-2">
+<h2 id="org9f4b6ca"><span class="section-number-2">1</span> &#x65F6;&#x5E8F;&#x56FE;&#xFF08;Sequence Diagram&#xFF09;</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6e322ed" class="outline-3">
+<h3 id="org6e322ed"><span class="section-number-3">1.1</span> &#x7B80;&#x5355;&#x793A;&#x4F8B;(Basic examples)</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-orgbf6725b" class="outline-4">
+<h4 id="orgbf6725b"><span class="section-number-4">1.1.1</span> &#x8981;&#x70B9;</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li><code>-&gt;</code> &#x8868;&#x793A;&#x5B9E;&#x7EBF;&#x7BAD;&#x5934;</li>
+<li><code>--&gt;</code> &#x8868;&#x793A;&#x865A;&#x7EBF;&#x7BAD;&#x5934;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf552de4" class="outline-4">
+<h4 id="orgf552de4"><span class="section-number-4">1.1.2</span> &#x5B9E;&#x8DF5;</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+Alice -&gt; Bob: Authentication Request
+Bob --&gt; Alice: Authentication Resonse
+
+Alice -&gt; Bob: Another authntication Request
+Alice &lt;-- Bob: Another authntication Resonse
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="basic.png">
+</p>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org56da2a4" class="outline-2">
-<h2 id="org56da2a4"><span class="section-number-2">2</span> &#x54C8;&#x5E0C;&#x67E5;&#x627E;</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org56bc87c" class="outline-4">
+<h4 id="org56bc87c"><span class="section-number-4">1.1.3</span> &#x603B;&#x7ED3;</h4>
+<div class="outline-text-4" id="text-1-1-3">
 <p>
-&#x54C8;&#x5E0C;&#x67E5;&#x627E;&#x662F;Dictionary&#x548C;HashTable&#x7684;&#x57FA;&#x7840;&#x3002;&#x5EFA;&#x8BAE;&#x9996;&#x5148;&#x770B;&#x4E0B;&#x54C8;&#x5E0C;&#x67E5;&#x627E;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x3002;&#x54C8;&#x5E0C;&#x67E5;&#x627E;&#x7B97;&#x6CD5;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF1A;1.&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7B97;&#x6CD5;&#xFF1B;2.&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x7B97;&#x6CD5;&#x3002;&#x8FD9;&#x91CC;&#x4EE5;.NET&#x7684;&#x5B9E;&#x73B0;&#x4E3A;&#x4F8B;&#x7B80;&#x8981;&#x5206;&#x6790;&#x4E0B;&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;&#x3002;
-</p>
-</div>
-
-<div id="outline-container-orgffe3e15" class="outline-3">
-<h3 id="orgffe3e15"><span class="section-number-3">2.1</span> &#x6570;&#x636E;&#x5B58;&#x50A8;&#x7B97;&#x6CD5;</h3>
-<div class="outline-text-3" id="text-2-1">
-
-<div id="org8eaf03f" class="figure">
-<p><img src="hash-search-store.png">
-</p>
-<p><span class="figure-number">Figure 1: </span>&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7B97;&#x6CD5;</p>
-</div>
-
-<p>
-&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x53D1;&#x751F;&#x51B2;&#x7A81;&#x7684;&#x65F6;&#x5019;Object.Equals&#x65B9;&#x6CD5;&#x624D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;
+&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>@startuml</code> &#x4E4B;&#x524D;&#x548C; <code>@enduml</code> &#x4E4B;&#x540E;&#x4E0D;&#x53EF;&#x4EE5;&#x6709;&#x7A7A;&#x884C;, &#x5426;&#x5219;&#x4F1A;&#x51FA;&#x9519;&#x3002;
 </p>
 </div>
 </div>
-
-<div id="outline-container-orga78f8df" class="outline-3">
-<h3 id="orga78f8df"><span class="section-number-3">2.2</span> &#x6570;&#x636E;&#x8BFB;&#x53D6;&#x7B97;&#x6CD5;</h3>
-<div class="outline-text-3" id="text-2-2">
-
-<div id="org272cdd8" class="figure">
-<p><img src="hash-search-search.png">
+</div>
+<div id="outline-container-orge18d3b1" class="outline-3">
+<h3 id="orge18d3b1"><span class="section-number-3">1.2</span> &#x58F0;&#x660E;&#x53C2;&#x4E0E;&#x8005;(Declaring participant)</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org4cf4669" class="outline-4">
+<h4 id="org4cf4669"><span class="section-number-4">1.2.1</span> &#x8981;&#x70B9;</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li><p>
+&#x5173;&#x952E;&#x5B57; <code>participant</code> &#x7528;&#x4E8E;&#x6539;&#x53D8;&#x53C2;&#x4E0E;&#x8005;&#x7684;&#x987A;&#x5E8F;&#x3002;&#x6B64;&#x5916;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5173;&#x952E;&#x5B57;&#x53EF;&#x4EE5;&#x58F0;&#x660E;&#x53C2;&#x4E0E;&#x8005;&#xFF1A;
 </p>
-<p><span class="figure-number">Figure 2: </span>&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x7B97;&#x6CD5;</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#x540D;&#x79F0;</th>
+<th scope="col" class="org-left">&#x7528;&#x9014;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">actor</td>
+<td class="org-left">&#x53C2;&#x4E0E;&#x8005;</td>
+</tr>
+
+<tr>
+<td class="org-left">boundary</td>
+<td class="org-left">&#x8FB9;&#x754C;</td>
+</tr>
+
+<tr>
+<td class="org-left">control</td>
+<td class="org-left">&#x63A7;&#x5236;</td>
+</tr>
+
+<tr>
+<td class="org-left">entity</td>
+<td class="org-left">&#x5B9E;&#x4F53;</td>
+</tr>
+
+<tr>
+<td class="org-left">database</td>
+<td class="org-left">&#x6570;&#x636E;&#x5E93;</td>
+</tr>
+</tbody>
+</table></li>
+<li>&#x5173;&#x952E;&#x5B57; <code>as</code> &#x7528;&#x4E8E;&#x91CD;&#x547D;&#x540D;&#x53C2;&#x4E0E;&#x8005;</li>
+<li>&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5404;&#x79CD;&#x53C2;&#x4E0E;&#x8005;&#x7684;&#x80CC;&#x666F;&#x989C;&#x8272;</li>
+</ul>
+
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+actor Foo1
+boundary Foo2
+control Foo3
+entity Foo4
+database Foo5
+collections Foo6
+Foo1 -&gt; Foo2 : To boundary
+Foo1 -&gt; Foo3 : To control
+Foo1 -&gt; Foo4 : To entity
+Foo1 -&gt; Foo5 : To database
+Foo1 -&gt; Foo6 : To collections
+@enduml</span><br></pre></td></tr></table></figure>
 </div>
 
-<p>
-&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5728;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x65E0;&#x8BBA;&#x53D1;&#x751F;&#x51B2;&#x7A81;&#x4E0E;&#x5426;Object.Equals&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;
-</p>
 
-<p>
-&#x53E6;&#x5916;&#xFF0C;MSDN&#x4E2D;&#x6709;&#x63D0;&#x5230;&#xFF0C;&#x5F53;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x76F8;&#x540C;&#x65F6;&#x5176;Hash&#x503C;&#x80AF;&#x5B9A;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;Hash&#x503C;&#x76F8;&#x540C;&#x65F6;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x672A;&#x5FC5;&#x76F8;&#x540C;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B58;&#x53D6;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x91CD;&#x8F7D;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x6700;&#x597D;&#x4E00;&#x8D77;&#x91CD;&#x8F7D;&#x3002;
+<div class="figure">
+<p><img src="declaring-participant.png">
 </p>
+</div>
+
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+actor Bob #red
+&apos; The only difference between actor
+&apos; and participant is the drawing
+participant Alice
+participant &quot;I have a really\nlong name&quot; as L #99FF99
+/&apos;
+  You can also declare:
+  participant L as &quot;I have a really\nlong name&quot; #99FF99
+&apos;/
+
+Alice -&gt; Bob : Authentication Request
+Bob -&gt; Alice : Authentication Response
+Bob -&gt; L : Log transaction
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="rename-participant.png">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org547b248" class="outline-4">
+<h4 id="org547b248"><span class="section-number-4">1.2.2</span> &#x603B;&#x7ED3;</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ul class="org-ul">
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x53C2;&#x4E0E;&#x8005;&#xFF0C;&#x5E76;&#x66F4;&#x6539;&#x663E;&#x793A;&#x987A;&#x5E8F;
+<code>participant</code>, <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>entity</code>, <code>database</code> &#x548C; =collections=&#x7528;&#x4E8E;&#x58F0;&#x660E;&#x4E0D;&#x540C;&#x7684;&#x53C2;&#x4E0E;&#x8005;</li>
+<li>&#x4F7F;&#x7528; <code>as</code> &#x91CD;&#x547D;&#x540D;&#x53C2;&#x4E0E;&#x8005;</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x989C;&#x8272;
+&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>RGB</code> &#x548C;&#x989C;&#x8272;&#x82F1;&#x6587;&#x540D;&#x6765;&#x6307;&#x5B9A;&#x989C;&#x8272;&#x3002;</li>
+<li>&#x6CE8;&#x91CA;
+<ul class="org-ul">
+<li>&#x4F7F;&#x7528; <code>&apos;</code> &#x5B9A;&#x4E49;&#x5355;&#x884C;&#x6CE8;&#x91CA;</li>
+<li>&#x4F7F;&#x7528; <code>/&apos;...&apos;/</code> &#x5B9A;&#x4E49;&#x591A;&#x884C;&#x6CE8;&#x91CA;</li>
+</ul></li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -465,7 +594,9 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+            <a href="/tags/PlantUML/" rel="tag"># PlantUML</a>
+          
+            <a href="/tags/UML/" rel="tag"># UML</a>
           
         </div>
       
@@ -478,8 +609,8 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/09/hexo-org-example/" rel="next" title="Hello hexo-renderer-org">
-                <i class="fa fa-chevron-left"></i> Hello hexo-renderer-org
+              <a href="/2017/11/06/spacemacs-note/" rel="next" title="Spacemacs使用笔记">
+                <i class="fa fa-chevron-left"></i> Spacemacs使用笔记
               </a>
             
           </div>
@@ -487,10 +618,6 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/10/a-formalized-disposal-pattern/" rel="prev" title="理解IDisposable.Dispose()和Object.Finalize()">
-                理解IDisposable.Dispose()和Object.Finalize() <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -619,7 +746,7 @@ Dictionary&#x548C;HashTable&#x662F;.NET&#x4E2D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgacdf86c"><span class="nav-number">1.</span> <span class="nav-text">1 背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org56da2a4"><span class="nav-number">2.</span> <span class="nav-text">2 哈希查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgffe3e15"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 数据存储算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orga78f8df"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 数据读取算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org9f4b6ca"><span class="nav-number">1.</span> <span class="nav-text">1 时序图（Sequence Diagram）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org6e322ed"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 简单示例(Basic examples)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orgbf6725b"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgf552de4"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org56bc87c"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orge18d3b1"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 声明参与者(Declaring participant)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org4cf4669"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org547b248"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 总结</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
