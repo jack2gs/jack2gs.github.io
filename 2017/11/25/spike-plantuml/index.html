@@ -93,13 +93,13 @@
 
 
 
-<meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x7684;PlantUML&amp;#x5B66;&amp;#x4E60;&amp;#xFF0C;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF9;&amp;#x4F60;&amp;#x6709;&amp;#x5E2E;&amp;#x52A9;&amp;#x3002;">
+<meta name="description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x5B66;&amp;#x4E60;PlantUML&amp;#x65F6;&amp;#x5E8F;&amp;#x56FE;&amp;#xFF08;Sequence Diagram&amp;#xFF09;&amp;#x7684;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF">
 <meta name="keywords" content="UML,PlantUML">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PlantUML实践">
+<meta property="og:title" content="[PlantUML实践]时序图（Sequence Diagram）">
 <meta property="og:url" content="jack2gs.github.io/2017/11/25/spike-plantuml/index.html">
 <meta property="og:site_name" content="Jack Gao&#39;s Blog">
-<meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x7684;PlantUML&amp;#x5B66;&amp;#x4E60;&amp;#xFF0C;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF9;&amp;#x4F60;&amp;#x6709;&amp;#x5E2E;&amp;#x52A9;&amp;#x3002;">
+<meta property="og:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x5B66;&amp;#x4E60;PlantUML&amp;#x65F6;&amp;#x5E8F;&amp;#x56FE;&amp;#xFF08;Sequence Diagram&amp;#xFF09;&amp;#x7684;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF">
 <meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/basic.png">
 <meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/declaring-participant.png">
 <meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/rename-participant.png">
@@ -111,10 +111,21 @@
 <meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/newpage.png">
 <meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/combined-message.png">
 <meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/note.png">
-<meta property="og:updated_time" content="2017-11-24T21:09:33.773Z">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/customize-note.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/space.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/activity-block.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/complex-activity-block.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/create-participant.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/part-diagrams.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/part-diagrams-2.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/stereotype.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/box.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/remove-footbox.png">
+<meta property="og:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/customize-style.png">
+<meta property="og:updated_time" content="2017-11-25T06:43:54.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PlantUML实践">
-<meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x7684;PlantUML&amp;#x5B66;&amp;#x4E60;&amp;#xFF0C;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF9;&amp;#x4F60;&amp;#x6709;&amp;#x5E2E;&amp;#x52A9;&amp;#x3002;">
+<meta name="twitter:title" content="[PlantUML实践]时序图（Sequence Diagram）">
+<meta name="twitter:description" content="&amp;#x672C;&amp;#x6587;&amp;#x662F;&amp;#x535A;&amp;#x4E3B;&amp;#x5B66;&amp;#x4E60;PlantUML&amp;#x65F6;&amp;#x5E8F;&amp;#x56FE;&amp;#xFF08;Sequence Diagram&amp;#xFF09;&amp;#x7684;&amp;#x5B9E;&amp;#x8DF5;&amp;#x4E0E;&amp;#x603B;&amp;#x7ED3;&amp;#x3002;&amp;#x5E0C;&amp;#x671B;&amp;#x5BF">
 <meta name="twitter:image" content="jack2gs.github.io/2017/11/25/spike-plantuml/basic.png">
 
 
@@ -150,7 +161,7 @@
 
 
 
-  <title>PlantUML实践 | Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>[PlantUML实践]时序图（Sequence Diagram） | Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -306,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PlantUML实践</h1>
+          <h1 class="post-title" itemprop="name headline">[PlantUML实践]时序图（Sequence Diagram）</h1>
         
 
         <div class="post-meta">
@@ -334,7 +345,7 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-11-25T05:09:33+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2017-11-25T14:43:54+08:00">
                 2017-11-25
               </time>
             
@@ -400,29 +411,25 @@
       
         <div id="content">
 <p>
-&#x672C;&#x6587;&#x662F;&#x535A;&#x4E3B;&#x7684;PlantUML&#x5B66;&#x4E60;&#xFF0C;&#x5B9E;&#x8DF5;&#x4E0E;&#x603B;&#x7ED3;&#x3002;&#x5E0C;&#x671B;&#x5BF9;&#x4F60;&#x6709;&#x5E2E;&#x52A9;&#x3002;
+&#x672C;&#x6587;&#x662F;&#x535A;&#x4E3B;&#x5B66;&#x4E60;PlantUML&#x65F6;&#x5E8F;&#x56FE;&#xFF08;Sequence Diagram&#xFF09;&#x7684;&#x5B9E;&#x8DF5;&#x4E0E;&#x603B;&#x7ED3;&#x3002;&#x5E0C;&#x671B;&#x5BF9;&#x4F60;&#x6709;&#x5E2E;&#x52A9;&#x3002;
 </p>
 <a id="more"></a>
-<div id="outline-container-orgcdc6076" class="outline-2">
-<h2 id="orgcdc6076"><span class="section-number-2">1</span> &#x65F6;&#x5E8F;&#x56FE;&#xFF08;Sequence Diagram&#xFF09;</h2>
+<div id="outline-container-orga0bddbc" class="outline-2">
+<h2 id="orga0bddbc"><span class="section-number-2">1</span> &#x7B80;&#x5355;&#x793A;&#x4F8B;(Basic examples)</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org71fc60b" class="outline-3">
-<h3 id="org71fc60b"><span class="section-number-3">1.1</span> &#x7B80;&#x5355;&#x793A;&#x4F8B;(Basic examples)</h3>
+<div id="outline-container-org6f3166f" class="outline-3">
+<h3 id="org6f3166f"><span class="section-number-3">1.1</span> &#x8981;&#x70B9;</h3>
 <div class="outline-text-3" id="text-1-1">
-</div>
-<div id="outline-container-orgd4eb7b4" class="outline-4">
-<h4 id="orgd4eb7b4"><span class="section-number-4">1.1.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li><code>-&gt;</code> &#x8868;&#x793A;&#x5B9E;&#x7EBF;&#x7BAD;&#x5934;</li>
 <li><code>--&gt;</code> &#x8868;&#x793A;&#x865A;&#x7EBF;&#x7BAD;&#x5934;</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org71e2adf" class="outline-4">
-<h4 id="org71e2adf"><span class="section-number-4">1.1.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-org0dc468b" class="outline-3">
+<h3 id="org0dc468b"><span class="section-number-3">1.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 Alice -&gt; Bob: Authentication Request
@@ -441,22 +448,22 @@ Alice &lt;-- Bob: Another authntication Resonse
 </div>
 </div>
 
-<div id="outline-container-org656c717" class="outline-4">
-<h4 id="org656c717"><span class="section-number-4">1.1.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-orgb84b339" class="outline-3">
+<h3 id="orgb84b339"><span class="section-number-3">1.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-1-3">
 <p>
 &#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>@startuml</code> &#x4E4B;&#x524D;&#x548C; <code>@enduml</code> &#x4E4B;&#x540E;&#x4E0D;&#x53EF;&#x4EE5;&#x6709;&#x7A7A;&#x884C;, &#x5426;&#x5219;&#x4F1A;&#x51FA;&#x9519;&#x3002;
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org0ed6c9a" class="outline-3">
-<h3 id="org0ed6c9a"><span class="section-number-3">1.2</span> &#x58F0;&#x660E;&#x53C2;&#x4E0E;&#x8005;(Declaring participant)</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org9b56890" class="outline-2">
+<h2 id="org9b56890"><span class="section-number-2">2</span> &#x58F0;&#x660E;&#x53C2;&#x4E0E;&#x8005;(Declaring participant)</h2>
+<div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9bde73e" class="outline-4">
-<h4 id="org9bde73e"><span class="section-number-4">1.2.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-orgebc4e46" class="outline-3">
+<h3 id="orgebc4e46"><span class="section-number-3">2.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><p>
 &#x5173;&#x952E;&#x5B57; <code>participant</code> &#x7528;&#x4E8E;&#x6539;&#x53D8;&#x53C2;&#x4E0E;&#x8005;&#x7684;&#x987A;&#x5E8F;&#x3002;&#x6B64;&#x5916;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5173;&#x952E;&#x5B57;&#x53EF;&#x4EE5;&#x58F0;&#x660E;&#x53C2;&#x4E0E;&#x8005;&#xFF1A;
@@ -514,7 +521,7 @@ control Foo3
 entity Foo4
 database Foo5
 collections Foo6
-Foo1 -&gt; Foo2 : To boundary
+Foo1 -&gt; Foo2 : To boun dary
 Foo1 -&gt; Foo3 : To control
 Foo1 -&gt; Foo4 : To entity
 Foo1 -&gt; Foo5 : To database
@@ -553,9 +560,9 @@ Bob -&gt; L : Log transaction
 </div>
 </div>
 </div>
-<div id="outline-container-org647907b" class="outline-4">
-<h4 id="org647907b"><span class="section-number-4">1.2.2</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-org1e93082" class="outline-3">
+<h3 id="org1e93082"><span class="section-number-3">2.2</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>&#x81EA;&#x5B9A;&#x4E49;&#x53C2;&#x4E0E;&#x8005;&#xFF0C;&#x5E76;&#x66F4;&#x6539;&#x663E;&#x793A;&#x987A;&#x5E8F;
 <code>participant</code>, <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>entity</code>, <code>database</code> &#x548C; =collections=&#x7528;&#x4E8E;&#x58F0;&#x660E;&#x4E0D;&#x540C;&#x7684;&#x53C2;&#x4E0E;&#x8005;</li>
@@ -571,21 +578,21 @@ Bob -&gt; L : Log transaction
 </div>
 </div>
 </div>
-<div id="outline-container-orgd2ec9a4" class="outline-3">
-<h3 id="orgd2ec9a4"><span class="section-number-3">1.3</span> &#x5728;&#x53C2;&#x4E0E;&#x8005;&#x4E2D;&#x4F7F;&#x7528;&#x975E;&#x5B57;&#x6BCD;&#x7B26;&#x53F7;&#xFF08;Use non-letters in participants&#xFF09;</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgde79bdb" class="outline-2">
+<h2 id="orgde79bdb"><span class="section-number-2">3</span> &#x5728;&#x53C2;&#x4E0E;&#x8005;&#x4E2D;&#x4F7F;&#x7528;&#x975E;&#x5B57;&#x6BCD;&#x7B26;&#x53F7;&#xFF08;Use non-letters in participants&#xFF09;</h2>
+<div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org802adf9" class="outline-4">
-<h4 id="org802adf9"><span class="section-number-4">1.3.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org0ed4549" class="outline-3">
+<h3 id="org0ed4549"><span class="section-number-3">3.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 PlantUML&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x975E;&#x5B57;&#x6BCD;&#x7B26;&#x53F7;&#xFF0C;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#x6362;&#x884C;&#x7B26; <code>\n</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc42bed" class="outline-4">
-<h4 id="orgbc42bed"><span class="section-number-4">1.3.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-org17920de" class="outline-3">
+<h3 id="org17920de"><span class="section-number-3">3.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 Alice -&gt; &quot;Bob()&quot; : Hello
@@ -597,9 +604,9 @@ Long --&gt; &quot;Bob()&quot; : ok
 </div>
 </div>
 </div>
-<div id="outline-container-org90e67de" class="outline-4">
-<h4 id="org90e67de"><span class="section-number-4">1.3.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-org18f171f" class="outline-3">
+<h3 id="org18f171f"><span class="section-number-3">3.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 &#x6CE8;&#x610F;&#x8FD9;&#x4E24;&#x79CD;&#x5199;&#x6CD5;&#x662F;&#x7B49;&#x6548;&#x7684;&#xFF1A;
 </p>
@@ -610,22 +617,22 @@ Long --&gt; &quot;Bob()&quot; : ok
 </div>
 </div>
 </div>
-<div id="outline-container-org1c4d517" class="outline-3">
-<h3 id="org1c4d517"><span class="section-number-3">1.4</span> &#x7ED9;&#x81EA;&#x5DF1;&#x53D1;&#x6D88;&#x606F;&#xFF08;Message to self)</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgbeccd2a" class="outline-2">
+<h2 id="orgbeccd2a"><span class="section-number-2">4</span> &#x7ED9;&#x81EA;&#x5DF1;&#x53D1;&#x6D88;&#x606F;&#xFF08;Message to self)</h2>
+<div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org1f8e61d" class="outline-4">
-<h4 id="org1f8e61d"><span class="section-number-4">1.4.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-org6b2504a" class="outline-3">
+<h3 id="org6b2504a"><span class="section-number-3">4.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>&#x53C2;&#x4E0E;&#x8005;&#x53EF;&#x4EE5;&#x7ED9;&#x81EA;&#x5DF1;&#x53D1;&#x6D88;&#x606F;</li>
 <li>&#x6D88;&#x606F;&#x6587;&#x5B57;&#x53EF;&#x4EE5;&#x7528; <code>\n</code> &#x6765;&#x6362;&#x884C;&#xFF0C;&#x524D;&#x9762;&#x63D0;&#x5230;&#x4E86;&#x5728;&#x53C2;&#x4E0E;&#x8005;&#x4E2D;&#x4F7F;&#x7528;&#x975E;&#x5B57;&#x6BCD;&#x5B57;&#x7B26;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0E;&#x524D;&#x8005;&#x7C7B;&#x4F3C;&#x3002;</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7cdcfff" class="outline-4">
-<h4 id="org7cdcfff"><span class="section-number-4">1.4.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-org0398781" class="outline-3">
+<h3 id="org0398781"><span class="section-number-3">4.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 Alice -&gt; : This is a signal to self.\nIt also demonstrates\nmultiline\ntext
@@ -640,22 +647,22 @@ Alice -&gt; : This is a signal to self.\nIt also demonstrates\nmultiline\ntext
 </div>
 </div>
 
-<div id="outline-container-orgcdefe55" class="outline-4">
-<h4 id="orgcdefe55"><span class="section-number-4">1.4.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-orgf023a26" class="outline-3">
+<h3 id="orgf023a26"><span class="section-number-3">4.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-4-3">
 <p>
 &#x6700;&#x597D;&#x5728;&#x64CD;&#x4F5C;&#x7B26;&#x4E24;&#x8FB9;&#x52A0;&#x4E0A;&#x7A7A;&#x683C;&#x3002;
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org8fe2730" class="outline-3">
-<h3 id="org8fe2730"><span class="section-number-3">1.5</span> &#x4FEE;&#x6539;&#x7BAD;&#x5934;&#x6837;&#x5F0F;(Change arrow style)</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-orgcdeeea5" class="outline-2">
+<h2 id="orgcdeeea5"><span class="section-number-2">5</span> &#x4FEE;&#x6539;&#x7BAD;&#x5934;&#x6837;&#x5F0F;(Change arrow style)</h2>
+<div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org722b410" class="outline-4">
-<h4 id="org722b410"><span class="section-number-4">1.5.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-org1ef898e" class="outline-3">
+<h3 id="org1ef898e"><span class="section-number-3">5.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 &#x4FEE;&#x6539;&#x7BAD;&#x5934;&#x7684;&#x65B9;&#x5F0F;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;
 </p>
@@ -669,9 +676,9 @@ Alice -&gt; : This is a signal to self.\nIt also demonstrates\nmultiline\ntext
 </ul>
 </div>
 </div>
-<div id="outline-container-org704c99a" class="outline-4">
-<h4 id="org704c99a"><span class="section-number-4">1.5.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-org2a5c3a1" class="outline-3">
+<h3 id="org2a5c3a1"><span class="section-number-3">5.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 participant Bob as B
@@ -700,30 +707,30 @@ B &lt;-&gt;o A
 </div>
 </div>
 
-<div id="outline-container-orgba45725" class="outline-4">
-<h4 id="orgba45725"><span class="section-number-4">1.5.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-org84edfa9" class="outline-3">
+<h3 id="org84edfa9"><span class="section-number-3">5.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-5-3">
 <p>
 &#x4E0D;&#x540C;&#x7684;&#x7BAD;&#x5934;&#x6837;&#x5F0F;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E0D;&#x540C;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x3002;
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6e9d25f" class="outline-3">
-<h3 id="org6e9d25f"><span class="section-number-3">1.6</span> &#x4FEE;&#x6539;&#x7BAD;&#x5934;&#x989C;&#x8272;&#xFF08;Change arrow color&#xFF09;</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org474905a" class="outline-2">
+<h2 id="org474905a"><span class="section-number-2">6</span> &#x4FEE;&#x6539;&#x7BAD;&#x5934;&#x989C;&#x8272;&#xFF08;Change arrow color&#xFF09;</h2>
+<div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgc69db17" class="outline-4">
-<h4 id="orgc69db17"><span class="section-number-4">1.6.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-org8e66806" class="outline-3">
+<h3 id="org8e66806"><span class="section-number-3">6.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
 &#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x989C;&#x8272;&#x540D;&#x5B57;&#x6216;&#x8005;RGB&#x503C;&#x8868;&#x793A;&#x989C;&#x8272;
 </p>
 </div>
 </div>
-<div id="outline-container-org734b406" class="outline-4">
-<h4 id="org734b406"><span class="section-number-4">1.6.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-org59daad9" class="outline-3">
+<h3 id="org59daad9"><span class="section-number-3">6.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 participant Bob as B
@@ -742,22 +749,22 @@ A -[#0000FF]-&gt;B : ok
 </div>
 </div>
 
-<div id="outline-container-orga6f64e4" class="outline-4">
-<h4 id="orga6f64e4"><span class="section-number-4">1.6.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-org4645964" class="outline-3">
+<h3 id="org4645964"><span class="section-number-3">6.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-6-3">
 <p>
 &#x6709;&#x65F6;&#x5019;&#x5728;&#x60F3;&#xFF0C;&#x8FD9;&#x4E9B;&#x82B1;&#x54E8;&#x7684;&#x4E1C;&#x897F;&#x6709;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x3002;&#x3002;&#x3002;
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3458b41" class="outline-3">
-<h3 id="org3458b41"><span class="section-number-3">1.7</span> &#x5BF9;&#x6D88;&#x606F;&#x5E8F;&#x5217;&#x7F16;&#x53F7;&#xFF08;Message sequence numbering&#xFF09;</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-org4cdc6df" class="outline-2">
+<h2 id="org4cdc6df"><span class="section-number-2">7</span> &#x5BF9;&#x6D88;&#x606F;&#x5E8F;&#x5217;&#x7F16;&#x53F7;&#xFF08;Message sequence numbering&#xFF09;</h2>
+<div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orge52e3a4" class="outline-4">
-<h4 id="orge52e3a4"><span class="section-number-4">1.7.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-orgefa5ce1" class="outline-3">
+<h3 id="orgefa5ce1"><span class="section-number-3">7.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li>&#x5173;&#x952E;&#x5B57; <code>autonumber</code> &#x7528;&#x4E8E;&#x81EA;&#x52A8;&#x5BF9;&#x6D88;&#x606F;&#x7F16;&#x53F7;&#x3002;</li>
 <li><p>
@@ -813,9 +820,9 @@ A -[#0000FF]-&gt;B : ok
 </ul>
 </div>
 </div>
-<div id="outline-container-org2173565" class="outline-4">
-<h4 id="org2173565"><span class="section-number-4">1.7.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-org01332ec" class="outline-3">
+<h3 id="org01332ec"><span class="section-number-3">7.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-7-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 autonumber
@@ -866,30 +873,30 @@ B &lt;- A : Yet another authenticaiton Response
 </div>
 </div>
 
-<div id="outline-container-orgc83a300" class="outline-4">
-<h4 id="orgc83a300"><span class="section-number-4">1.7.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-org798c662" class="outline-3">
+<h3 id="org798c662"><span class="section-number-3">7.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-7-3">
 <p>
 &#x7F16;&#x53F7;&#x53EF;&#x4EE5;&#x8BA9;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5E8F;&#x66F4;&#x6E05;&#x695A;&#x7B80;&#x660E;&#x3002;
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orge5249f6" class="outline-3">
-<h3 id="orge5249f6"><span class="section-number-3">1.8</span> &#x5206;&#x5272;&#x793A;&#x610F;&#x56FE;&#xFF08;Splitting diagrams&#xFF09;</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-org8d3587f" class="outline-2">
+<h2 id="org8d3587f"><span class="section-number-2">8</span> &#x5206;&#x5272;&#x793A;&#x610F;&#x56FE;&#xFF08;Splitting diagrams&#xFF09;</h2>
+<div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org596a43f" class="outline-4">
-<h4 id="org596a43f"><span class="section-number-4">1.8.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-8-1">
+<div id="outline-container-orgc29065c" class="outline-3">
+<h3 id="orgc29065c"><span class="section-number-3">8.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-8-1">
 <p>
 &#x5173;&#x952E;&#x5B57; <code>newpage</code> &#x7528;&#x4E8E;&#x628A;&#x4E00;&#x5F20;&#x56FE;&#x5206;&#x5272;&#x6210;&#x591A;&#x5F20;&#x3002;
 </p>
 </div>
 </div>
-<div id="outline-container-org39711d9" class="outline-4">
-<h4 id="org39711d9"><span class="section-number-4">1.8.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-8-2">
+<div id="outline-container-orgbcff2e6" class="outline-3">
+<h3 id="orgbcff2e6"><span class="section-number-3">8.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 participant Alice as A
@@ -917,22 +924,22 @@ A -&gt; B : message 6
 </div>
 </div>
 
-<div id="outline-container-org9d9d9f8" class="outline-4">
-<h4 id="org9d9d9f8"><span class="section-number-4">1.8.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-8-3">
+<div id="outline-container-org40aac3f" class="outline-3">
+<h3 id="org40aac3f"><span class="section-number-3">8.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-8-3">
 <p>
 &#x5F53;&#x65F6;&#x5E8F;&#x56FE;&#x592A;&#x8FC7;&#x590D;&#x6742;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x9875;&#x3002;
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org38f76d0" class="outline-3">
-<h3 id="org38f76d0"><span class="section-number-3">1.9</span> &#x7EC4;&#x5408;&#x6D88;&#x606F;</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-org08a1027" class="outline-2">
+<h2 id="org08a1027"><span class="section-number-2">9</span> &#x7EC4;&#x5408;&#x6D88;&#x606F;</h2>
+<div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org0e04c26" class="outline-4">
-<h4 id="org0e04c26"><span class="section-number-4">1.9.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-9-1">
+<div id="outline-container-orgae20350" class="outline-3">
+<h3 id="orgae20350"><span class="section-number-3">9.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x5173;&#x952E;&#x5B57;&#x7EC4;&#x5408;&#x6D88;&#x606F;
 <ul class="org-ul">
@@ -950,9 +957,9 @@ A -&gt; B : message 6
 </ul>
 </div>
 </div>
-<div id="outline-container-org91301ba" class="outline-4">
-<h4 id="org91301ba"><span class="section-number-4">1.9.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-9-2">
+<div id="outline-container-org0c09a9d" class="outline-3">
+<h3 id="org0c09a9d"><span class="section-number-3">9.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-9-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 participant Alice as A
@@ -986,22 +993,22 @@ end
 </div>
 </div>
 
-<div id="outline-container-org3b04c1b" class="outline-4">
-<h4 id="org3b04c1b"><span class="section-number-4">1.9.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-9-3">
+<div id="outline-container-org9c77ba6" class="outline-3">
+<h3 id="org9c77ba6"><span class="section-number-3">9.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-9-3">
 <p>
 &#x7EC4;&#x5408;&#x5F88;&#x5F3A;&#x5927;&#xFF0C; &#x4EE5;&#x524D;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x5C11;&#x3002;&#x4F7F;&#x7528;plantuml&#x8FD8;&#x633A;&#x65B9;&#x4FBF;&#x7684;&#x3002;
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org999207e" class="outline-3">
-<h3 id="org999207e"><span class="section-number-3">1.10</span> &#x7ED9;&#x6D88;&#x606F;&#x6DFB;&#x52A0;&#x6CE8;&#x91CA;</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-orgcc51868" class="outline-2">
+<h2 id="orgcc51868"><span class="section-number-2">10</span> &#x7ED9;&#x6D88;&#x606F;&#x6DFB;&#x52A0;&#x6CE8;&#x91CA;</h2>
+<div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org64c2bfa" class="outline-4">
-<h4 id="org64c2bfa"><span class="section-number-4">1.10.1</span> &#x8981;&#x70B9;</h4>
-<div class="outline-text-4" id="text-1-10-1">
+<div id="outline-container-orgc65fb3f" class="outline-3">
+<h3 id="orgc65fb3f"><span class="section-number-3">10.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
 <li>&#x7ED9;&#x6D88;&#x606F;&#x6DFB;&#x52A0;&#x6CE8;&#x91CA;
 &#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6CE8;&#x91CA;&#x9700;&#x8981;&#x7D27;&#x8DDF;&#x6D88;&#x606F;&#x5373;&#x53EF;&#xFF1A; <code>note &lt;left|right&gt;</code></li>
@@ -1022,12 +1029,13 @@ A -&gt; B
 note &lt;left|right&gt; of &lt;participant&gt; [&lt;color&gt;]
 ...
 end note</pre></li>
+<li>&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x91CA;&#x7684;&#x5F62;&#x72B6;</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org695bf6f" class="outline-4">
-<h4 id="org695bf6f"><span class="section-number-4">1.10.2</span> &#x5B9E;&#x8DF5;</h4>
-<div class="outline-text-4" id="text-1-10-2">
+<div id="outline-container-org71b57ba" class="outline-3">
+<h3 id="org71b57ba"><span class="section-number-3">10.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-10-2">
 <div class="org-src-container">
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
 participant Alice as A
@@ -1070,16 +1078,470 @@ end note
 <p><img src="note.png">
 </p>
 </div>
+
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant caller as C
+participant server as S
+
+c -&gt; s : conReq
+hnote over c : idle
+c &lt;- s : conConf
+rnote over s
+      &quot;r&quot; as rectangle
+      &quot;h&quot; as hexagon
+end note
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="customize-note.png">
+</p>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgd01709f" class="outline-4">
-<h4 id="orgd01709f"><span class="section-number-4">1.10.3</span> &#x603B;&#x7ED3;</h4>
-<div class="outline-text-4" id="text-1-10-3">
+<div id="outline-container-orgcd19fcc" class="outline-3">
+<h3 id="orgcd19fcc"><span class="section-number-3">10.3</span> &#x603B;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-10-3">
 <p>
 &#x6CE8;&#x91CA;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x53CD;&#x9988;&#x3002;
 </p>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org551e486" class="outline-2">
+<h2 id="org551e486"><span class="section-number-2">11</span> &#x5206;&#x9694;&#x7B26;</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org1f5a075" class="outline-3">
+<h3 id="org1f5a075"><span class="section-number-3">11.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+<code>==</code> &#x5173;&#x952E;&#x8BCD;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5206;&#x5272;&#x56FE;&#x8868;&#x3002;
+</p>
+</div>
+</div>
+<div id="outline-container-org64b8487" class="outline-3">
+<h3 id="org64b8487"><span class="section-number-3">11.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-11-2">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant Alice as A
+participant Bob as B
+== Initialization ==
+A -&gt; B : Authentication Request
+B -&gt; A : Authentication Response
+== Repetition ==
+A -&gt; B : Another authentication Request
+A &lt;-- B : Another authentication Response
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org6150ef0" class="outline-3">
+<h3 id="org6150ef0"><span class="section-number-3">11.3</span> &#x603B;&#x7ED3;</h3>
+</div>
+</div>
+<div id="outline-container-orgd341eb2" class="outline-2">
+<h2 id="orgd341eb2"><span class="section-number-2">12</span> &#x5F15;&#x7528;</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org81b9a84" class="outline-3">
+<h3 id="org81b9a84"><span class="section-number-3">12.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+<code>ref over</code> &#x7528;&#x6765;&#x5B9E;&#x73B0;&#x5F15;&#x7528;
+</p>
+</div>
+</div>
+<div id="outline-container-org0105231" class="outline-3">
+<h3 id="org0105231"><span class="section-number-3">12.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-12-2">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant Alice as A
+actor Bob as B
+
+ref over A, B : int
+A -&gt; B : hello
+
+ref over B
+    This can be on serveral lines
+end ref
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbc594ea" class="outline-3">
+<h3 id="orgbc594ea"><span class="section-number-3">12.3</span> &#x603B;&#x7ED3;</h3>
+</div>
+</div>
+<div id="outline-container-orgedd10a6" class="outline-2">
+<h2 id="orgedd10a6"><span class="section-number-2">13</span> &#x5EF6;&#x8FDF;</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+<code>...</code> &#x7528;&#x6765;&#x8868;&#x793A;&#x5EF6;&#x8FDF;&#x3002;&#x6B64;&#x5916;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x7ED9;&#x5EF6;&#x8FDF;&#x6DFB;&#x52A0;&#x6CE8;&#x91CA;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant Alice as A
+participant Bob as B
+
+A -&gt; B : Authentication Request
+...
+B --&gt; A : Authentication Response
+...5 minutes latter...
+B --&gt; A : Bye!
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org9da57db" class="outline-2">
+<h2 id="org9da57db"><span class="section-number-2">14</span> &#x7A7A;&#x95F4;</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+<code>|||</code> &#x7528;&#x6765;&#x589E;&#x52A0;&#x7A7A;&#x95F4;&#xFF0C;&#x53E6;&#x5916;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6570;&#x5B57;&#x6307;&#x5B9A;&#x589E;&#x52A0;&#x7684;&#x50CF;&#x7D20;&#x7684;&#x6570;&#x91CF;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant Alice as A
+participant Bob as B
+
+A -&gt; B : message 1
+B --&gt; A : ok
+|||
+A -&gt; B : message 2
+B --&gt; A : ok
+||45||
+A -&gt; B : message 3
+B --&gt; A : ok
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="space.png">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge1c9c87" class="outline-2">
+<h2 id="orge1c9c87"><span class="section-number-2">15</span> &#x751F;&#x547D;&#x7EBF;&#x7684;&#x96C6;&#x706B;&#x4E0E;&#x64A4;&#x9500;</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+<div id="outline-container-orga7eeb18" class="outline-3">
+<h3 id="orga7eeb18"><span class="section-number-3">15.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li><code>active &lt;participant&gt;</code> &#x6FC0;&#x6D3B;&#x6D3B;&#x52A8;&#x5757;</li>
+<li><code>deactive &lt;participant&gt;</code> &#x7EC8;&#x6B62;&#x6D3B;&#x52A8;&#x5757;</li>
+<li><code>destroy &lt;participant&gt;</code> &#x8868;&#x793A;&#x4E00;&#x4E2A;&#x53C2;&#x4E0E;&#x8005;&#x7684;&#x751F;&#x547D;&#x7EBF;&#x7684;&#x7EC8;&#x7ED3;&#x3002;</li>
+<li>&#x6B64;&#x5916;&#xFF0C;&#x6D3B;&#x52A8;&#x5757;&#x4E5F;&#x53EF;&#x4EE5;&#x5D4C;&#x5957;&#xFF0C;&#x5E76;&#x4E14;&#x8FDB;&#x884C;&#x6837;&#x5F0F;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x3002;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0a505a5" class="outline-3">
+<h3 id="org0a505a5"><span class="section-number-3">15.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-15-2">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant User
+
+User -&gt; A : DoWork
+activate A
+
+A -&gt; B : &lt;&lt; createRequest &gt;&gt;
+activate B
+
+B -&gt; C : DoWork
+activate C
+C --&gt; B : WorkDone
+destroy C
+
+B --&gt; A : RequestCreated
+deactivate B
+
+A -&gt; User : Done
+deactivate A
+
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="activity-block.png">
+</p>
+</div>
+
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant User
+
+User -&gt; A : DoWork
+activate A #FFBBBB
+
+A -&gt; A : Internal call
+activate A #DarkSalmon
+
+A -&gt; B : &lt;&lt; createRequest &gt;&gt;
+activate B
+
+B --&gt; A : RequestCreated
+deactivate B
+deactivate A
+A -&gt; User : Done
+deactivate A
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="complex-activity-block.png">
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org10226e4" class="outline-2">
+<h2 id="org10226e4"><span class="section-number-2">16</span> &#x521B;&#x5EFA;&#x53C2;&#x4E0E;&#x8005;</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+&#x53EF;&#x4EE5;&#x628A; <code>create</code> &#x653E;&#x5728; <code>participant</code> &#x7B2C;&#x4E00;&#x6B21;&#x6536;&#x5230;&#x6D88;&#x606F;&#x4E4B;&#x524D;&#xFF0C;&#x4EE5;&#x5F3A;&#x8C03;&#x672C;&#x6B21;&#x6D88;&#x606F;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5728;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+Bob -&gt; Alice : hello
+
+create Other
+Alice -&gt; Other : new
+
+create control String
+Alice -&gt; String
+note right : You can also put notes!
+
+Alice --&gt; Bob : ok
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="create-participant.png">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org91ddf16" class="outline-2">
+<h2 id="org91ddf16"><span class="section-number-2">17</span> &#x8FDB;&#x5165;&#x548C;&#x53D1;&#x51FA;&#x6D88;&#x606F;</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+&#x5982;&#x679C;&#x53EA;&#x60F3;&#x5173;&#x6CE8;&#x90E8;&#x5206;&#x56FE;&#x793A;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FDB;&#x5165;&#x548C;&#x53D1;&#x51FA;&#x7BAD;&#x5934;&#x3002;&#x4F7F;&#x7528;&#x65B9;&#x62EC;&#x53F7; <code>[</code> &#x548C; <code>]</code> &#x5206;&#x8868;&#x8868;&#x793A;&#x56FE;&#x793A;&#x7684;&#x5DE6;&#x53F3;&#x4E24;&#x4FA7;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+[-&gt; A : DoWork
+
+activate A
+
+A -&gt; A : Internal call
+Activate A
+
+A -&gt;] : &lt;&lt; createRequest &gt;&gt;
+A &lt;--] : RequestCreated
+deactivate A
+[&lt;- A : Done
+deactivate A
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="part-diagrams.png">
+</p>
+</div>
+
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+[-&gt; Bob
+[o-&gt; Bob
+[o-&gt;o Bob
+[x-&gt; Bob
+
+[&lt;- Bob
+[x&lt;- Bob
+
+Bob -&gt;]
+Bob -&gt;o]
+Bob o-&gt;o]
+Bob -&gt;x]
+
+Bob &lt;-]
+Bob x&lt;-]
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="part-diagrams-2.png">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1be06e" class="outline-2">
+<h2 id="orgf1be06e"><span class="section-number-2">18</span> &#x6784;&#x9020;&#x578B;&#x548C;&#x5708;&#x70B9;</h2>
+<div class="outline-text-2" id="text-18">
+</div>
+<div id="outline-container-orgadf9261" class="outline-3">
+<h3 id="orgadf9261"><span class="section-number-3">18.1</span> &#x8981;&#x70B9;</h3>
+<div class="outline-text-3" id="text-18-1">
+<ul class="org-ul">
+<li><code>&lt;&lt; &lt;type&gt; &gt;&gt;</code> &#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x7C7B;&#x578B;</li>
+<li>&#x5728;&#x6784;&#x9020;&#x7C7B;&#x578B;&#x4E2D;&#xFF0C;=(&lt;x&gt;,&lt;color&gt;)=&#x8BED;&#x6CD5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5706;&#x5708;&#x5708;&#x8D77;&#x6765;&#x7684;&#x5B57;&#x7B26;&#x3002;</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org028b698" class="outline-3">
+<h3 id="org028b698"><span class="section-number-3">18.2</span> &#x5B9E;&#x8DF5;</h3>
+<div class="outline-text-3" id="text-18-2">
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+participant &quot;Famous Bob&quot; as Bob &lt;&lt; Generated &gt;&gt;
+participant Alice &lt;&lt; (C,#ADD1B2) Testable&gt;&gt;
+
+Bob -&gt; Alice : First message
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="stereotype.png">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb97c259" class="outline-3">
+<h3 id="orgb97c259"><span class="section-number-3">18.3</span> &#x603B;&#x7ED3;</h3>
+</div>
+</div>
+<div id="outline-container-org1ce4540" class="outline-2">
+<h2 id="org1ce4540"><span class="section-number-2">19</span> &#x5305;&#x88F9;&#x53C2;&#x4E0E;&#x8005;</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>box ... end box</code> &#x5C06;&#x591A;&#x4E2A;&#x53C2;&#x4E0E;&#x8005;&#x5305;&#x88F9;&#x8D77;&#x6765;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+box &quot;Internal Service &quot; #LightBlue
+    participant Bob
+    participant Alice
+end box
+participant Other
+
+Bob -&gt; Alice : hello
+Alice -&gt; Other : hello
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="box.png">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org58a1d14" class="outline-2">
+<h2 id="org58a1d14"><span class="section-number-2">20</span> &#x79FB;&#x9664; <code>foot box</code></h2>
+<div class="outline-text-2" id="text-20">
+<p>
+&#x4F7F;&#x7528; <code>hide footbox</code> &#x5173;&#x952E;&#x5B57;&#x79FB;&#x9664;&#x811A;&#x6CE8;
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+hide footbox
+title Footer removed
+
+Alice -&gt; Bob : Authentication Request
+Bob --&gt; Alice : Authentication Response
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="remove-footbox.png">
+</p>
+</div>
+<blockquote>
+<p>
+&#x53BB;&#x6389; <code>foot box</code> &#x7684;&#x65F6;&#x5E8F;&#x56FE;&#x6BD4;&#x8F83;&#x591A;&#x89C1;&#x5427;&#x3002;
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgfec3205" class="outline-2">
+<h2 id="orgfec3205"><span class="section-number-2">21</span> &#x81EA;&#x5B9A;&#x4E49;&#x5916;&#x89C2;</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x65B9;&#x5F0F;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x5916;&#x89C2;&#x3002;
+</p>
+<div class="org-src-container">
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">@startuml
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+skinparam sequence {
+	  ArrowColor DeepSkyBlue
+	  ActorBorderColor DeepSkyBlue
+	  LifeLineBorderColor Blue
+	  LifeLineBackgroundColor #A9DCDF
+
+	  ParticipantBorderColor DeepSkyBlue
+	  ParticipantBackgroundColor DodgerBlue
+	  ParticipantFontName Impact
+	  ParticipantFontSize 17
+	  ParticipantFontColor #A9DCDF
+
+	  ActorBackgroundColor aqua
+	  ActorFontColor DeepSkyBlue
+	  ActorFontSize 17
+	  ActorFontName Aapex
+}
+
+actor User
+participant &quot;First Class&quot; as A
+participant &quot;Second Class&quot; as B
+participant &quot;Last Class&quot; as C
+
+User -&gt; A : DoWork
+activate A
+
+A -&gt; B : Create Request
+activate B
+
+B -&gt; C : DoWork
+activate C
+C --&gt; B : WorkDone
+destroy C
+
+B --&gt; A : Request Created
+deactivate B
+
+A --&gt; User : Done
+deactivate A
+
+@enduml</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="customize-style.png">
+</p>
 </div>
 </div>
 </div>
@@ -1138,7 +1600,7 @@ end note
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/25/spike-plantuml/" rel="prev" title="">
+              <a href="/2017/11/25/notes/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -1269,7 +1731,7 @@ end note
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgcdc6076"><span class="nav-number">1.</span> <span class="nav-text">1 时序图（Sequence Diagram）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org71fc60b"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 简单示例(Basic examples)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orgd4eb7b4"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org71e2adf"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org656c717"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0ed6c9a"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 声明参与者(Declaring participant)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org9bde73e"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org647907b"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgd2ec9a4"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 在参与者中使用非字母符号（Use non-letters in participants）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org802adf9"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgbc42bed"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org90e67de"><span class="nav-number">1.3.3.</span> <span class="nav-text">1.3.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org1c4d517"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 给自己发消息（Message to self)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org1f8e61d"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org7cdcfff"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgcdefe55"><span class="nav-number">1.4.3.</span> <span class="nav-text">1.4.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org8fe2730"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 修改箭头样式(Change arrow style)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org722b410"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.5.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org704c99a"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.5.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgba45725"><span class="nav-number">1.5.3.</span> <span class="nav-text">1.5.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org6e9d25f"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 修改箭头颜色（Change arrow color）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orgc69db17"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.6.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org734b406"><span class="nav-number">1.6.2.</span> <span class="nav-text">1.6.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orga6f64e4"><span class="nav-number">1.6.3.</span> <span class="nav-text">1.6.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org3458b41"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 对消息序列编号（Message sequence numbering）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orge52e3a4"><span class="nav-number">1.7.1.</span> <span class="nav-text">1.7.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org2173565"><span class="nav-number">1.7.2.</span> <span class="nav-text">1.7.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgc83a300"><span class="nav-number">1.7.3.</span> <span class="nav-text">1.7.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orge5249f6"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 分割示意图（Splitting diagrams）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org596a43f"><span class="nav-number">1.8.1.</span> <span class="nav-text">1.8.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org39711d9"><span class="nav-number">1.8.2.</span> <span class="nav-text">1.8.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org9d9d9f8"><span class="nav-number">1.8.3.</span> <span class="nav-text">1.8.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org38f76d0"><span class="nav-number">1.9.</span> <span class="nav-text">1.9 组合消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org0e04c26"><span class="nav-number">1.9.1.</span> <span class="nav-text">1.9.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org91301ba"><span class="nav-number">1.9.2.</span> <span class="nav-text">1.9.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org3b04c1b"><span class="nav-number">1.9.3.</span> <span class="nav-text">1.9.3 总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org999207e"><span class="nav-number">1.10.</span> <span class="nav-text">1.10 给消息添加注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#org64c2bfa"><span class="nav-number">1.10.1.</span> <span class="nav-text">1.10.1 要点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#org695bf6f"><span class="nav-number">1.10.2.</span> <span class="nav-text">1.10.2 实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#orgd01709f"><span class="nav-number">1.10.3.</span> <span class="nav-text">1.10.3 总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orga0bddbc"><span class="nav-number">1.</span> <span class="nav-text">1 简单示例(Basic examples)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org6f3166f"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0dc468b"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb84b339"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org9b56890"><span class="nav-number">2.</span> <span class="nav-text">2 声明参与者(Declaring participant)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgebc4e46"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org1e93082"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgde79bdb"><span class="nav-number">3.</span> <span class="nav-text">3 在参与者中使用非字母符号（Use non-letters in participants）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org0ed4549"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org17920de"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org18f171f"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgbeccd2a"><span class="nav-number">4.</span> <span class="nav-text">4 给自己发消息（Message to self)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org6b2504a"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0398781"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgf023a26"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgcdeeea5"><span class="nav-number">5.</span> <span class="nav-text">5 修改箭头样式(Change arrow style)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org1ef898e"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org2a5c3a1"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org84edfa9"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org474905a"><span class="nav-number">6.</span> <span class="nav-text">6 修改箭头颜色（Change arrow color）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org8e66806"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org59daad9"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org4645964"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org4cdc6df"><span class="nav-number">7.</span> <span class="nav-text">7 对消息序列编号（Message sequence numbering）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgefa5ce1"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org01332ec"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org798c662"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org8d3587f"><span class="nav-number">8.</span> <span class="nav-text">8 分割示意图（Splitting diagrams）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgc29065c"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgbcff2e6"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org40aac3f"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org08a1027"><span class="nav-number">9.</span> <span class="nav-text">9 组合消息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgae20350"><span class="nav-number">9.1.</span> <span class="nav-text">9.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0c09a9d"><span class="nav-number">9.2.</span> <span class="nav-text">9.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org9c77ba6"><span class="nav-number">9.3.</span> <span class="nav-text">9.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgcc51868"><span class="nav-number">10.</span> <span class="nav-text">10 给消息添加注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgc65fb3f"><span class="nav-number">10.1.</span> <span class="nav-text">10.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org71b57ba"><span class="nav-number">10.2.</span> <span class="nav-text">10.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgcd19fcc"><span class="nav-number">10.3.</span> <span class="nav-text">10.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org551e486"><span class="nav-number">11.</span> <span class="nav-text">11 分隔符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org1f5a075"><span class="nav-number">11.1.</span> <span class="nav-text">11.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org64b8487"><span class="nav-number">11.2.</span> <span class="nav-text">11.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org6150ef0"><span class="nav-number">11.3.</span> <span class="nav-text">11.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgd341eb2"><span class="nav-number">12.</span> <span class="nav-text">12 引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org81b9a84"><span class="nav-number">12.1.</span> <span class="nav-text">12.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0105231"><span class="nav-number">12.2.</span> <span class="nav-text">12.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgbc594ea"><span class="nav-number">12.3.</span> <span class="nav-text">12.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgedd10a6"><span class="nav-number">13.</span> <span class="nav-text">13 延迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org9da57db"><span class="nav-number">14.</span> <span class="nav-text">14 空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orge1c9c87"><span class="nav-number">15.</span> <span class="nav-text">15 生命线的集火与撤销</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orga7eeb18"><span class="nav-number">15.1.</span> <span class="nav-text">15.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org0a505a5"><span class="nav-number">15.2.</span> <span class="nav-text">15.2 实践</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org10226e4"><span class="nav-number">16.</span> <span class="nav-text">16 创建参与者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org91ddf16"><span class="nav-number">17.</span> <span class="nav-text">17 进入和发出消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgf1be06e"><span class="nav-number">18.</span> <span class="nav-text">18 构造型和圈点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgadf9261"><span class="nav-number">18.1.</span> <span class="nav-text">18.1 要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org028b698"><span class="nav-number">18.2.</span> <span class="nav-text">18.2 实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb97c259"><span class="nav-number">18.3.</span> <span class="nav-text">18.3 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org1ce4540"><span class="nav-number">19.</span> <span class="nav-text">19 包裹参与者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org58a1d14"><span class="nav-number">20.</span> <span class="nav-text">20 移除 foot box</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgfec3205"><span class="nav-number">21.</span> <span class="nav-text">21 自定义外观</span></a></li></ol></div>
             
 
           </div>
