@@ -1,0 +1,929 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Business Rule,Business Process,Business Requirement," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Business analysis is an important phase in SDLC(Software Development Life Cycle). It defines the boundary, the value and the target of the software system. As a developer, I find that most of the de">
+<meta name="keywords" content="Business Rule,Business Process,Business Requirement">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Business requirement, business rule and business process">
+<meta property="og:url" content="jack2gs.github.io/2018/03/18/business-requirement-business-rule-and-business-process/index.html">
+<meta property="og:site_name" content="Jack Gao&#39;s Blog">
+<meta property="og:description" content="Business analysis is an important phase in SDLC(Software Development Life Cycle). It defines the boundary, the value and the target of the software system. As a developer, I find that most of the de">
+<meta property="og:image" content="jack2gs.github.io/2018/03/18/business-requirement-business-rule-and-business-process/waterfall-model.png">
+<meta property="og:updated_time" content="2018-03-18T13:32:00.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Business requirement, business rule and business process">
+<meta name="twitter:description" content="Business analysis is an important phase in SDLC(Software Development Life Cycle). It defines the boundary, the value and the target of the software system. As a developer, I find that most of the de">
+<meta name="twitter:image" content="jack2gs.github.io/2018/03/18/business-requirement-business-rule-and-business-process/waterfall-model.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="jack2gs.github.io/2018/03/18/business-requirement-business-rule-and-business-process/"/>
+
+
+
+
+
+
+  <title>Business requirement, business rule and business process | Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jack Gao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Road & Book</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2018/03/18/business-requirement-business-rule-and-business-process/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Gao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jack Gao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Business requirement, business rule and business process</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T18:52:23+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-03-18T21:32:00+08:00">
+                2018-03-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BA/" itemprop="url" rel="index">
+                    <span itemprop="name">BA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div id="content">
+<p>
+Business analysis is an important phase in <b>SDLC(Software Development Life Cycle)</b>. It defines the boundary, the value and the target of the software system. As a developer, I find that most of the developers could not tell the difference between them and how they work together. In this article, I&apos;ll try to explain them. This will help developers to konw how to understand business requirement and how to use them.
+</p>
+
+<a id="more"></a>
+
+<div id="outline-container-orgfe561ba" class="outline-2">
+<h2 id="orgfe561ba"><span class="section-number-2">1</span> Business analysis</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Business analysis plays an important role in SDLC. Actually, now we have a lot of software development methods now: TDD(Test Driven Development), BDD(Behiver Driven Development), DDD(Data Driven Development), another DDD(Domain Driven Development). But I think they all base on the classic <b>Waterfall Model</b> with some changes.
+</p>
+
+
+<div class="figure">
+<p><img src="waterfall-model.png">
+</p>
+<p><span class="figure-number">Figure 1: </span>The Waterfall Model</p>
+</div>
+
+<p>
+Business is the entry of the software development. 
+Actually, there is always gap between each other. Because, the stakeholder always works at their own Absctraction Level, they try to look at the system in different viewpoint.
+As a developer, we&apos;d better understand BA very well too. At least the conceptions of them and how they work together, try to eliminate the gap and make full use of it. By the way, BDD is trying to solve this problem.
+</p>
+</div>
+</div>
+<div id="outline-container-org7a5ae98" class="outline-2">
+<h2 id="org7a5ae98"><span class="section-number-2">2</span> Conceptions of BA(Business Analysis)</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org8539986" class="outline-3">
+<h3 id="org8539986"><span class="section-number-3">2.1</span> What&apos;s a requirement?</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Requirements describe the functionality of a system; i.e., a requirement describes what
+a system must do. 
+</p>
+
+<p>
+For example, a CROS requirement is:
+&#x201C;The CROS solution shall provide the capability to periodically review the
+assigned reporting basis for all active accounts and update the account reporting
+basis and related attributes.&#x201D;
+A business rule associated to this requirement is:
+Exclude the following accounts from the Automated Annual Reporting Basis
+Review:
+a. Account has a Basis Review Protection (BRP) code
+b. Accounts that are closed out or inactive
+c. Accounts open less than 12 months from the run date of the automated
+review process
+d. Accounts with Account Characteristic Code 34 (Qualified Purchaser)
+</p>
+</div>
+</div>
+<div id="outline-container-orgf58148b" class="outline-3">
+<h3 id="orgf58148b"><span class="section-number-3">2.2</span> What is a business rule(BR)?</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Business rules describe the conditions or constraints that you must know or follow to
+fulfill a requirement. Business rules are typically defined by law or policy and are rarely
+changed. In fact, business rules must be followed regardless of whether there is a
+system to support business objectives or whether activities are done manually. 
+</p>
+</div>
+</div>
+<div id="outline-container-orgb60bf59" class="outline-3">
+<h3 id="orgb60bf59"><span class="section-number-3">2.3</span> What is a business process(BP)?</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Business processes are a collection of related, structured activities or tasks that produce
+a specific service or product for a particular customer.
+</p>
+</div>
+</div>
+<div id="outline-container-org69cc7bb" class="outline-3">
+<h3 id="org69cc7bb"><span class="section-number-3">2.4</span> How do requirements, business rules, business processes differ?</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Business requirements explain what a system must accomplish. Business rules explain
+the conditions that must be fulfilled to meet a requirement. Business processes group
+activities involving one or more people or systems necessary to meet a business
+objective.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org89b5987" class="outline-2">
+<h2 id="org89b5987"><span class="section-number-2">3</span> How Business Process Models, Concept Models, and Business Rules Relate:  It&apos;s All About What State You&apos;re In</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<b>Business Process Models</b>:  A completed transform often achieves a business milestone and a new state for some operational business thing(s).  Example:  claimant notified.
+</p>
+
+<p>
+<b>Structured Business Vocabulary (Concept Models)</b>:  In concept models (also called fact models) such states are represented by verb concepts (also called fact types) &#x2014; for example, claimant is notified (or claimant has been notified, if you prefer).  A concept model literally represents what things the business can know (remember) about completed transforms and other operational business events.
+</p>
+
+<p>
+<b>Business Rules</b>:  Business rules indicate which states are allowed or required.  They should not reference business processes or business tasks by name, just the states they try to achieve.  For example, a business rule might be:  A claimant may be notified that a claim has been denied only if the specific reason(s) for denial have been determined.
+</p>
+</div>
+</div>
+<div id="outline-container-org85b34a5" class="outline-2">
+<h2 id="org85b34a5"><span class="section-number-2">4</span> Manifestos</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Like the Agile Manifesto, BP and BR have manifesto too. You can refer to <a href="https://www.bptrends.com/resources/bp-manifesto/" target="_blank" rel="external">BP-Manifesto</a> and <a href="http://www.businessrulesgroup.org/brmanifesto.htm" target="_blank" rel="external">BR-Manifesto</a>. It&apos;s helpful to understand them furtherly.
+</p>
+</div>
+</div>
+<div id="outline-container-org60d0bb1" class="outline-2">
+<h2 id="org60d0bb1"><span class="section-number-2">5</span> Community</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<a href="https://www.brcommunity.com/" target="_blank" rel="external">https://www.brcommunity.com/</a> and <a href="https://www.bptrends.com" target="_blank" rel="external">https://www.bptrends.com</a> are two good webstites about BR and BP. We could learn more about them.
+</p>
+</div>
+</div>
+<div id="outline-container-org67a2ad5" class="outline-2">
+<h2 id="org67a2ad5"><span class="section-number-2">6</span> Recap</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+If you&apos;re looking to manage business activities on a business-process basis, stability is key.  But business rules aren&apos;t stable.  In fact, many change quite rapidly.  What should you do?  Separate the business rules from the business process model, so the business process model can do its job.
+</p>
+
+<p>
+Adherence to the best practices identified in this discussion is also how you keep a business process model simple.  Frankly, most business processes aren&apos;t nearly as complicated as people think.  What&apos;s complicated is the know-how needed to perform the business process correctly.  That know-how should be represented by business rules.
+</p>
+
+<p>
+Business rules describe what you may or may not do in a specific business scenario.  Business rules also give the criteria, conditions, and exceptions for making these decisions.
+</p>
+
+<p>
+Business requirements capture what a user must do to implement and/or comply with a business rule.
+</p>
+
+<p>
+You may need different sets of business requirements to implement different sets of business rules &#x2014; for example, when dealing with complex business processes that have complicated conditions and exceptions.
+</p>
+
+<p>
+Business rules are independent of business requirements and shouldn&apos;t be changed to accommodate a requirement.
+Be careful when changing a business rule in case it impacts how a business process functions.
+</p>
+</div>
+</div>
+<div id="outline-container-org9312cd7" class="outline-2">
+<h2 id="org9312cd7"><span class="section-number-2">7</span> Referrencs</h2>
+<div class="outline-text-2" id="text-7">
+<ol class="org-ol">
+<li><a href="https://www.brcommunity.com/articles.php?id=b058" target="_blank" rel="external">Business Rules in Business Processes ~ Rules for Process and Rules for Product/Service</a></li>
+<li><a href="https://www.brcommunity.com/articles.php?id=b651" target="_blank" rel="external">Business Processes: Better with Business Rules</a></li>
+<li><a href="https://www.infoq.com/articles/business-rules-processes" target="_blank" rel="external">Implementation of business rules and business processes in SOA</a></li>
+<li><a href="http://blog.leonardo.com.au/the-difference-between-business-rules-and-business-processes#" target="_blank" rel="external">The Difference Between Business Rules and Business Processes</a></li>
+<li><a href="http://blog.leonardo.com.au/process-modeling-with-business-rules" target="_blank" rel="external">Process Modeling with Business Rules</a></li>
+<li><a href="https://www.brcommunity.com/articles.php?id=b672" target="_blank" rel="external">An Introduction to &quot;The Business Process Manifesto&quot;</a></li>
+<li><a href="https://www.bptrends.com/resources/bp-manifesto/" target="_blank" rel="external">The Business Rules Manifesto</a></li>
+<li><a href="http://www.requirementsnetwork.com/rule-requirements.htm" target="_blank" rel="external">What is the Difference between a Business Rule and a Business Requirement?</a></li>
+<li><a href="https://www.brcommunity.com/articles.php?id=b631" target="_blank" rel="external">Business Rules vs. Business Requirements</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Business-Rule/" rel="tag"># Business Rule</a>
+          
+            <a href="/tags/Business-Process/" rel="tag"># Business Process</a>
+          
+            <a href="/tags/Business-Requirement/" rel="tag"># Business Requirement</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/note-introduction-to-uml/" rel="next" title="[UML笔记]UML介绍">
+                <i class="fa fa-chevron-left"></i> [UML笔记]UML介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jack Gao" />
+          <p class="site-author-name" itemprop="name">Jack Gao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Jack Gao's Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgfe561ba"><span class="nav-number">1.</span> <span class="nav-text">1 Business analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org7a5ae98"><span class="nav-number">2.</span> <span class="nav-text">2 Conceptions of BA(Business Analysis)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#org8539986"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 What's a requirement?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgf58148b"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 What is a business rule(BR)?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb60bf59"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 What is a business process(BP)?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org69cc7bb"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 How do requirements, business rules, business processes differ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org89b5987"><span class="nav-number">3.</span> <span class="nav-text">3 How Business Process Models, Concept Models, and Business Rules Relate:  It's All About What State You're In</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org85b34a5"><span class="nav-number">4.</span> <span class="nav-text">4 Manifestos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org60d0bb1"><span class="nav-number">5.</span> <span class="nav-text">5 Community</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org67a2ad5"><span class="nav-number">6.</span> <span class="nav-text">6 Recap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org9312cd7"><span class="nav-number">7.</span> <span class="nav-text">7 Referrencs</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Gao</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
