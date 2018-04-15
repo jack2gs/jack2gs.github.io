@@ -1,0 +1,897 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Note,Jenkins,Docker," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="CI/CD is very important in Aigle. During that, we must have a CI sever to build, test and deploy our code. Luckily, we have a lot of such kind of software, such as, Teamcity, Jenkins, Travis CI and">
+<meta name="keywords" content="Note,Jenkins,Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Note] Use Jenkins in Docker">
+<meta property="og:url" content="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/index.html">
+<meta property="og:site_name" content="Jack Gao&#39;s Blog">
+<meta property="og:description" content="CI/CD is very important in Aigle. During that, we must have a CI sever to build, test and deploy our code. Luckily, we have a lot of such kind of software, such as, Teamcity, Jenkins, Travis CI and">
+<meta property="og:image" content="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/plugin-installing-issue.png">
+<meta property="og:image" content="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/setup-update-center.png">
+<meta property="og:updated_time" content="2018-04-15T04:58:23.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Note] Use Jenkins in Docker">
+<meta name="twitter:description" content="CI/CD is very important in Aigle. During that, we must have a CI sever to build, test and deploy our code. Luckily, we have a lot of such kind of software, such as, Teamcity, Jenkins, Travis CI and">
+<meta name="twitter:image" content="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/plugin-installing-issue.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/"/>
+
+
+
+
+
+
+  <title>[Note] Use Jenkins in Docker | Jack Gao's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jack Gao's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Road & Book</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Gao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jack Gao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[Note] Use Jenkins in Docker</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-15T11:58:12+08:00">
+                2018-04-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-04-15T12:58:23+08:00">
+                2018-04-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CI-CD/" itemprop="url" rel="index">
+                    <span itemprop="name">CI/CD</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div id="content">
+<p>
+CI/CD is very important in Aigle. During that, we must have a CI sever to build, test and deploy our code. Luckily, we have a lot of such kind of software, such as, Teamcity, Jenkins, Travis CI and so on.
+This article will show you how to use Jenkins in docker.
+</p>
+<a id="more"></a>
+
+<div id="outline-container-orgd0ab48d" class="outline-2">
+<h2 id="orgd0ab48d"><span class="section-number-2">1</span> Prerequisite</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+First, install docker in your machine. For detail, please refer to <a href="https://www.docker.com/community-edition" target="_blank" rel="external">Docker community edition</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd82c24" class="outline-2">
+<h2 id="orgbd82c24"><span class="section-number-2">2</span> Use Jenkins in docker</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Jenkins supports two ways in use: 1. the traditional way; 2. the docker way. We will use Jenkins in docker on macOS. For more details, you can refer to <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="external">Installing Jenkins</a>.
+</p>
+</div>
+<div id="outline-container-orgbedc2f9" class="outline-3">
+<h3 id="orgbedc2f9"><span class="section-number-3">2.1</span> Pull Jenkins Image</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull jenkinsci/blueocean</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+<div id="outline-container-org9f428bd" class="outline-3">
+<h3 id="org9f428bd"><span class="section-number-3">2.2</span> Create Jenkins Container</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-orged0234a" class="outline-4">
+<h4 id="orged0234a"><span class="section-number-4">2.2.1</span> Create a volume for Jenkins</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+If you cant to persist the data for Jenkins, you&apos;d better create a volume for it.
+</p>
+<div class="org-src-container">
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker volume create jenkins-data</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5cef90f" class="outline-3">
+<h3 id="org5cef90f"><span class="section-number-3">2.3</span> Create Jenkins Container and Run it</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run \</span><br><span class="line">  -u root \</span><br><span class="line">  --rm \  </span><br><span class="line">  <span class="operator">-d</span> \ </span><br><span class="line">  -p <span class="number">8080</span>:<span class="number">8080</span> \ </span><br><span class="line">  -p <span class="number">50000</span>:<span class="number">50000</span> \ </span><br><span class="line">  -v jenkins-data:/var/jenkins_home \ </span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \ </span><br><span class="line">  jenkinsci/blueocean </span><br></pre></td></tr></table></figure>
+</div>
+<p>
+<b>Note:</b> The run command is to create a Jenkins container and run it right now.
+</p>
+</div>
+</div>
+<div id="outline-container-org8d8d624" class="outline-3">
+<h3 id="org8d8d624"><span class="section-number-3">2.4</span> Setup Jenkins</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+After the container started, now you need to do a little more setup thing. Fortunately, Jenkins has provide us a post-installation wizard. It&apos;s quite simple. For more details, you can refer to <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="external">Installing Jenkins</a>.
+But someone may meet the plugin installing issue during the wizard as follow.
+</p>
+<p>
+<img src="plugin-installing-issue.png">
+To solve this, we have two ways:
+</p>
+<ol class="org-ol">
+<li>change the mirror for downloading the plugin</li>
+<li>install the missing plugin manually.</li>
+</ol>
+
+<p>
+Obviously, we don&apos;t want to install them manually. It&apos;s annoying. So we need to change the plugin update service:
+</p>
+
+<ol class="org-ol">
+<li>To look up the available mirror</li>
+</ol>
+<p>
+<a href="http://mirrors.jenkins-ci.org/status.html" target="_blank" rel="external">http://mirrors.jenkins-ci.org/status.html</a> give use all the available mirrors. In this case, I want to use <a href="https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/current/update-center.json" target="_blank" rel="external">https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/current/update-center.json</a>.
+</p>
+<ol class="org-ol">
+<li>Change the plugin updates service</li>
+</ol>
+<p>
+If your jenkins&apos;s URL is <b><a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a></b>, we can visit <a href="http://localhost:8080/pluginManager/advanced" target="_blank" rel="external">http://localhost:8080/pluginManager/advanced</a> to change the service url.
+</p>
+
+<div class="figure">
+<p><img src="setup-update-center.png">
+</p>
+<p><span class="figure-number">Figure 1: </span>Setup update center</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb823ac1" class="outline-3">
+<h3 id="orgb823ac1"><span class="section-number-3">2.5</span> Stop and start Jenkins Container</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Look up the container&apos;s status and name:
+</p>
+<div class="org-src-container">
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps <span class="operator">-a</span></span><br></pre></td></tr></table></figure>
+</div>
+<p>
+Stop the container
+</p>
+<div class="org-src-container">
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker stop &lt;container name&gt;</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+Start the container
+</p>
+<div class="org-src-container">
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker start &lt;container name&gt;</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0e284b7" class="outline-2">
+<h2 id="org0e284b7"><span class="section-number-2">3</span> Referrence</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="https://www.docker.com/community-edition" target="_blank" rel="external">Docker Community Edition</a></li>
+<li><a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="external">Installing Jenkins</a></li>
+<li><a href="https://blog.csdn.net/txyzqc/article/details/77885367" target="_blank" rel="external">&#x5B89;&#x88C5;Jenkins&#x65F6;&#x4E0D;&#x80FD;&#x8054;&#x7F51;&#x5B89;&#x88C5;&#x63D2;&#x4EF6;&#x95EE;&#x9898;&#x89E3;&#x51B3;</a></li>
+<li><a href="https://blog.csdn.net/tianhua79658788/article/details/78249908" target="_blank" rel="external">Jenkins&#x63D2;&#x4EF6;&#x4E0B;&#x8F7D;&#x5931;&#x8D25;&#x4E24;&#x79CD;&#x5904;&#x7406;&#x529E;&#x6CD5;</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Note/" rel="tag"># Note</a>
+          
+            <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/business-requirement-business-rule-and-business-process/" rel="next" title="Business requirement, business rule and business process">
+                <i class="fa fa-chevron-left"></i> Business requirement, business rule and business process
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jack Gao" />
+          <p class="site-author-name" itemprop="name">Jack Gao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Jack Gao's Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgd0ab48d"><span class="nav-number">1.</span> <span class="nav-text">1 Prerequisite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgbd82c24"><span class="nav-number">2.</span> <span class="nav-text">2 Use Jenkins in docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgbedc2f9"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Pull Jenkins Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org9f428bd"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Create Jenkins Container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orged0234a"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Create a volume for Jenkins</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org5cef90f"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Create Jenkins Container and Run it</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org8d8d624"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Setup Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb823ac1"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Stop and start Jenkins Container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org0e284b7"><span class="nav-number">3.</span> <span class="nav-text">3 Referrence</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Gao</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
