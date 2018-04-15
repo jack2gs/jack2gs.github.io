@@ -102,7 +102,7 @@
 <meta property="og:description" content="CI/CD is very important in Aigle. During that, we must have a CI sever to build, test and deploy our code. Luckily, we have a lot of such kind of software, such as, Teamcity, Jenkins, Travis CI and">
 <meta property="og:image" content="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/plugin-installing-issue.png">
 <meta property="og:image" content="jack2gs.github.io/2018/04/15/use-jenkins-in-docker/setup-update-center.png">
-<meta property="og:updated_time" content="2018-04-15T04:58:23.906Z">
+<meta property="og:updated_time" content="2018-04-15T12:55:12.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Note] Use Jenkins in Docker">
 <meta name="twitter:description" content="CI/CD is very important in Aigle. During that, we must have a CI sever to build, test and deploy our code. Luckily, we have a lot of such kind of software, such as, Teamcity, Jenkins, Travis CI and">
@@ -325,7 +325,7 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-04-15T12:58:23+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2018-04-15T20:55:12+08:00">
                 2018-04-15
               </time>
             
@@ -385,35 +385,35 @@ This article will show you how to use Jenkins in docker.
 </p>
 <a id="more"></a>
 
-<div id="outline-container-orgd0ab48d" class="outline-2">
-<h2 id="orgd0ab48d"><span class="section-number-2">1</span> Prerequisite</h2>
+<div id="outline-container-org5b16b90" class="outline-2">
+<h2 id="org5b16b90"><span class="section-number-2">1</span> Prerequisite</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 First, install docker in your machine. For detail, please refer to <a href="https://www.docker.com/community-edition" target="_blank" rel="external">Docker community edition</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd82c24" class="outline-2">
-<h2 id="orgbd82c24"><span class="section-number-2">2</span> Use Jenkins in docker</h2>
+<div id="outline-container-orga99a2eb" class="outline-2">
+<h2 id="orga99a2eb"><span class="section-number-2">2</span> Use Jenkins in docker</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Jenkins supports two ways in use: 1. the traditional way; 2. the docker way. We will use Jenkins in docker on macOS. For more details, you can refer to <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="external">Installing Jenkins</a>.
 </p>
 </div>
-<div id="outline-container-orgbedc2f9" class="outline-3">
-<h3 id="orgbedc2f9"><span class="section-number-3">2.1</span> Pull Jenkins Image</h3>
+<div id="outline-container-orge5890c2" class="outline-3">
+<h3 id="orge5890c2"><span class="section-number-3">2.1</span> Pull Jenkins Image</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull jenkinsci/blueocean</span><br></pre></td></tr></table></figure>
 </div>
 </div>
 </div>
-<div id="outline-container-org9f428bd" class="outline-3">
-<h3 id="org9f428bd"><span class="section-number-3">2.2</span> Create Jenkins Container</h3>
+<div id="outline-container-orgd06dda9" class="outline-3">
+<h3 id="orgd06dda9"><span class="section-number-3">2.2</span> Create Jenkins Container</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orged0234a" class="outline-4">
-<h4 id="orged0234a"><span class="section-number-4">2.2.1</span> Create a volume for Jenkins</h4>
+<div id="outline-container-orgccc5708" class="outline-4">
+<h4 id="orgccc5708"><span class="section-number-4">2.2.1</span> Create a volume for Jenkins</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 If you cant to persist the data for Jenkins, you&apos;d better create a volume for it.
@@ -424,8 +424,8 @@ If you cant to persist the data for Jenkins, you&apos;d better create a volume f
 </div>
 </div>
 </div>
-<div id="outline-container-org5cef90f" class="outline-3">
-<h3 id="org5cef90f"><span class="section-number-3">2.3</span> Create Jenkins Container and Run it</h3>
+<div id="outline-container-org2c381a0" class="outline-3">
+<h3 id="org2c381a0"><span class="section-number-3">2.3</span> Create Jenkins Container and Run it</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run \</span><br><span class="line">  -u root \</span><br><span class="line">  --rm \  </span><br><span class="line">  <span class="operator">-d</span> \ </span><br><span class="line">  -p <span class="number">8080</span>:<span class="number">8080</span> \ </span><br><span class="line">  -p <span class="number">50000</span>:<span class="number">50000</span> \ </span><br><span class="line">  -v jenkins-data:/var/jenkins_home \ </span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \ </span><br><span class="line">  jenkinsci/blueocean </span><br></pre></td></tr></table></figure>
@@ -435,15 +435,22 @@ If you cant to persist the data for Jenkins, you&apos;d better create a volume f
 </p>
 </div>
 </div>
-<div id="outline-container-org8d8d624" class="outline-3">
-<h3 id="org8d8d624"><span class="section-number-3">2.4</span> Setup Jenkins</h3>
+<div id="outline-container-org3a2e7f0" class="outline-3">
+<h3 id="org3a2e7f0"><span class="section-number-3">2.4</span> Setup Jenkins</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 After the container started, now you need to do a little more setup thing. Fortunately, Jenkins has provide us a post-installation wizard. It&apos;s quite simple. For more details, you can refer to <a href="https://jenkins.io/doc/book/installing/" target="_blank" rel="external">Installing Jenkins</a>.
 But someone may meet the plugin installing issue during the wizard as follow.
 </p>
+
+
+<div class="figure">
+<p><img src="plugin-installing-issue.png">
+</p>
+<p><span class="figure-number">Figure 1: </span>Plugin installing issue</p>
+</div>
+
 <p>
-<img src="plugin-installing-issue.png">
 To solve this, we have two ways:
 </p>
 <ol class="org-ol">
@@ -471,12 +478,12 @@ If your jenkins&apos;s URL is <b><a href="http://localhost:8080" target="_blank"
 <div class="figure">
 <p><img src="setup-update-center.png">
 </p>
-<p><span class="figure-number">Figure 1: </span>Setup update center</p>
+<p><span class="figure-number">Figure 2: </span>Setup update center</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb823ac1" class="outline-3">
-<h3 id="orgb823ac1"><span class="section-number-3">2.5</span> Stop and start Jenkins Container</h3>
+<div id="outline-container-org2e8cfac" class="outline-3">
+<h3 id="org2e8cfac"><span class="section-number-3">2.5</span> Stop and start Jenkins Container</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 Look up the container&apos;s status and name:
@@ -499,8 +506,8 @@ Start the container
 </div>
 </div>
 </div>
-<div id="outline-container-org0e284b7" class="outline-2">
-<h2 id="org0e284b7"><span class="section-number-2">3</span> Referrence</h2>
+<div id="outline-container-orgc389be1" class="outline-2">
+<h2 id="orgc389be1"><span class="section-number-2">3</span> Referrence</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><a href="https://www.docker.com/community-edition" target="_blank" rel="external">Docker Community Edition</a></li>
@@ -694,7 +701,7 @@ Start the container
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgd0ab48d"><span class="nav-number">1.</span> <span class="nav-text">1 Prerequisite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgbd82c24"><span class="nav-number">2.</span> <span class="nav-text">2 Use Jenkins in docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orgbedc2f9"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Pull Jenkins Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org9f428bd"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Create Jenkins Container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orged0234a"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Create a volume for Jenkins</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org5cef90f"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Create Jenkins Container and Run it</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org8d8d624"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Setup Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgb823ac1"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Stop and start Jenkins Container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#org0e284b7"><span class="nav-number">3.</span> <span class="nav-text">3 Referrence</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#org5b16b90"><span class="nav-number">1.</span> <span class="nav-text">1 Prerequisite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orga99a2eb"><span class="nav-number">2.</span> <span class="nav-text">2 Use Jenkins in docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#orge5890c2"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Pull Jenkins Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#orgd06dda9"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Create Jenkins Container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orgccc5708"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Create a volume for Jenkins</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org2c381a0"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Create Jenkins Container and Run it</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org3a2e7f0"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Setup Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org2e8cfac"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Stop and start Jenkins Container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#orgc389be1"><span class="nav-number">3.</span> <span class="nav-text">3 Referrence</span></a></li></ol></div>
             
 
           </div>
